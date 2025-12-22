@@ -41,6 +41,9 @@
 
 ## Key Features
 
+### Support for Valkey-specific Features
+* **Multi-Database Support in Valkey Cluster Mode**: Valkey 9.0 and later supports multiple databases even in cluster mode.
+
 ### Connectivity & Compatibility
 * **Dual Support:** Fully compatible with both **Redis** and **Valkey** (detects version automatically).
 * **Connection Modes:**
