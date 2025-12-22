@@ -1,8 +1,11 @@
 # Change Log
 
-## 0.4.1
-### Fixed
-* Fixed an issue where Valkey clusters could report `Connection Failed (ERR DB index is out of range)` when selecting databases after accessing each cluster node individually in cluster mode.
+## 0.5.0
+
+### Added
+* **Multi-Database Support in Valkey Cluster Mode**
+    * Supports multiple databases (DB 0-15) in Cluster mode, a feature `numbered databases` introduced in `Valkey` 9.0.
+    * This also resolves an issue where `Valkey` clusters could report `Connection Failed (ERR DB index is out of range)` when selecting databases after accessing nodes in cluster mode.
 
 ## 0.4.0
 
