@@ -18,13 +18,14 @@ description: A high-performance GUI for Redis & Valkey. Supports Cluster, Sentin
 version: 0.2.0
 homepage: https://github.com/infradise/keyscope
 repository: https://github.com/infradise/keyscope
+issue_tracker: https://github.com/infradise/keyscope/issues
+documentation: https://github.com/infradise/keyscope/blob/main/CLI.md
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
 
 # [CLI Configuration]
 # Maps the 'keyscope' command to 'bin/main.dart'
-# \ dart pub global activate keyscope => keyscope
 executables:
   keyscope: main
 
