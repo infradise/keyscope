@@ -70,7 +70,7 @@ class BasicConnectionRepository implements ConnectionRepository {
       host: host,
       port: port,
       username: username,
-      password: password, 
+      password: password,
       connectTimeout: const Duration(seconds: 5),
       commandTimeout: const Duration(seconds: 5),
       // useSsl: false, // Default
@@ -87,7 +87,7 @@ class BasicConnectionRepository implements ConnectionRepository {
       //      await newClient.send(['AUTH', password]);
       //   }
       // }
-    
+
       // Passing settings here makes it a "Flexible Client"
       await newClient.connect();
 
@@ -98,9 +98,8 @@ class BasicConnectionRepository implements ConnectionRepository {
       // (Optional) Test command using 'execute' (NOT 'send')
       final response = await newClient.execute(['PING']);
       print('🏓 PING response: $response');
-
     } catch (e) {
-      print('❌ [OSS] Connection failed: $e');    
+      print('❌ [OSS] Connection failed: $e');
       // Cleanup if connection failed
       await newClient.close();
 
@@ -118,7 +117,7 @@ class BasicConnectionRepository implements ConnectionRepository {
       // Execute INFO command
       // Assuming 'execute' returns the raw RESP response (String or BulkString)
       final result = await _client!.execute(['INFO']);
-      
+
       // Parse the INFO string into a Map
       return _parseInfo(result.toString());
     } catch (e) {
@@ -130,7 +129,7 @@ class BasicConnectionRepository implements ConnectionRepository {
   Map<String, String> _parseInfo(String rawInfo) {
     final infoMap = <String, String>{};
     final lines = rawInfo.split('\r\n');
-    
+
     // String? currentSection;
     for (final line in lines) {
       if (line.isEmpty) continue;
@@ -138,14 +137,14 @@ class BasicConnectionRepository implements ConnectionRepository {
         // currentSection = line.substring(1).trim();
         continue;
       }
-      
+
       final parts = line.split(':');
       if (parts.length >= 2) {
         final key = parts[0];
         // Handle values containing ':'
         final value = parts.sublist(1).join(':');
         infoMap[key] = value;
-        // Optionally prepend section name: 
+        // Optionally prepend section name:
         // infoMap['$currentSection.$key'] = value;
       }
     }

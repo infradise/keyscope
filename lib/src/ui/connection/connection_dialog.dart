@@ -215,11 +215,12 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
                     FilledButton(
                       onPressed: () async {
                         final repo = ref.read(connectionRepositoryProvider);
-                        
+
                         try {
                           // 1. Show loading indicator
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Connecting...'), 
+                            const SnackBar(
+                                content: Text('Connecting...'),
                                 duration: Duration(milliseconds: 500)),
                           );
 
@@ -237,13 +238,13 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
                           Navigator.of(context).pop(); // Close Dialog
                           await Navigator.of(context).push(
                             MaterialPageRoute<DashboardScreen>(
-                              builder: (context) => const DashboardScreen()),
+                                builder: (context) => const DashboardScreen()),
                           );
-                          
                         } catch (e) {
                           if (!mounted) return;
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('❌ Error: $e'), 
+                            SnackBar(
+                                content: Text('❌ Error: $e'),
                                 backgroundColor: Colors.red),
                           );
                         }
