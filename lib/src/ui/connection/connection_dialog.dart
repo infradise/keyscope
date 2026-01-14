@@ -17,6 +17,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../dashboard/dashboard_screen.dart';
 import 'model/connection_config.dart';
 import 'repository/connection_repository.dart';
 
@@ -212,9 +213,40 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
                     ),
                     const SizedBox(width: 12),
                     FilledButton(
-                      onPressed: () {
-                        // TODO: Connection logic here
-                        Navigator.of(context).pop();
+                      onPressed: () async {
+                        final repo = ref.read(connectionRepositoryProvider);
+                        
+                        try {
+                          // 1. Show loading indicator
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Connecting...'), 
+                                duration: Duration(milliseconds: 500)),
+                          );
+
+                          // 2. Connect
+                          await repo.connect(
+                            host: _selectedConfig.host,
+                            port: _selectedConfig.port,
+                            username: _selectedConfig.username,
+                            password: _selectedConfig.password,
+                          );
+
+                          if (!mounted) return;
+
+                          // 3. Navigate to Dashboard
+                          Navigator.of(context).pop(); // Close Dialog
+                          await Navigator.of(context).push(
+                            MaterialPageRoute<DashboardScreen>(
+                              builder: (context) => const DashboardScreen()),
+                          );
+                          
+                        } catch (e) {
+                          if (!mounted) return;
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('❌ Error: $e'), 
+                                backgroundColor: Colors.red),
+                          );
+                        }
                       },
                       child: const Text('OK'),
                     ),
