@@ -36,3 +36,9 @@ coverage/
 assets/icons
 assets/images
 test/widget_test.dart
+
+# No docs
+PREFLIGHT.md
+CONTRIBUTING.md
+CLI.md
+analysis_options.yaml
