@@ -13,6 +13,10 @@
 .swiftpm/
 migrate_working_dir/
 
+# macOS
+macOS/Podfile.lock
+macOS/Flutter/GeneratedPluginRegistrant.swift
+
 # IntelliJ related
 *.iml
 *.ipr
