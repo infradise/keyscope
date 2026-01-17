@@ -91,7 +91,19 @@ Usage: keyscope [options]
 
 ## Troubleshooting
 
-If you encounter `command not found`, ensure your system path includes the pub cache bin directory.
+- If you encounter `command not found`, ensure your system path includes the pub cache bin directory.
+
+- Check out the output logs:
+
+```sh
+dart build cli --target=bin/keyscope.dart -o bin/keyscope > output.txt 2>&1
+```
+
+- The following command does not work. Do not use:
+
+```sh
+dart compile exe bin/keyscope.dart -o bin/keyscope
+```
 
 ## Uninstallation
 
