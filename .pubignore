@@ -49,3 +49,6 @@ bin/keyscope/
 #\ bin/keyscope/bundle/lib/objective_c.dylib
 bin/keyscope-*.dart
 bin/keyscope_*.dart
+
+# No DevTools configuration
+devtools_options.yaml
