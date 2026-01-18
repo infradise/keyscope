@@ -1,6 +1,8 @@
 # Keyscope
 
 [![pub package](https://img.shields.io/pub/v/keyscope.svg)](https://pub.dev/packages/keyscope)
+[![GUI](https://github.com/infradise/keyscope/actions/workflows/build-gui.yaml/badge.svg)](https://github.com/infradise/keyscope/actions/workflows/build-gui.yaml)
+[![CLI](https://github.com/infradise/keyscope/actions/workflows/build-cli.yaml/badge.svg)](https://github.com/infradise/keyscope/actions/workflows/build-cli.yaml)
 <!-- ![Build Status](https://img.shields.io/github/actions/workflow/status/infradise/keyscope/build.yml?branch=main) -->
 
 ### The Open Source Redis & Valkey GUI Client
