@@ -20,6 +20,21 @@ import 'package:valkey_client/valkey_client.dart';
 // import '../../../core/keyscope_client.dart' show KeyscopeClient;
 // import '../../../../src/core/keyscope_client.dart';
 
+/// Key Detail DTO
+class KeyDetail {
+  final String key;
+  final String type; // string, hash, list, set, zset, none
+  final int ttl; // -1: permanent, -2: not found
+  final dynamic value; // String, Map, List, etc.
+
+  KeyDetail({
+    required this.key,
+    required this.type,
+    required this.ttl,
+    this.value,
+  });
+}
+
 /// A DTO to hold the result of a SCAN operation.
 class ScanResult {
   final String cursor;
@@ -60,6 +75,8 @@ abstract class ConnectionRepository {
     );
     print('✅ [GUI] Connected.');
   }
+
+  Future<KeyDetail> getKeyDetail(String key);
 
   /// Fetches server information using the INFO command.
   Future<Map<String, String>> getInfo() async => {};
@@ -148,6 +165,60 @@ class BasicConnectionRepository implements ConnectionRepository {
 
       rethrow; // Pass error to UI to show SnackBar
     }
+  }
+
+  /// Fetch detailed information for a specific key
+  @override
+  Future<KeyDetail> getKeyDetail(String key) async {
+    if (_client == null) throw Exception('Not connected');
+
+    // 1. Get Type
+    final typeRes = await _client!.execute(['TYPE', key]);
+    final type = typeRes.toString(); // "string", "hash", etc.
+
+    // 2. Get TTL
+    final ttlRes = await _client!.execute(['TTL', key]);
+    final ttl = (ttlRes is int) ? ttlRes : -1;
+
+    // 3. Get Value based on Type
+    dynamic value;
+    try {
+      switch (type) {
+        case 'string':
+          value = await _client!.execute(['GET', key]);
+          break;
+        case 'hash':
+          // Returns list [key, val, key, val...] -> Convert to Map
+          final res = await _client!.execute(['HGETALL', key]);
+          if (res is List) {
+            final map = <String, String>{};
+            for (var i = 0; i < res.length; i += 2) {
+              map[res[i].toString()] = res[i + 1].toString();
+            }
+            value = map;
+          }
+          break;
+        case 'list':
+          // Get full list (warning: large lists should be paginated in v0.4.0)
+          value = await _client!.execute(['LRANGE', key, '0', '-1']);
+          break;
+        case 'set':
+          value = await _client!.execute(['SMEMBERS', key]);
+          break;
+        case 'zset':
+          // Get list with scores
+          value =
+              await _client!.execute(['ZRANGE', key, '0', '-1', 'WITHSCORES']);
+          break;
+        default:
+          value = 'Unsupported type: $type';
+      }
+    } catch (e) {
+      value = 'Error fetching value: $e';
+    }
+
+    // return KeyDetail(key: key, type: type, ttl: ttl, value: value);
+    return KeyDetail(key: key, type: type, ttl: ttl, value: value);
   }
 
   @override

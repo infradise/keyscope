@@ -16,6 +16,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'key_detail_panel.dart';
 import 'logic/key_browser_provider.dart';
 
 class KeyBrowserScreen extends ConsumerStatefulWidget {
@@ -29,6 +31,8 @@ class _KeyBrowserScreenState extends ConsumerState<KeyBrowserScreen> {
   final ScrollController _scrollController = ScrollController();
   final TextEditingController _searchController =
       TextEditingController(text: '*');
+
+  String? _selectedKey;
 
   @override
   void initState() {
@@ -127,9 +131,15 @@ class _KeyBrowserScreenState extends ConsumerState<KeyBrowserScreen> {
                               title: Text(key,
                                   style: const TextStyle(fontSize: 13)),
                               dense: true,
+                              // Add Selection Color
+                              selected: _selectedKey == key,
+                              selectedTileColor: const Color(0xFF393B40),
                               onTap: () {
-                                // TODO: Select key and show value editor
-                                print('Selected key: $key');
+                                // Select key and show value editor
+                                // print('Selected key: $key');
+                                setState(() {
+                                  _selectedKey = key;
+                                });
                               },
                             );
                           },
@@ -156,22 +166,24 @@ class _KeyBrowserScreenState extends ConsumerState<KeyBrowserScreen> {
 
           // [Right Panel] Value Editor (Placeholder)
           Expanded(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.data_object, size: 64, color: Colors.grey),
-                  const SizedBox(height: 16),
-                  const Text('Select a key to view details'),
-                  if (browserState.error != null)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 16),
-                      child: Text('Error: ${browserState.error}',
-                          style: const TextStyle(color: Colors.red)),
-                    )
-                ],
-              ),
-            ),
+            // child: Center(
+            //   child: Column(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     children: [
+            //       const Icon(
+            //         Icons.data_object, size: 64, color: Colors.grey),
+            //       const SizedBox(height: 16),
+            //       const Text('Select a key to view details'),
+            //       if (browserState.error != null)
+            //         Padding(
+            //           padding: const EdgeInsets.only(top: 16),
+            //           child: Text('Error: ${browserState.error}',
+            //               style: const TextStyle(color: Colors.red)),
+            //         )
+            //     ],
+            //   ),
+            // ),
+            child: KeyDetailPanel(selectedKey: _selectedKey),
           ),
         ],
       ),
