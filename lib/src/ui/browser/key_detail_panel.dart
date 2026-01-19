@@ -17,8 +17,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../connection/repository/connection_repository.dart';
+import 'logic/key_browser_provider.dart'; // Required to refresh the list after deletion
 
-// Simple provider to verify functionality (Optimized for v0.3.0)
 final keyDetailProvider =
     FutureProvider.family.autoDispose<KeyDetail, String>((ref, key) {
   final repo = ref.watch(connectionRepositoryProvider);
@@ -184,6 +184,77 @@ class KeyDetailPanel extends ConsumerWidget {
         return Colors.red;
       default:
         return Colors.grey;
+    }
+  }
+
+  // =========
+  Widget _buildValueDisplay(KeyDetail detail) {
+    if (detail.value == null) {
+      return const Text('nil', style: TextStyle(color: Colors.grey));
+    }
+    if (detail.type == 'string') {
+      return SelectableText(detail.value.toString(),
+          style: const TextStyle(fontFamily: 'monospace', fontSize: 14));
+    }
+    return Text(detail.value.toString()); // Placeholder for other types
+  }
+
+  Future<void> _handleEdit(KeyDetail detail) async {
+    if (!_isEditing) {
+      setState(() => _isEditing = true);
+      return;
+    }
+
+    // Save Logic
+    try {
+      final repo = ref.read(connectionRepositoryProvider);
+      await repo.setStringValue(detail.key, _valueController.text,
+          ttl: detail.ttl);
+
+      if (!mounted) return;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Value updated!')));
+
+      setState(() => _isEditing = false);
+      ref.refresh(
+          keyDetailProvider(detail.key)); // Refresh the UI to show new value
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red));
+    }
+  }
+
+  Future<void> _handleDelete(String key) async {
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Delete Key'),
+        content: Text('Are you sure you want to delete "$key"?'),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: const Text('Cancel')),
+          TextButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: const Text('Delete', style: TextStyle(color: Colors.red))),
+        ],
+      ),
+    );
+
+    if (confirm ?? false) {
+      try {
+        final repo = ref.read(connectionRepositoryProvider);
+        await repo.deleteKey(key);
+
+        if (!mounted) return;
+        // Refresh the key list in the browser
+        await ref.read(keyBrowserProvider.notifier).refresh();
+
+        // TODO: Need to clear the detail panel here,
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red));
+      }
     }
   }
 }

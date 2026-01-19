@@ -63,6 +63,7 @@ class KeyscopeClient {
       // Execute SCAN command: SCAN <cursor> MATCH <pattern> COUNT <count>
       final result = await _client!
           .execute(['SCAN', cursor, 'MATCH', match, 'COUNT', count.toString()]);
+      // TODO: add these to valkey_client
 
       // Result is typically a list: [nextCursor, [key1, key2, ...]]
       if (result is List && result.length == 2) {

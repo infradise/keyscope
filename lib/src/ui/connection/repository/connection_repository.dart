@@ -84,6 +84,9 @@ abstract class ConnectionRepository {
   //   throw UnimplementedError('');
   // }
 
+  Future<void> deleteKey(String key) async => {};
+  Future<void> setStringValue(String key, String value, {int? ttl}) async => {};
+
   /// Scans keys incrementally to avoid blocking the server.
   /// [cursor]: The cursor to start from (use '0' for the start).
   /// [match]: The pattern to match (default '*').
@@ -156,7 +159,8 @@ class BasicConnectionRepository implements ConnectionRepository {
       print('✅ [OSS] Connected successfully to $host:$port');
 
       // (Optional) Test command using 'execute' (NOT 'send')
-      final response = await newClient.execute(['PING']);
+      // final response = await newClient.execute(['PING']);
+      final response = await newClient.ping();
       print('🏓 PING response: $response');
     } catch (e) {
       print('❌ [OSS] Connection failed: $e');
@@ -174,22 +178,27 @@ class BasicConnectionRepository implements ConnectionRepository {
 
     // 1. Get Type
     final typeRes = await _client!.execute(['TYPE', key]);
+    // TODO: add type() to valkey_client
     final type = typeRes.toString(); // "string", "hash", etc.
 
     // 2. Get TTL
-    final ttlRes = await _client!.execute(['TTL', key]);
-    final ttl = (ttlRes is int) ? ttlRes : -1;
+    // final ttlRes = await _client!.execute(['TTL', key]);
+    // final ttl = (ttlRes is int) ? ttlRes : -1;
+    final ttl = await _client!.ttl(key);
 
     // 3. Get Value based on Type
     dynamic value;
     try {
       switch (type) {
         case 'string':
-          value = await _client!.execute(['GET', key]);
+          // value = await _client!.execute(['GET', key]);
+          value = await _client!.get(key);
           break;
         case 'hash':
           // Returns list [key, val, key, val...] -> Convert to Map
           final res = await _client!.execute(['HGETALL', key]);
+          // final res = await _client!.hgetall(key);
+          // TODO: change execute to hgetall
           if (res is List) {
             final map = <String, String>{};
             for (var i = 0; i < res.length; i += 2) {
@@ -200,15 +209,19 @@ class BasicConnectionRepository implements ConnectionRepository {
           break;
         case 'list':
           // Get full list (warning: large lists should be paginated in v0.4.0)
-          value = await _client!.execute(['LRANGE', key, '0', '-1']);
+          // value = await _client!.execute(['LRANGE', key, '0', '-1']);
+          value = await _client!.lrange(key, 0, -1);
           break;
         case 'set':
-          value = await _client!.execute(['SMEMBERS', key]);
+          // value = await _client!.execute(['SMEMBERS', key]);
+          value = await _client!.smembers(key);
           break;
         case 'zset':
           // Get list with scores
           value =
               await _client!.execute(['ZRANGE', key, '0', '-1', 'WITHSCORES']);
+          // TODO: change execute to zrange
+          // await _client!.zrange(key, 0, -1);
           break;
         default:
           value = 'Unsupported type: $type';
@@ -231,6 +244,7 @@ class BasicConnectionRepository implements ConnectionRepository {
       // Execute INFO command
       // Assuming 'execute' returns the raw RESP response (String or BulkString)
       final result = await _client!.execute(['INFO']);
+      // TODO: add info() to valkey_client
 
       // Parse the INFO string into a Map
       return _parseInfo(result.toString());
@@ -266,6 +280,34 @@ class BasicConnectionRepository implements ConnectionRepository {
     return infoMap;
   }
 
+  /// Delete a key from the server.
+  @override
+  Future<void> deleteKey(String key) async {
+    if (_client == null) throw Exception('Not connected');
+    // await _client!.execute(['DEL', key]);
+    await _client!.del(key);
+  }
+
+  /// Update the value of a String type key.
+  /// Note: v0.4.0 currently focuses on String type updates.
+  @override
+  Future<void> setStringValue(String key, String value, {int? ttl}) async {
+    if (_client == null) throw Exception('Not connected');
+
+    // SET key value
+    // Execute SET command
+    // await _client!.execute(['SET', key, value]);
+    await _client!.set(key, value);
+
+    // Restore TTL if it was set
+    if (ttl != null && ttl > 0) {
+      // await _client!.execute(['EXPIRE', key, ttl.toString()]);
+      await _client!.expire(key, ttl);
+    }
+  }
+
+  // TODO: Add update methods for Hash, List, Set, etc. here.
+
   // TODO: Same with `core`. Need to dedup and use valkey_client.
   @override
   Future<ScanResult> scanKeys({
@@ -279,6 +321,7 @@ class BasicConnectionRepository implements ConnectionRepository {
       // Execute SCAN command: SCAN <cursor> MATCH <pattern> COUNT <count>
       final result = await _client!
           .execute(['SCAN', cursor, 'MATCH', match, 'COUNT', count.toString()]);
+      // TODO: add these to valkey_client
 
       // Result is typically a list: [nextCursor, [key1, key2, ...]]
       if (result is List && result.length == 2) {
