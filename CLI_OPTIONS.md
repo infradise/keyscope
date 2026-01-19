@@ -1,25 +1,16 @@
-## `--slient`
 
-Silent mode. No logs to show.
+# Commands
 
-```sh
-keyscope --silent
-```
-
-## `--ping`
+## `ping`
 
 Returns `PONG` as String
 
 ```sh
-keyscope --ping
+keyscope ping
 ```
 
-## `--set` or `set`
+## `set`
 
-```sh
-keyscope --set my_key my_value
-```
-OR
 ```sh
 keyscope set --key my_key --value my_value
 ```
@@ -28,20 +19,40 @@ OR
 keyscope set -k my_key -v my_value
 ```
 
-## `--get` or `get`
+## `get`
 
 Returns `my_value`
 
-```sh
-keyscope --get my_key
-```
-OR
 ```sh
 keyscope get --key my_key
 ```
 OR
 ```sh
 keyscope get -k my_key
+```
+
+# Options
+
+## `--slient`
+
+Silent mode. No logs to show.
+
+```sh
+keyscope --silent
+```
+
+## `--set`
+
+```sh
+keyscope --set my_key my_value
+```
+
+## `--get`
+
+Returns `my_value`
+
+```sh
+keyscope --get my_key
 ```
 
 ## `--scan`
