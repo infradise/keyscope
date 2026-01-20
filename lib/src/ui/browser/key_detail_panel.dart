@@ -302,7 +302,7 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
       // Refresh the UI to show new value
       // -- final newValue = ref.refresh(keyDetailProvider(detail.key));
       // -- await ref.refresh(keyDetailProvider(detail.key).future);
-      // This resets the provider state, triggering a re-fetch in the build 
+      // This resets the provider state, triggering a re-fetch in the build
       // method.
       ref.invalidate(keyDetailProvider(detail.key));
     } catch (e) {
