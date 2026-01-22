@@ -230,7 +230,7 @@ class BasicConnectionRepository implements ConnectionRepository {
           // await _client!.zrange(key, 0, -1);
           break;
         case 'ReJSON-RL':
-          value = await _client!.jsonGet(key);
+          value = await _client!.jsonGet(key: key);
         default:
           value = 'Unsupported type: $type';
       }
@@ -413,7 +413,8 @@ class BasicConnectionRepository implements ConnectionRepository {
         final entry = value.entries.first; // value as Map
         await _client!.execute(
             ['ZADD', key, entry.value.toString(), entry.key.toString()]);
-        // await _client!.zadd(key, entry.value as double, entry.key.toString());
+        // await _client!.zadd(
+        //     key, entry.value as double, entry.key.toString());
         // TODO: change to zadd() / check zset
         break;
 

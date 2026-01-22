@@ -269,7 +269,7 @@ Future<void> set(ValkeyClient client, String key, String value) async {
 
 Future<dynamic> jsonGet(ValkeyClient client,
     {required String key, String path = r'$'}) async {
-  final value = await client.jsonGet(key, path);
+  final value = await client.jsonGet(key: key, path: path);
   logger.info('GET: key: $key, path: $path, value: $value');
   return value;
 }
