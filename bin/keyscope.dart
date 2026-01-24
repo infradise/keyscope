@@ -18,7 +18,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:args/args.dart';
-import 'package:keyscope/src/core/keyscope_client.dart';
+// import 'package:keyscope/src/core/keyscope_client.dart'; // TODO: REMOVE.
 import 'package:valkey_client/valkey_client.dart';
 
 ValkeyLogger logger = ValkeyLogger('Keyscope CLI');
@@ -80,36 +80,35 @@ void main(List<String> arguments) async {
       exit(0);
     }
 
-    final host = results['host'] as String;
-    final port = int.parse(results['port'] as String);
-    final username = results['username'] as String?;
-    final password = results['password'] as String?;
-    final db = results['db'] as int? ?? 0;
-    final ssl = results['ssl'] as bool? ?? false;
-    final match = results['match'] as String;
-
-    // 1. Instantiate the repository directly (No Riverpod needed for CLI)
-    // -- final repo = BasicConnectionRepository();
-    // -- await repo.connect(host: host, port: port, password: password);
-    // Use the Pure Dart Client
-    final client = KeyscopeClient();
-
-    final settings = ValkeyConnectionSettings(
-      host: host,
-      port: port,
-      username: username,
-      password: password,
-      useSsl: ssl,
-      database: db,
-    );
-
-    final valkeyClient = ValkeyClient.fromSettings(settings);
-
-    // 2. Connect
-    await connect(valkeyClient);
+    ValkeyClient? valkeyClient;
 
     try {
-      // 3. Handle Commands
+      final host = results['host'] as String;
+      final port = int.parse(results['port'] as String);
+      final username = results['username'] as String?;
+      final password = results['password'] as String?;
+      final db = results['db'] as int? ?? 0;
+      final ssl = results['ssl'] as bool? ?? false;
+
+      // Instantiate the repository directly (No Riverpod needed for CLI)
+      // -- final repo = BasicConnectionRepository();
+      // -- await repo.connect(host: host, port: port, password: password);
+
+      final settings = ValkeyConnectionSettings(
+        host: host,
+        port: port,
+        username: username,
+        password: password,
+        useSsl: ssl,
+        database: db,
+      );
+
+      valkeyClient = ValkeyClient.fromSettings(settings);
+
+      // Connect
+      await connect(valkeyClient);
+
+      // Handle Commands
       switch (results.command?.name) {
         case 'ping':
           await ping(valkeyClient);
@@ -164,39 +163,10 @@ void main(List<String> arguments) async {
               logger.info(parser.usage);
             }
           } else if (results.wasParsed('scan')) {
-            // TODO: support both command and option
-            // TODO: change to ValkeyClient
-            logger.info('🔌 Connecting to $host:$port...');
-            await client.connect(host: host, port: port, password: password);
-
-            logger.info('🔍 Scanning keys (MATCH: "$match", COUNT: 20)...');
-
-            final result =
-                await client.scanKeys(cursor: '0', match: match, count: 20);
-
-            // logger.info('----------------------------------------');
-            // logger.info('Next Cursor : ${result.cursor}');
-            // logger.info('Found Keys  : ${result.keys.length}');
-            // logger.info('----------------------------------------');
-            logger.info('Found ${result.keys.length} keys. '
-                'Next cursor: ${result.cursor}');
-
-            if (result.keys.isEmpty) {
-              logger.info('(No keys found)');
-            } else {
-              for (var key in result.keys) {
-                logger.info('- $key');
-              }
-            }
-
-            if (result.cursor == '0') {
-              logger.info('----------------------------------------');
-              logger.info('✅ Full iteration completed (Cursor returned to 0).');
-            } else {
-              logger.info('----------------------------------------');
-              logger.info('👉 More keys available. '
-                  'Use cursor "${result.cursor}" to continue.');
-            }
+            final match = results['match'] as String? ?? '*';
+            final count = results['count'] as int? ?? 20;
+            final type = results['type'] as String? ?? '';
+            await scan(valkeyClient, match, count, type);
           } else {
             showUsages(parser);
           }
@@ -210,8 +180,9 @@ void main(List<String> arguments) async {
       exit(1);
     } finally {
       // Cleanup
-      await client.disconnect();
-      await close(valkeyClient);
+      if (valkeyClient != null) {
+        await close(valkeyClient);
+      }
     }
   } catch (e) {
     logger.error('❌ Invalid arguments: $e'); // Args Error
