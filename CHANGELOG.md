@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.6.0
+
+* **New Feature:** Advanced Data Editing (Complex Types)
+    * **Hash Editing:** Added support for adding, editing, and deleting individual fields within a Hash.
+    * **List Editing:** Support for appending items (`RPUSH`), updating items by index (`LSET`), and removing items (`LREM`).
+    * **Set Management:** Ability to add (`SADD`) and remove (`SREM`) members from Sets.
+    * **ZSet (Sorted Set) Management:** Support for adding members with scores (`ZADD`), updating scores, and removing members.
+* **UI/UX Improvements**
+    * **Type-Specific Actions:** The Value Inspector now displays context-aware action buttons (e.g., "Add Field" for Hash, "Add Member" for Set).
+    * **Enhanced Dialogs:** Dedicated input dialogs for each data type ensure correct data entry (e.g., Score input validation for ZSet).
+* **CLI:**
+    * **New Commands**: (`scan`) as a generic command for Redis and Valkey
+
 ## 0.5.0
 
 * **New Feature:** Key Creation
