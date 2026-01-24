@@ -25,48 +25,75 @@ ValkeyLogger logger = ValkeyLogger('Keyscope CLI');
 
 void main(List<String> arguments) async {
   final setCommand = ArgParser()
-    ..addOption('key', abbr: 'k', mandatory: true, help: '--key version')
-    ..addOption('value', abbr: 'v', mandatory: true, help: '--value 9.0.0');
+    ..addOption('key', abbr: 'k', mandatory: true, help: '<key>')
+    ..addOption('value', abbr: 'v', mandatory: true, help: '<value>');
 
   final getCommand = ArgParser()
-    ..addOption('key',
-        abbr: 'k', mandatory: true, help: '--key version \n=> return 9.0.0');
+    ..addOption('key', abbr: 'k', mandatory: true, help: '<key>');
 
+  const exampleUsage = "\"{'name': 'Alice', 'age': 30}\"";
   final jsonSetCommand = ArgParser()
-    ..addOption('key', abbr: 'k', mandatory: true, help: '--key my_json_key')
-    ..addOption('path', abbr: 'p', mandatory: true, help: r'--path "$"')
-    ..addOption('value',
+    ..addOption('key', abbr: 'k', mandatory: true, help: '<key>')
+    ..addOption('path', abbr: 'p', defaultsTo: r'$', help: '<path>')
+    ..addOption('data',
         abbr: 'v',
         mandatory: true,
-        help: '--value \'{"name": "Alice", "age": 30}\'');
+        help: '<json-array> \ne.g., $exampleUsage');
 
   final jsonGetCommand = ArgParser()
     ..addOption('key', abbr: 'k', mandatory: true, help: '--key my_json_key')
-    ..addOption('path', abbr: 'p', mandatory: true, help: r'--path "$"');
+    ..addOption('path', abbr: 'p', help: r'--path "$"');
+
+  // Scan keys (Cursor-based iteration)
+  final scanCommand = ArgParser()
+    ..addOption('match', abbr: 'm', mandatory: false, help: '')
+    ..addOption('count', abbr: 'c', mandatory: false, help: '')
+    ..addOption('type', abbr: 't', mandatory: false, help: '');
 
   // Check connectivity (PING/PONG)
   final pingCommand = ArgParser();
   // ..addFlag('all', abbr: 'a', help: 'all nodes', negatable: false);
 
   final parser = ArgParser()
-    ..addOption('host', abbr: 'h', defaultsTo: 'localhost', help: 'Target host')
-    ..addOption('port', abbr: 'p', defaultsTo: '6379', help: 'Target port')
-    ..addOption('username', abbr: 'u', help: 'Username')
-    ..addOption('password', abbr: 'a', help: 'Password')
-    ..addOption('db', help: 'Database (defaults to 0)')
-    ..addFlag('ssl', help: 'SSL/TLS/mTLS', negatable: false)
-    ..addFlag('silent', help: '(Silent mode) Hide all logs', negatable: false)
-    ..addOption('match',
-        abbr: 'm', defaultsTo: '*', help: 'Key pattern to match (for --scan)')
-    ..addFlag('scan',
-        help: 'Scan keys (Cursor-based iteration)', negatable: false)
+    // ========================================================================
+    //  Commands
+    // ========================================================================
     ..addCommand('set', setCommand)
     ..addCommand('get', getCommand)
     ..addCommand('json-set', jsonSetCommand)
     ..addCommand('json-get', jsonGetCommand)
+    ..addCommand('scan', scanCommand)
     ..addCommand('ping', pingCommand)
+
+    // ========================================================================
+    //  Options
+    // ========================================================================
+    // --host
+    ..addOption('host', abbr: 'h', defaultsTo: 'localhost', help: 'Target host')
+    // --port
+    ..addOption('port', abbr: 'p', defaultsTo: '6379', help: 'Target port')
+    // --username
+    ..addOption('username', abbr: 'u', help: 'Username')
+    // --password
+    ..addOption('password', abbr: 'a', help: 'Password')
+    // --db
+    ..addOption('db', help: 'Database (defaults to 0)')
+    // --ssl
+    ..addFlag('ssl', help: 'SSL/TLS/mTLS', negatable: false)
+    // --slient
+    ..addFlag('silent', help: '(Silent mode) Hide all logs', negatable: false)
+    // --scan
+    ..addFlag('scan',
+        help: 'Scan keys (Cursor-based iteration)', negatable: false)
+    ..addOption('match',
+        abbr: 'm', defaultsTo: '*', help: 'Key pattern to match (for --scan)')
+    ..addOption('count', abbr: 'c', help: 'count (for --scan)')
+    ..addOption('type', abbr: 't', help: 'type (for --scan)')
+    // --set
     ..addMultiOption('set', help: '--set <key> <value>')
+    // --get
     ..addMultiOption('get', help: '--get <key>')
+    // --help
     ..addFlag('help',
         abbr: '?', help: 'Show usage information', negatable: false);
 
@@ -126,8 +153,8 @@ void main(List<String> arguments) async {
         case 'json-set':
           final key = results.command?['key'] as String;
           final path = results.command?['path'] as String;
-          final value = results.command?['value'] as String; // as dynamic;
-          await jsonSet(valkeyClient, key: key, path: path, data: value);
+          final data = results.command?['data'] as dynamic;
+          await jsonSet(valkeyClient, key: key, path: path, data: data);
           break;
         case 'json-get':
           final key = results.command?['key'] as String;
@@ -254,6 +281,7 @@ Future<void> jsonSet(ValkeyClient client,
 
 // ⚠️ When no command specified:
 void showUsages(ArgParser parser) {
+  // TODO: change print to valkey_client logger with prefix OFF
   print('Keyscope CLI - Diagnostic and CI Tool\n');
   print('Usage: keyscope <command> [options]\n');
   print('Commands:');
