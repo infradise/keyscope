@@ -44,7 +44,6 @@ analysis_options.yaml
 
 # No CLI docs
 CLI.md
-CLI_OPTIONS.md
 
 # No setup
 setup.dart
