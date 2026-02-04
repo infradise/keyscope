@@ -213,9 +213,7 @@ class BasicConnectionRepository implements ConnectionRepository {
         case 'zset':
           // Get list with scores
           value =
-              await _client!.execute(['ZRANGE', key, '0', '-1', 'WITHSCORES']);
-          // await _client!.zrange(key, 0, -1);
-          // TODO: change execute to zRange
+          await _client!.zRange(key, 0, -1, withScores: true);
           break;
         case 'ReJSON-RL':
           value = await _client!.jsonGet(key: key);
@@ -358,7 +356,13 @@ class BasicConnectionRepository implements ConnectionRepository {
         }
         // value map: { "member": score }
         final entry = value.entries.first; // value as Map
-        await _client!.zadd(key, entry.value as double, entry.key.toString());
+
+        // final raw = entry.value;
+        // final score = raw is num ? raw.toDouble() : 
+        // double.tryParse(raw.toString()) ?? 
+        //   (throw Exception('Invalid score'));
+
+        await _client!.zAdd(key, {entry.key.toString(): entry.value as num});
         break;
 
       default:
@@ -446,16 +450,14 @@ class BasicConnectionRepository implements ConnectionRepository {
   @override
   Future<void> addZSetMember(String key, num score, String member) async {
     if (_client == null) throw Exception('Not connected');
-    // TODO: change to zAdd
-    await _client!.zadd(key, score.toDouble(), member);
+    await _client!.zAdd(key, {member: score.toDouble()});
   }
 
   /// Remove a member from a ZSet.
   @override
   Future<void> removeZSetMember(String key, String member) async {
     if (_client == null) throw Exception('Not connected');
-    // TODO: change to zRem
-    await _client!.zrem(key, member);
+    await _client!.zRem(key, [member]);
   }
 }
 

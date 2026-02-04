@@ -48,7 +48,7 @@ dependencies:
   system_theme: ^3.2.0
   toastification: ^3.0.3
   uuid: ^4.5.2
-  valkey_client: ^3.4.0
+  valkey_client: ^3.5.0
   # --- for debugging ---
   # valkey_client:
   #   path: ../valkey_client
