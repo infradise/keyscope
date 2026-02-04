@@ -15,6 +15,7 @@
  */
 
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 import 'package:args/args.dart';
 // import 'package:keyscope/src/core/keyscope_client.dart'; // TODO: REMOVE.
