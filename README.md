@@ -15,12 +15,6 @@
   <!-- ![Build Status](https://img.shields.io/github/actions/workflow/status/infradise/keyscope/build.yml?branch=main) -->
 
   <p>
-    <a href="https://www.buymeacoffee.com/keyscope.dev" target="_blank">
-        <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="45px" width= "162px">
-    </a>
-  </p>
-
-  <p>
     <a href="#-why-keyscope">Why Keyscope?</a> •
     <a href="#-key-features">Key Features</a> •
     <a href="#-powered-by">Powered By</a> •
