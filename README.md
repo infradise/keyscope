@@ -12,7 +12,7 @@
   [![pub package](https://img.shields.io/pub/v/keyscope.svg?label=Latest)](https://pub.dev/packages/keyscope)
   [![GUI](https://github.com/infradise/keyscope/actions/workflows/build-gui.yaml/badge.svg)](https://github.com/infradise/keyscope/actions/workflows/build-gui.yaml)
   [![CLI](https://github.com/infradise/keyscope/actions/workflows/build-cli.yaml/badge.svg)](https://github.com/infradise/keyscope/actions/workflows/build-cli.yaml)
-  [![pub package](https://img.shields.io/pub/v/valkey_client.svg?label=TypeRedis&color=blue)](https://pub.dev/packages/TypeRedis)
+  [![pub package](https://img.shields.io/pub/v/typeredis.svg?label=TypeRedis&color=blue)](https://pub.dev/packages/TypeRedis)
   [![pub package](https://img.shields.io/pub/v/dense_table.svg?label=DenseTable&color=blue)](https://pub.dev/packages/dense_table)
 
   <!-- ![Build Status](https://img.shields.io/github/actions/workflow/status/infradise/keyscope/build.yml?branch=main) -->
