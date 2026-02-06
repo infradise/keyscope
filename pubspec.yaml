@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 name: keyscope
-description: A high-performance GUI for Redis & Valkey. Supports Cluster, Sentinel, SSH, and millions of keys. Built with valkey_client & dense_table.
+description: A high-performance GUI for Redis & Valkey. Supports Cluster, Sentinel, SSH, and millions of keys. Built with TypeRedis & DenseTable.
 version: 0.6.0
 homepage: https://github.com/infradise/keyscope
 repository: https://github.com/infradise/keyscope
@@ -47,10 +47,10 @@ dependencies:
   shared_preferences: ^2.5.4
   system_theme: ^3.2.0
   toastification: ^3.0.3
-  typeredis: ^3.6.0
+  typeredis: ^3.8.0
   # --- for debugging ---
   # typeredis:
-    # path: ../typeredis
+  #   path: ../typeredis
   # typeredis:
   #   git:
   #     url: https://github.com/infradise/typeredis
