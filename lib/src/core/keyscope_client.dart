@@ -20,6 +20,8 @@ library;
 
 import 'package:typeredis/typeredis.dart';
 
+typedef TypeRedis = TRClient;
+
 class KeyscopeClient {
   TRClient? _client;
 
@@ -31,8 +33,7 @@ class KeyscopeClient {
     String? username,
     String? password,
   }) async {
-    // Pure Dart logic using valkey_client
-    final newClient = TRClient(
+    final newClient = TypeRedis(
       host: host,
       port: port,
       username: username,

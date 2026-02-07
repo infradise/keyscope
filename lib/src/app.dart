@@ -15,10 +15,15 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../i18n.dart' show I18nDelegate; // TODO: Add i18n to show in v0.7.0
+import 'providers/language_provider.dart';
 import 'ui/connection/connection_dialog.dart';
 import 'ui/connection/repository/connection_repository.dart';
+// TODO: Uncomment the line below in v0.7.0
+// import 'ui/widgets/language_widget.dart' show AdvancedLanguageSelectorSheet;
 
 /// The root widget of the application.
 /// Responsible for setting up the MaterialApp, Theme, and Routing.
@@ -26,27 +31,49 @@ class KeyscopeApp extends ConsumerWidget {
   const KeyscopeApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) => MaterialApp(
-        title: 'Keyscope',
-        debugShowCheckedModeBanner: false,
-        // Apply a Dark Theme
-        theme: ThemeData.dark(useMaterial3: true).copyWith(
-          scaffoldBackgroundColor: const Color(0xFF1E1F22),
-          colorScheme: const ColorScheme.dark(
-            primary: Color(0xFF3574F0), // Keyscope Blue
-            surface: Color(0xFF2B2D30),
-          ),
-          // Set the home screen to a separate widget to ensure a valid Context.
-          // Setup Dialog Theme globally
-          // dialogTheme: DialogTheme(
-          //   backgroundColor: const Color(0xFF2B2D30),
-          //   shape: RoundedRectangleBorder(
-          //     borderRadius: BorderRadius.circular(8)
-          //   ),
-          // ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final languageCode =
+        ref.watch(languageProvider.select((p) => p.languageCode));
+
+    Locale? locale;
+    if (languageCode.contains('_') || languageCode.contains('-')) {
+      final parts = languageCode.split(RegExp('[_-]'));
+      locale = Locale(parts[0], parts[1]);
+    } else {
+      locale = Locale(languageCode);
+    }
+
+    return MaterialApp(
+      title: 'Keyscope',
+      debugShowCheckedModeBanner: false,
+      // Apply a Dark Theme
+      theme: ThemeData.dark(useMaterial3: true).copyWith(
+        scaffoldBackgroundColor: const Color(0xFF1E1F22),
+        colorScheme: const ColorScheme.dark(
+          primary: Color(0xFF3574F0), // Keyscope Blue
+          surface: Color(0xFF2B2D30),
         ),
-        home: const HomeScreen(),
-      );
+        // Set the home screen to a separate widget to ensure a valid Context.
+        // Setup Dialog Theme globally
+        // dialogTheme: DialogTheme(
+        //   backgroundColor: const Color(0xFF2B2D30),
+        //   shape: RoundedRectangleBorder(
+        //     borderRadius: BorderRadius.circular(8)
+        //   ),
+        // ),
+      ),
+      home: const HomeScreen(),
+
+      locale: locale,
+      localizationsDelegates: [
+        const I18nDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: I18nDelegate.supportedLocals, // FYI: typo of thirdparty
+    );
+  }
 }
 
 /// The main screen of the application.
@@ -84,6 +111,19 @@ class HomeScreen extends ConsumerWidget {
               // child: const Text('Test Connection'),
               child: const Text('Open Connection Manager'),
             ),
+
+            // TODO: ThemeCycleIconButton
+
+            // TODO: Uncomment in v0.7.0
+            // IconButton(
+            //   icon: const Icon(Icons.language),
+            //   // tooltip: I18n.of(context).changeLanguage,
+            //   onPressed: () async => showModalBottomSheet<void>(
+            //     context: context,
+            //     isScrollControlled: true,
+            //     builder: (_) => const AdvancedLanguageSelectorSheet(),
+            //   ),
+            // ),
           ],
         ),
       ),
