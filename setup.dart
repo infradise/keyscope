@@ -1,7 +1,9 @@
 import 'dart:io';
-import 'package:valkey_client/valkey_client.dart' show ValkeyLogger;
+import 'package:typeredis/typeredis.dart' show TRLogger;
 
-ValkeyLogger logger = ValkeyLogger('Setup')..setLogLevelInfo();
+typedef TypeRedis = TRLogger; // TODO: remove after TR is changed
+
+TypeRedis logger = TypeRedis('Setup')..setLogLevelInfo();
 
 void main() {
   // logger.info('Checking for $env file...');

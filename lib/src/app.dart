@@ -24,7 +24,9 @@ import 'providers/language_provider.dart';
 import 'ui/connection/connection_dialog.dart';
 import 'ui/connection/repository/connection_repository.dart'
     show connectionRepositoryProvider;
-import 'ui/widgets/language_widget.dart' show AdvancedLanguageSelectorSheet;
+
+// TODO: Uncomment in v0.7.0
+// import 'ui/widgets/language_widget.dart' show AdvancedLanguageSelectorSheet;
 
 /// The root widget of the application.
 /// Responsible for setting up the MaterialApp, Theme, and Routing.
@@ -123,7 +125,7 @@ class HomeScreen extends ConsumerWidget {
             // TODO: Uncomment in v0.7.0
             // IconButton(
             //   icon: const Icon(Icons.language),
-            //   // tooltip: I18n.of(context).changeLanguage,
+            //   tooltip: I18n.of(context).changeLanguage,
             //   onPressed: () async => showModalBottomSheet<void>(
             //     context: context,
             //     isScrollControlled: true,

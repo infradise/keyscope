@@ -16,6 +16,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../i18n.dart' show I18n;
 import '../connection/repository/connection_repository.dart';
 import 'logic/key_browser_provider.dart'; // Required to refresh the list after deletion
 
