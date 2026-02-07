@@ -28,7 +28,7 @@
 
 ## ✨ Why Keyscope?
 
-While existing tools are heavy (Electron-based) or lack support for modern Valkey features, Keyscope runs natively on **Flutter**, powered by the high-performance [TypeRedis](https://pub.dev/packages/TypeRedis) and [DenseTable](https://pub.dev/packages/dense_table). Keyscope supports **[Redis](https://redis.io), [Valkey](https://valkey.io), and [Dragonfly](https://www.dragonflydb.io/)**, with built‑in **Multilingual (i18n) support** for global users.
+While existing tools are heavy (Electron-based) or lack support for modern Valkey features, Keyscope runs natively on [Dart](https://dart.dev/) and [Flutter](https://flutter.dev/), powered by the high-performance [TypeRedis](https://pub.dev/packages/TypeRedis) and [DenseTable](https://pub.dev/packages/dense_table). Keyscope supports **[Redis](https://redis.io), [Valkey](https://valkey.io), and [Dragonfly](https://www.dragonflydb.io/)**, with built‑in **Multilingual (i18n) support** for global users.
 
 ## 🚀 Key Features
 
