@@ -288,6 +288,15 @@ dart build cli --target=bin/keyscope.dart -o bin/keyscope > output.txt 2>&1
 dart compile exe bin/keyscope.dart -o bin/keyscope
 ```
 
+- General commands
+- 
+```sh
+dart pub global run keyscope
+dart pub global list
+dart pub global deactivate keyscope
+rm ~/.pub-cache/bin/keyscope
+```
+
 ## Uninstallation
 
 ```sh

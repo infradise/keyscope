@@ -5,7 +5,7 @@
  
   <h1>Keyscope</h1>
   <p>
-    A high-performance GUI client designed for <b>Redis</b> and <b>Valkey</b>.<br>
+    A high-performance GUI client designed for <b>Redis</b>, <b>Valkey</b>, and <b>Dragonfly</b>.<br>
     It supports Cluster, Sentinel, SSH tunneling, and handles millions of keys smoothly.<br>
   </p>
 
