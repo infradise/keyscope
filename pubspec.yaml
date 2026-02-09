@@ -44,6 +44,14 @@ dependencies:
   freezed_annotation: ^3.1.0
   gap: ^3.0.1
   intl: ^0.20.2
+  keyscope_client: ^4.0.0
+  # --- for debugging ---
+  # keyscope_client:
+  #   path: ../keyscope_client
+  # keyscope_client:
+  #   git:
+  #     url: https://github.com/infradise/keyscope_client
+  #     ref: main
   shared_preferences: ^2.5.4
   system_theme: ^3.2.0
   toastification: ^3.0.3
