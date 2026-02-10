@@ -51,7 +51,7 @@ Built with ❤️ using [keyscope_client](https://pub.dev/packages/keyscope_clie
 
 To build **Keyscope**, you need to generate the `i18n.dart` file first.
 
-Run the setup script:
+This is done by running:
 
 ```sh
 dart run setup.dart
