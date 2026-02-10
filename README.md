@@ -21,6 +21,7 @@
     <a href="#-why-keyscope">Why Keyscope?</a> •
     <a href="#-key-features">Key Features</a> •
     <a href="#-powered-by">Powered By</a> •
+    <a href="#-build">Build</a> •
     <a href="#-installation">Installation</a>
   </p>
 
@@ -46,10 +47,6 @@ Built with ❤️ using [keyscope_client](https://pub.dev/packages/keyscope_clie
 * **[keyscope_client](https://pub.dev/packages/keyscope_client):** The engine behind the connectivity.
 * **[dense_table](https://pub.dev/packages/dense_table):** The engine behind the UI performance.
 
-## 📦 Installation
-
-Check the [Releases](https://github.com/infradise/keyscope/releases) page for the latest installer (`.dmg`, `.exe`, `.rpm`, `.deb`).
-
 ## 🔨 Build
 
 To build **Keyscope**, you need to generate the `i18n.dart` file first.
@@ -61,3 +58,7 @@ dart run setup.dart
 ```
 
 This command will create `lib/i18n.dart`, which is required for a successful build.
+
+## 📦 Installation
+
+Check the [Releases](https://github.com/infradise/keyscope/releases) page for the latest installer (`.dmg`, `.exe`, `.msi`, `.rpm`, `.deb`).
