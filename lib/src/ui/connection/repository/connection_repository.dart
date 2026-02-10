@@ -17,10 +17,9 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:typeredis/typeredis.dart';
+import 'package:keyscope_client/keyscope_client.dart';
 
 // import '../../../core/keyscope_client.dart' show KeyscopeClient;
-// import '../../../../src/core/keyscope_client.dart';
 
 /// Key Detail DTO
 class KeyDetail {
@@ -43,12 +42,12 @@ class KeyDetail {
 //
 abstract class ConnectionRepository {
   /// The active client instance.
-  /// Returns [TypeRedis] or null if not connected.
-  TypeRedis? get _client;
+  /// Returns [KeyscopeClient] or null if not connected.
+  KeyscopeClient? get _client;
 
   // final KeyscopeClient _client = KeyscopeClient();
   // Expose the raw client (optional)
-  // TypeRedis? get rawClient => _client.rawClient;
+  // KeyscopeClient? get rawClient => _client.rawClient;
 
   bool get isConnected => _client?.isConnected ?? false;
 
@@ -117,15 +116,13 @@ abstract class ConnectionRepository {
   Future<void> removeZSetMember(String key, String member) async {}
 }
 
-typedef TypeRedis = TRClient; // TODO: remove after TR is changed
-
-/// [OSS Version] Default implementation of ConnectionRepository (TypeRedis)
+/// [OSS Version] Default implementation of ConnectionRepository
 ///
 /// This implementation provides basic connectivity without advanced Enterprise
 /// features like SSH Tunneling or dedicated support.
 class BasicConnectionRepository implements ConnectionRepository {
   @override
-  TypeRedis? _client = TypeRedis();
+  KeyscopeClient? _client = KeyscopeClient();
   // KeyscopeClient _client = KeyscopeClient();
 
   @override
@@ -138,13 +135,13 @@ class BasicConnectionRepository implements ConnectionRepository {
     String? username,
     String? password,
   }) async {
-    print('🔌 Connecting to $host:$port using TypeRedis...');
+    print('🔌 Connecting to $host:$port using KeyscopeClient...');
 
-    // TypeRedis supports 3 authentication modes via settings:
+    // KeyscopeClient supports 3 authentication modes via settings:
     // - No Auth
     // - Password only (Legacy)
     // - Username + Password (ACL)
-    final typeRedis = TypeRedis(
+    final client = KeyscopeClient(
       host: host,
       port: port,
       username: username,
@@ -167,18 +164,18 @@ class BasicConnectionRepository implements ConnectionRepository {
       // }
 
       // Passing settings here makes it a "Flexible Client"
-      await typeRedis.connect();
+      await client.connect();
 
       // 4. Store the active client on success
-      _client = typeRedis;
+      _client = client;
       print('✅ Connected successfully to $host:$port');
 
-      final response = await typeRedis.ping();
+      final response = await client.ping();
       print('🏓 PING response: $response');
     } catch (e) {
       print('❌ Connection failed: $e');
       // Cleanup if connection failed
-      await typeRedis.close();
+      await client.close();
 
       rethrow; // Pass error to UI to show SnackBar
     }
@@ -303,7 +300,7 @@ class BasicConnectionRepository implements ConnectionRepository {
     int count = 100,
   }) async {
     if (_client == null) throw Exception('Not connected');
-    return _client!.scan(cursor: cursor, match: match, count: count);
+    return _client!.scanCli(cursor: cursor, match: match, count: count);
   }
 
   /// Create a new key with an initial value.
