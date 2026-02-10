@@ -1,9 +1,7 @@
 import 'dart:io';
-import 'package:typeredis/typeredis.dart' show TRLogger;
+import 'package:keyscope_client/keyscope_client.dart' show KeyscopeLogger;
 
-typedef TypeRedis = TRLogger; // TODO: remove after TR is changed
-
-TypeRedis logger = TypeRedis('Setup')..setLogLevelInfo();
+KeyscopeLogger logger = KeyscopeLogger('Setup')..setLogLevelInfo();
 
 void main() {
   // logger.info('Checking for $env file...');
