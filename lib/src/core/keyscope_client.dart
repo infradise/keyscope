@@ -18,12 +18,10 @@
 /// No Flutter dependencies allowed here.
 library;
 
-import 'package:typeredis/typeredis.dart';
-
-typedef TypeRedis = TRClient;
+import 'package:keyscope_client/keyscope_client.dart' as engine;
 
 class KeyscopeClient {
-  TRClient? _client;
+  engine.KeyscopeClient? _client;
 
   bool get isConnected => _client != null;
 
@@ -33,7 +31,7 @@ class KeyscopeClient {
     String? username,
     String? password,
   }) async {
-    final newClient = TypeRedis(
+    final newClient = engine.KeyscopeClient(
       host: host,
       port: port,
       username: username,
@@ -46,13 +44,13 @@ class KeyscopeClient {
     _client = newClient;
   }
 
-  Future<ScanResult> scanKeys({
+  Future<engine.ScanResult> scanKeys({
     required String cursor,
     String match = '*',
     int count = 100,
   }) async {
     if (_client == null) throw Exception('Not connected');
-    return _client!.scan(cursor: cursor, match: match, count: count);
+    return _client!.scanCli(cursor: cursor, match: match, count: count);
   }
 
   Future<void> disconnect() async {
