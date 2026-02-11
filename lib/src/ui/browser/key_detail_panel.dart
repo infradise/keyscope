@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+// import 'package:dense_table/dense_table.dart' show DenseStyle, DenseTable;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../i18n.dart' show I18n;
@@ -63,15 +64,15 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
   @override
   Widget build(BuildContext context) {
     if (widget.selectedKey == null) {
-      return const Center(
+      return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Icons.data_object
-            Icon(Icons.touch_app, size: 64, color: Colors.grey),
-            SizedBox(height: 16),
-            Text('Select a key to view details',
-                style: TextStyle(color: Colors.grey)),
+            const Icon(Icons.touch_app, size: 64, color: Colors.grey),
+            const SizedBox(height: 16),
+            Text(I18n.of(context).selectKeyToViewDetails,
+                style: const TextStyle(color: Colors.grey)),
           ],
         ),
       );
@@ -137,6 +138,9 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
                   detail.ttl == -1 ? 'Forever' : '${detail.ttl}s',
                   style: const TextStyle(color: Colors.grey),
                 ),
+
+                // --- Type Specific Actions ---
+
                 // Actions: Edit/Save (Only for String type in v0.4.0)
                 if (detail.type == 'string') ...[
                   IconButton(
@@ -148,7 +152,7 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
                   if (_isEditing)
                     IconButton(
                       icon: const Icon(Icons.close),
-                      tooltip: 'Cancel',
+                      tooltip: I18n.of(context).cancel,
                       onPressed: () {
                         setState(() {
                           _isEditing = false;
@@ -158,7 +162,8 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
                     ),
                 ],
                 const SizedBox(width: 8),
-                // Action: Delete
+
+                // Action: Delete (Delete Key Action)
                 IconButton(
                   icon: const Icon(Icons.delete_outline),
                   color: Colors.red,
@@ -190,9 +195,9 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
                       controller: _valueController,
                       maxLines: null,
                       style: const TextStyle(fontFamily: 'monospace'),
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Enter string value...',
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        hintText: I18n.of(context).enterStringValue,
                       ),
                     )
                   : SizedBox(
@@ -218,9 +223,9 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
       if (map.isEmpty) return const Text('(Empty Hash)');
       // TODO: change to dense_table
       return DataTable(
-        columns: const [
-          DataColumn(label: Text('Field')),
-          DataColumn(label: Text('Value'))
+        columns: [
+          DataColumn(label: Text(I18n.of(context).field)),
+          DataColumn(label: Text(I18n.of(context).value))
         ],
         rows: map.entries
             .map((e) => DataRow(cells: [
@@ -277,7 +282,10 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
         return Colors.purple;
       case 'zset':
         return Colors.red;
+      case 'ReJSON-RL':
+        return Colors.brown;
       default:
+        print('Type: $type');
         return Colors.grey;
     }
   }
@@ -293,10 +301,9 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
       final repo = ref.read(connectionRepositoryProvider);
       await repo.setStringValue(detail.key, _valueController.text,
           ttl: detail.ttl);
+      _showSuccess('Value updated!');
 
-      if (!mounted) return;
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('Value updated!')));
+
 
       setState(() => _isEditing = false);
 
@@ -316,15 +323,16 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
     final confirm = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Delete Key'),
+        title: Text(I18n.of(context).deleteKey),
         content: Text('Are you sure you want to delete "$key"?'),
         actions: [
           TextButton(
               onPressed: () => Navigator.pop(context, false),
-              child: const Text('Cancel')),
+              child: Text(I18n.of(context).cancel)),
           TextButton(
               onPressed: () => Navigator.pop(context, true),
-              child: const Text('Delete', style: TextStyle(color: Colors.red))),
+              child: Text(I18n.of(context).delete,
+                  style: const TextStyle(color: Colors.red))),
         ],
       ),
     );
