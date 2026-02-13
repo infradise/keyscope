@@ -25,8 +25,7 @@ import 'ui/connection/connection_dialog.dart';
 import 'ui/connection/repository/connection_repository.dart'
     show connectionRepositoryProvider;
 
-// TODO: Uncomment in v0.7.0
-// import 'ui/widgets/language_widget.dart' show AdvancedLanguageSelectorSheet;
+import 'ui/widgets/language_widget.dart' show AdvancedLanguageSelectorSheet;
 
 /// The root widget of the application.
 /// Responsible for setting up the MaterialApp, Theme, and Routing.
@@ -35,8 +34,9 @@ class KeyscopeApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final languageCode =
-        ref.watch(languageProvider.select((p) => p.languageCode));
+    final languageCode = ref.watch(
+      languageProvider.select((p) => p.languageCode),
+    );
 
     Locale? locale;
     if (languageCode.contains('_') || languageCode.contains('-')) {
@@ -100,9 +100,8 @@ class HomeScreen extends ConsumerWidget {
               'Keyscope',
               style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
             ),
-            // TODO: No need to show if current language is English
             Text(
-              I18n.of(context).keyscope,
+              I18n.of(context).languageTitle,
               style: const TextStyle(fontSize: 24, color: Colors.blueGrey),
             ),
             const SizedBox(height: 20),
@@ -121,17 +120,15 @@ class HomeScreen extends ConsumerWidget {
             ),
 
             // TODO: ThemeCycleIconButton
-
-            // TODO: Uncomment in v0.7.0
-            // IconButton(
-            //   icon: const Icon(Icons.language),
-            //   tooltip: I18n.of(context).changeLanguage,
-            //   onPressed: () async => showModalBottomSheet<void>(
-            //     context: context,
-            //     isScrollControlled: true,
-            //     builder: (_) => const AdvancedLanguageSelectorSheet(),
-            //   ),
-            // ),
+            IconButton(
+              icon: const Icon(Icons.language),
+              tooltip: I18n.of(context).changeLanguage,
+              onPressed: () async => showModalBottomSheet<void>(
+                context: context,
+                isScrollControlled: true,
+                builder: (_) => const AdvancedLanguageSelectorSheet(),
+              ),
+            ),
           ],
         ),
       ),

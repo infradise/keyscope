@@ -30,8 +30,9 @@ class KeyBrowserScreen extends ConsumerStatefulWidget {
 
 class _KeyBrowserScreenState extends ConsumerState<KeyBrowserScreen> {
   final ScrollController _scrollController = ScrollController();
-  final TextEditingController _searchController =
-      TextEditingController(text: '*');
+  final TextEditingController _searchController = TextEditingController(
+    text: '*',
+  );
 
   String? _selectedKey;
 
@@ -61,12 +62,13 @@ class _KeyBrowserScreenState extends ConsumerState<KeyBrowserScreen> {
         title: const Text('Data Explorer'),
         actions: [
           IconButton(
-              icon: const Icon(Icons.refresh),
-              onPressed: () {
-                ref
-                    .read(keyBrowserProvider.notifier)
-                    .refresh(pattern: _searchController.text);
-              }),
+            icon: const Icon(Icons.refresh),
+            onPressed: () {
+              ref
+                  .read(keyBrowserProvider.notifier)
+                  .refresh(pattern: _searchController.text);
+            },
+          ),
         ],
       ),
       // Add Floating Action Button
@@ -84,8 +86,9 @@ class _KeyBrowserScreenState extends ConsumerState<KeyBrowserScreen> {
             if (!mounted) return;
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
-                  content: Text('Key created successfully!'),
-                  backgroundColor: Colors.green),
+                content: Text('Key created successfully!'),
+                backgroundColor: Colors.green,
+              ),
             );
           }
         },
@@ -112,7 +115,8 @@ class _KeyBrowserScreenState extends ConsumerState<KeyBrowserScreen> {
                       prefixIcon: const Icon(Icons.search, size: 18),
                       isDense: true,
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(4)),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
                       suffixIcon: IconButton(
                         icon: const Icon(Icons.arrow_forward),
                         onPressed: () {
@@ -137,7 +141,8 @@ class _KeyBrowserScreenState extends ConsumerState<KeyBrowserScreen> {
                       ? const Center(child: CircularProgressIndicator())
                       : ListView.builder(
                           controller: _scrollController,
-                          itemCount: browserState.keys.length +
+                          itemCount:
+                              browserState.keys.length +
                               (browserState.cursor != '0' ? 1 : 0),
                           itemBuilder: (context, index) {
                             // Loading indicator at bottom
@@ -145,15 +150,19 @@ class _KeyBrowserScreenState extends ConsumerState<KeyBrowserScreen> {
                               return const Padding(
                                 padding: EdgeInsets.all(8.0),
                                 child: Center(
-                                    child: CircularProgressIndicator(
-                                        strokeWidth: 2)),
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                  ),
+                                ),
                               );
                             }
 
                             final key = browserState.keys[index];
                             return ListTile(
-                              title: Text(key,
-                                  style: const TextStyle(fontSize: 13)),
+                              title: Text(
+                                key,
+                                style: const TextStyle(fontSize: 13),
+                              ),
                               dense: true,
                               // Add Selection Color
                               selected: _selectedKey == key,
@@ -178,12 +187,14 @@ class _KeyBrowserScreenState extends ConsumerState<KeyBrowserScreen> {
                     children: [
                       Text(
                         '${browserState.keys.length} keys loaded',
-                        style:
-                            const TextStyle(fontSize: 11, color: Colors.grey),
+                        style: const TextStyle(
+                          fontSize: 11,
+                          color: Colors.grey,
+                        ),
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),
