@@ -1,11 +1,19 @@
 # Changelog
 
-## 0.6.0
+## 0.8.0
 * **Multilingual:** Added Internationalization (i18n) with full multi-language support.
+* **Core Engine**
+    * **keyscope_client**: Bump version to `4.2.0`.
+* **Dependencies & Tooling**
+    * **New i18n Generation Tool**: Introduced a custom-built internal translation tool (`tool/i18n_generator.dart`). This internal tool replaces the removed dependencies, streamlining the i18n workflow, ensuring better maintainability and control without relying on obsolete external libraries..
+
+## 0.7.0
 * **Connection Dialog & Test Connection**
     * **Enhanced** Implemented full `TextEditingController` support for all form fields (name, host, port, username, password).
       * Dialog now correctly captures and applies user-entered values.
       * Test Connection action uses the latest input values to validate connectivity.
+
+## 0.6.0
 * **New Feature:** Advanced Data Editing (Complex Types)
     * **Hash Editing:** Added support for adding, editing, and deleting individual fields within a Hash.
     * **List Editing:** Support for appending items (`RPUSH`), updating items by index (`LSET`), and removing items (`LREM`).
@@ -16,11 +24,11 @@
     * **Enhanced Dialogs:** Dedicated input dialogs for each data type ensure correct data entry (e.g., Score input validation for ZSet).
 * **CLI:**
     * **New Commands**: (`scan`) as a generic command for Redis and Valkey
-* **Core Engine**
-    * **keyscope_client**: Bump version to `4.0.0`.
+    * **Command Checker** Added a command checker before connecting to server
+* **Data Type**
+    * **ReJSON-RL**: Label color changed from default Gray to Brown
 
 ## 0.5.0
-
 * **New Feature:** Key Creation
     * **Create New Keys:** Users can now create new keys directly from the Data Explorer.
     * **Supported Types:** Full support for creating **String**, **Hash**, **List**, **Set**, and **ZSet** (Sorted Set) types.
@@ -36,7 +44,6 @@
     * Added new commands to `CLI_OPTIONS.md`.
 
 ## 0.4.0
-
 * **New Feature:** Key Management (CRUD)
     * **Delete Keys:** Added ability to delete keys directly from the Value Inspector. Includes a confirmation dialog for safety.
     * **Edit String Values:** Users can now modify and save values for `String` type keys.
@@ -51,12 +58,10 @@
     * Added Options: (`--get`), (`--set`), (`--slient`), (`--db`), (`--ssl`), etc.
 
 ## 0.3.1
-
 * **New CI Badge**: `GUI` and `CLI` build status badges for GitHub Actions workflows to `README.md`
 * **New Example**: A GUI example using `Keyscope` widget
 
 ## 0.3.0
-
 * **New Feature:** Data Explorer
     * Browse keys efficiently using `SCAN` command (cursor-based pagination).
     * Supports infinite scrolling for navigating millions of keys without blocking the server.
@@ -71,7 +76,6 @@
 * **CLI:** Enhanced `Keyscope` CLI with scan test (`--scan`) and (`--match`).
 
 ## 0.2.0
-
 * **New Feature:** Added Connection Manager GUI.
     * Supports `Redis` & `Valkey` connections.
     * Create, edit, and save connection configurations.
@@ -83,5 +87,4 @@
     * CLI diagnostic tool (`keyscope --ping`).
 
 ## 0.1.0
-
 * Initial placeholder release.
