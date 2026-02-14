@@ -55,6 +55,13 @@ jobs:
       - name: Setup
         run: dart run setup.dart
 
+      - name: Pod Install on macOS
+        working-directory: ./macos
+        if: matrix.platform == 'macos'
+        run: arch -$MACOS_ARCH pod install --repo-update
+        env:
+          MACOS_ARCH: ${{ matrix.arch }}
+
       # ----------------------------------------------------------------
       # Build Steps (OS Specific)
       # ----------------------------------------------------------------
