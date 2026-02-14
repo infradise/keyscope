@@ -1,0 +1,185 @@
+#
+# Copyright 2025-2026 Infradise Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: 'Build Logic'
+description: 'Shared build steps'
+inputs:
+  os:
+    description: "Target OS"
+    required: true
+  arch:
+    description: "Target architecture"
+    required: true
+  platform:
+    description: "Target platform"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v6
+
+    # ----------------------------------------------------------------
+    # Use 'inputs.*' instead of 'matrix.*'
+    # ----------------------------------------------------------------
+    - name: Example Step
+      run: echo "Building for ${{ inputs.platform }} on ${{ inputs.arch }}"
+      shell: bash
+
+    # ----------------------------------------------------------------
+    # Dependency Steps (OS Specific)
+    # ----------------------------------------------------------------
+    - name: Install Linux Dependencies
+      shell: bash
+      if: inputs.platform == 'linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev libsecret-1-dev
+      # case "${{ matrix.distro }}" in
+      #   ubuntu*|jessie|stretch|buster|bullseye)
+      #     apt-get update -q -y
+      #     apt-get install -q -y git
+      #     ;;
+      #   fedora*)
+      #     dnf -y update
+      #     dnf -y install git which
+      #     ;;
+      #   alpine*)
+      #     apk update
+      #     apk add git
+      #     ;;
+      # esac
+
+
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        cache: true
+        channel: 'stable'
+        # flutter-version:
+        # channel: 
+        architecture: ${{ env.ARCH }}
+        # case "${{ inputs.arch }}" in
+        #   aarch64|arm64|universal)
+        #     return arm64
+        #     ;;
+        #   x86_64|x64|amd64)
+        #     return x64
+        #     ;;
+        # esac
+      env:
+        ARCH: ${{ contains('aarch64 arm64 universal', inputs.arch) && 'arm64' || 
+          contains('x86_64 x64 amd64', inputs.arch) && 'x64' }}
+
+    # ----------------------------------------------------------------
+    # Prerequisites Steps
+    # ----------------------------------------------------------------
+    - name: Remove cache (except Linux)
+      shell: bash
+      if: inputs.platform != 'linux'
+      run: |
+        flutter pub cache clean --force
+        dart pub cache clean --force
+
+    - name: Install Dependencies
+      shell: bash
+      run: flutter pub get
+
+    - name: Setup
+      shell: bash
+      run: dart run setup.dart
+
+    - name: Check OS
+      shell: bash
+      run: |
+        echo "OS: ${{ inputs.os }}"
+        echo "Arch: ${{ inputs.arch }}"
+        echo "Platform: ${{ inputs.platform }}"
+
+    - name: Pod Install on macOS
+      shell: bash
+      working-directory: ./macos
+      if: inputs.platform == 'macos'
+      run: |
+        uname -m
+        arch -$ARCH pod install --repo-update
+      env:
+        # (X) MACOS_ARCH: ${{ inputs.arch }}
+        ARCH: ${{ contains('aarch64 arm64 universal', inputs.arch) && 'arm64' || 
+          contains('x86_64 x64 amd64', inputs.arch) && 'x86_64' }}
+
+    # ----------------------------------------------------------------
+    # Build Steps (OS Specific)
+    # ----------------------------------------------------------------
+    - name: Build macOS App
+      shell: bash
+      if: inputs.platform == 'macos'
+      run: flutter build macos --release
+
+    - name: Build Linux App
+      shell: bash
+      if: inputs.platform == 'linux'
+      run: flutter build linux --release
+
+    - name: Build Windows App
+      shell: bash
+      if: inputs.platform == 'windows'
+      run: flutter build windows --release
+
+    # ----------------------------------------------------------------
+    # Archive Steps (OS Specific Paths)
+    # ----------------------------------------------------------------
+    - name: Archive macOS App
+      shell: bash
+      if: inputs.platform == 'macos'
+      run: |
+        cd build/macos/Build/Products/Release
+        zip -r ../../../../../keyscope-gui-${{ inputs.platform }}-${{ inputs.arch }}.zip Keyscope.app/
+
+    - name: Archive Linux
+      shell: bash
+      if: inputs.platform == 'linux'
+      run: |
+        cd build/linux/x64/release/bundle
+        zip -r ../../../../../keyscope-gui-${{ inputs.platform }}-${{ inputs.arch }}.zip .
+
+    - name: Archive Windows
+      if: inputs.platform == 'windows'
+      shell: powershell
+      run: |
+        cd build\windows\x64\runner\release
+        Compress-Archive -Path * -DestinationPath ..\..\..\..\..\keyscope-gui-${{ inputs.platform }}-${{ inputs.arch }}.zip
+
+    # ----------------------------------------------------------------
+    # Upload
+    # ----------------------------------------------------------------
+    - name: Release / Upload
+      uses: softprops/action-gh-release@v2
+      if: |
+        startsWith(github.ref, 'refs/tags/') || 
+        (github.event_name == 'workflow_dispatch' && github.event.inputs.tag_name != '')       
+      with:
+        tag_name: ${{ github.event.inputs.tag_name || github.ref_name }}
+        files: keyscope-gui-${{ inputs.platform }}-${{ inputs.arch }}.zip
+        draft: true
+
+    - name: Upload Artifact for Debugging
+      uses: actions/upload-artifact@v6
+      if: github.event_name == 'workflow_dispatch'
+      with:
+        name: keyscope-gui-${{ inputs.platform }}-${{ inputs.arch }}
+        path: keyscope-gui-${{ inputs.platform }}-${{ inputs.arch }}.zip
+        retention-days: 5
