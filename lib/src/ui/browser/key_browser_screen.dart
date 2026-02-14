@@ -141,8 +141,7 @@ class _KeyBrowserScreenState extends ConsumerState<KeyBrowserScreen> {
                       ? const Center(child: CircularProgressIndicator())
                       : ListView.builder(
                           controller: _scrollController,
-                          itemCount:
-                              browserState.keys.length +
+                          itemCount: browserState.keys.length +
                               (browserState.cursor != '0' ? 1 : 0),
                           itemBuilder: (context, index) {
                             // Loading indicator at bottom

@@ -107,150 +107,151 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
   }
 
   Widget _buildDetailView(KeyDetail detail) => Column(
-    children: [
-      // [Header] Key Name, Type, TTL, Actions Toolbar
-      Container(
-        padding: const EdgeInsets.all(12), // 16
-        decoration: const BoxDecoration(
-          border: Border(bottom: BorderSide(color: Color(0xFF3F4246))),
-          color: Color(0xFF2B2D30),
-        ),
-        child: Row(
-          children: [
-            // Type Badge
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              decoration: BoxDecoration(
-                color: _getTypeColor(detail.type),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: Text(
-                detail.type.toUpperCase(),
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
+        children: [
+          // [Header] Key Name, Type, TTL, Actions Toolbar
+          Container(
+            padding: const EdgeInsets.all(12), // 16
+            decoration: const BoxDecoration(
+              border: Border(bottom: BorderSide(color: Color(0xFF3F4246))),
+              color: Color(0xFF2B2D30),
+            ),
+            child: Row(
+              children: [
+                // Type Badge
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: _getTypeColor(detail.type),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Text(
+                    detail.type.toUpperCase(),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            const SizedBox(width: 12),
-            // Key Name
-            Expanded(
-              child: Text(
-                detail.key,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+                const SizedBox(width: 12),
+                // Key Name
+                Expanded(
+                  child: Text(
+                    detail.key,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-            const Icon(Icons.timer, size: 16, color: Colors.grey),
-            const SizedBox(width: 4),
-            Text(
-              detail.ttl == -1 ? 'Forever' : '${detail.ttl}s',
-              style: const TextStyle(color: Colors.grey),
-            ),
+                const Icon(Icons.timer, size: 16, color: Colors.grey),
+                const SizedBox(width: 4),
+                Text(
+                  detail.ttl == -1 ? 'Forever' : '${detail.ttl}s',
+                  style: const TextStyle(color: Colors.grey),
+                ),
 
-            // --- Type Specific Actions ---
+                // --- Type Specific Actions ---
 
-            // Actions: Edit/Save (Only for String type in v0.4.0)
-            if (detail.type == 'string') ...[
-              IconButton(
-                icon: Icon(_isEditingString ? Icons.save : Icons.edit),
-                tooltip: _isEditingString
-                    ? I18n.of(context).saveChanges
-                    : I18n.of(context).editValue,
-                color: _isEditingString ? Colors.green : Colors.grey,
-                onPressed: () => _handleStringEdit(detail),
-              ),
-              if (_isEditingString)
+                // Actions: Edit/Save (Only for String type in v0.4.0)
+                if (detail.type == 'string') ...[
+                  IconButton(
+                    icon: Icon(_isEditingString ? Icons.save : Icons.edit),
+                    tooltip: _isEditingString
+                        ? I18n.of(context).saveChanges
+                        : I18n.of(context).editValue,
+                    color: _isEditingString ? Colors.green : Colors.grey,
+                    onPressed: () => _handleStringEdit(detail),
+                  ),
+                  if (_isEditingString)
+                    IconButton(
+                      icon: const Icon(Icons.close),
+                      tooltip: I18n.of(context).cancel,
+                      onPressed: () {
+                        setState(() {
+                          _isEditingString = false;
+                          _stringValueController.clear();
+                        });
+                      },
+                    ),
+                ],
+                // Collection Add Actions
+                if (detail.type == 'hash')
+                  IconButton(
+                    icon: const Icon(Icons.add),
+                    tooltip: I18n.of(context).addField,
+                    onPressed: () => _showAddHashDialog(detail),
+                  ),
+                if (detail.type == 'list')
+                  IconButton(
+                    icon: const Icon(Icons.add),
+                    tooltip: '${I18n.of(context).addItem} + (RPUSH)',
+                    onPressed: () => _showAddListDialog(detail),
+                  ),
+                if (detail.type == 'set')
+                  IconButton(
+                    icon: const Icon(Icons.add),
+                    tooltip: I18n.of(context).addMember,
+                    onPressed: () => _showAddSetDialog(detail),
+                  ),
+                if (detail.type == 'zset')
+                  IconButton(
+                    icon: const Icon(Icons.add),
+                    tooltip: I18n.of(context).addMember,
+                    onPressed: () => _showAddZSetDialog(detail),
+                  ),
+
+                const SizedBox(width: 8),
+
+                // Action: Delete (Delete Key Action)
                 IconButton(
-                  icon: const Icon(Icons.close),
-                  tooltip: I18n.of(context).cancel,
-                  onPressed: () {
-                    setState(() {
-                      _isEditingString = false;
-                      _stringValueController.clear();
-                    });
-                  },
+                  icon: const Icon(Icons.delete_outline),
+                  color: Colors.red,
+                  tooltip: I18n.of(context).deleteKey,
+                  onPressed: () => _handleDeleteKey(detail.key),
                 ),
-            ],
-            // Collection Add Actions
-            if (detail.type == 'hash')
-              IconButton(
-                icon: const Icon(Icons.add),
-                tooltip: I18n.of(context).addField,
-                onPressed: () => _showAddHashDialog(detail),
-              ),
-            if (detail.type == 'list')
-              IconButton(
-                icon: const Icon(Icons.add),
-                tooltip: '${I18n.of(context).addItem} + (RPUSH)',
-                onPressed: () => _showAddListDialog(detail),
-              ),
-            if (detail.type == 'set')
-              IconButton(
-                icon: const Icon(Icons.add),
-                tooltip: I18n.of(context).addMember,
-                onPressed: () => _showAddSetDialog(detail),
-              ),
-            if (detail.type == 'zset')
-              IconButton(
-                icon: const Icon(Icons.add),
-                tooltip: I18n.of(context).addMember,
-                onPressed: () => _showAddZSetDialog(detail),
-              ),
-
-            const SizedBox(width: 8),
-
-            // Action: Delete (Delete Key Action)
-            IconButton(
-              icon: const Icon(Icons.delete_outline),
-              color: Colors.red,
-              tooltip: I18n.of(context).deleteKey,
-              onPressed: () => _handleDeleteKey(detail.key),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
 
-      // TODO: REMOVE
-      // [Body] Value Viewer -- v0.3.x
-      // Expanded(
-      //   child: SingleChildScrollView(
-      //     padding: const EdgeInsets.all(16),
-      //     child: SizedBox(
-      //       width: double.infinity,
-      //       child: _buildValueContent(detail), // -- v0.5.0
-      //     ),
-      //   ),
-      // ),
+          // TODO: REMOVE
+          // [Body] Value Viewer -- v0.3.x
+          // Expanded(
+          //   child: SingleChildScrollView(
+          //     padding: const EdgeInsets.all(16),
+          //     child: SizedBox(
+          //       width: double.infinity,
+          //       child: _buildValueContent(detail), // -- v0.5.0
+          //     ),
+          //   ),
+          // ),
 
-      // [Body] Value Editor / Viewer -- v0.4.0
-      Expanded(
-        // child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: _isEditingString && detail.type == 'string'
-              ? TextField(
-                  controller: _stringValueController,
-                  maxLines: null,
-                  style: const TextStyle(fontFamily: 'monospace'),
-                  decoration: InputDecoration(
-                    border: const OutlineInputBorder(),
-                    hintText: I18n.of(context).enterStringValue,
-                  ),
-                )
-              : SizedBox(
-                  width: double.infinity,
-                  child: SingleChildScrollView(
-                    child: _buildBodyContent(detail), // v0.6.0
-                  ),
-                ),
-        ),
-      ),
-    ],
-  );
+          // [Body] Value Editor / Viewer -- v0.4.0
+          Expanded(
+            // child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: _isEditingString && detail.type == 'string'
+                  ? TextField(
+                      controller: _stringValueController,
+                      maxLines: null,
+                      style: const TextStyle(fontFamily: 'monospace'),
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        hintText: I18n.of(context).enterStringValue,
+                      ),
+                    )
+                  : SizedBox(
+                      width: double.infinity,
+                      child: SingleChildScrollView(
+                        child: _buildBodyContent(detail), // v0.6.0
+                      ),
+                    ),
+            ),
+          ),
+        ],
+      );
 
   Widget _buildBodyContent(KeyDetail detail) {
     if (detail.value == null) {
@@ -278,11 +279,13 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
       case 'hash':
         return _buildHashView(detail);
 
+      // return buildHashViewDenseTable2(detail); // TODO: REMOVE
+      // return buildHashViewDenseTable1(detail); // TODO: REMOVE
       // --------------------------------
       // TODO: REMOVE
       // case 'list':
       // case 'set':
-      // return buildListAndSetView(); 
+      // return buildListAndSetView();
       // --------------------------------
 
       case 'list':
@@ -303,8 +306,8 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
       // \ MD: json, search, bf, ldap
       // \ DT: bloomfltr
       // Dragonfly
-      // \ MD: 
-      // \ DT: 
+      // \ MD:
+      // \ DT:
     }
   }
 
@@ -806,7 +809,9 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
   void _showError(Object e) {
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('${I18n.of(context).error}: $e'), backgroundColor: Colors.red),
+      SnackBar(
+          content: Text('${I18n.of(context).error}: $e'),
+          backgroundColor: Colors.red),
     );
   }
 }
