@@ -374,7 +374,7 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
     return ListView.separated(
       shrinkWrap: true, // NOTE: hasSize
       itemCount: list.length,
-      separatorBuilder: (_, _) =>
+      separatorBuilder: (_, __) =>
           const Divider(height: 1, color: Colors.white10),
       itemBuilder: (context, index) {
         final value = list[index].toString();
@@ -411,7 +411,7 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
     return ListView.separated(
       shrinkWrap: true, // NOTE: hasSize
       itemCount: list.length,
-      separatorBuilder: (_, _) =>
+      separatorBuilder: (_, __) =>
           const Divider(height: 1, color: Colors.white10),
       itemBuilder: (context, index) {
         final member = list[index].toString();
