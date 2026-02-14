@@ -20,6 +20,10 @@ library;
 
 import 'dart:io' show File, exit;
 
+// TODO: check if key is alphanumberic.
+//       valueUpdate1 : 1 means '!'
+//       deleteKey2 : 2 means '?'
+
 void main() async {
   // 1. Define file paths
   const inputFile = 'assets/i18n.csv';
@@ -198,6 +202,23 @@ List<String> _extractArgs(String text) {
 ///
 /// Writes file headers with split ignore rules to avoid lint errors.
 void _writeHeader(StringBuffer buffer) {
+  buffer.writeln('''
+/*
+ * Copyright 2025-2026 Infradise Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+  ''');
   buffer.writeln('// GENERATED CODE - DO NOT MODIFY BY HAND');
   buffer.writeln('//');
   // Split ignores to keep lines under 80 characters

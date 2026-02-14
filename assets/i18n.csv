@@ -27,6 +27,10 @@ saveChanges,Save Changes,변경사항 저장
 editValue,Edit Value,값 편집
 editField,Edit Field,필드 편집
 forever,Forever,만료없음
+valueUpdate1,Value updated!,값이 갱신됨!
+error,Error,오류
+deleteKey2,"Delete \"%key$s\"?","\"%key$s\"를 삭제할까요?"
+areYouSureYouWantToDeleteKey,"Are you sure you want to delete \"%key$s\"?","키 \"%key$s\"를 정말 삭제할까요?"
 openConnectionManager,Open Connection Manager,연결 관리자 열기,接続マネージャーを開く,打开连接管理器,打開連線管理器,Buka Manajer Koneksi,Mở Trình quản lý Kết nối,เปิดตัวจัดการการเชื่อมต่อ,Verbindungs-Manager öffnen,Verbindungs-Manager öffnen,Ouvrir le Gestionnaire de Connexion,Apri Gestore Connessioni,Abrir Administrador de Conexiones,Открыть диспетчер подключений,Abrir Gestor de Conexões,Abrir Gerenciador de Conexões
 selectKeyToViewDetails,Select a key to view details,상세보기할 키 선택
 changeLanguage,Change Language,언어 변경,言語を変更,更改语言,變更語言,Ganti Bahasa,Đổi ngôn ngữ,เปลี่ยนภาษา,Sprache ändern,Sprach ändere,Changer de langue,Cambia lingua,Cambiar idioma,Изменить язык,Alterar idioma,Alterar idioma
