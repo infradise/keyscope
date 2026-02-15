@@ -217,8 +217,7 @@ void _writeHeader(StringBuffer buffer) {
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
-  ''');
+ */\n''');
   buffer.writeln('// GENERATED CODE - DO NOT MODIFY BY HAND');
   buffer.writeln('//');
   // Split ignores to keep lines under 80 characters
@@ -260,16 +259,45 @@ void _writeClass(StringBuffer buffer, List<Map<String, dynamic>> keyDataList) {
       buffer.writeln('  String get $key => _getText("$key");');
     } else {
       // Method for strings with arguments
-      // final args = argsStr.split(',');
       final methodArgs = args.map((a) => 'required String $a').join(', ');
+      final onelineSig = '  String $key({$methodArgs}) =>';
 
-      buffer.write('  String $key({$methodArgs}) =>\n');
-      buffer.write('      _getText("$key")');
-      for (var arg in args) {
-        // Replaces %name$s with the variable value
-        buffer.write('.replaceAll(r"%$arg\$s", $arg)');
+      // Check if signature exceeds 80 chars
+      if (onelineSig.length > 80) {
+        buffer.writeln('  String $key(');
+        buffer.writeln('          {$methodArgs}) =>');
+      } else {
+        buffer.writeln(onelineSig);
       }
-      buffer.writeln(';');
+
+      // Indent (6 spaces) for the body
+      const indent = '      ';
+      final baseCall = '_getText("$key")';
+
+      // Rule:
+      // 1. If only 1 argument: Try to fit on one line. If > 80, split.
+      // 2. If > 1 argument: Always split.
+      if (args.length == 1) {
+        final arg = args.first;
+        final replaceCall = '.replaceAll(r"%$arg\$s", $arg)';
+        final combined = '$indent$baseCall$replaceCall;';
+
+        if (combined.length <= 80) {
+          // Fits on one line
+          buffer.writeln(combined);
+        } else {
+          // Too long, split
+          buffer.writeln('$indent$baseCall');
+          buffer.writeln('          $replaceCall;');
+        }
+      } else {
+        // Multiple arguments: always split
+        buffer.write('$indent$baseCall');
+        for (var arg in args) {
+          buffer.write('\n          .replaceAll(r"%$arg\$s", $arg)');
+        }
+        buffer.writeln(';');
+      }
     }
     buffer.writeln();
   }
@@ -323,7 +351,14 @@ void _writeStaticMaps(
         quotedValue = '"${val.replaceAll('"', r'\"')}"';
       }
 
-      buffer.writeln('    "$key": $quotedValue,');
+      // Check line length to satisfy lint rules (80 chars)
+      final line = '    "$key": $quotedValue,';
+      if (line.length > 80) {
+        buffer.writeln('    "$key":');
+        buffer.writeln('        $quotedValue,');
+      } else {
+        buffer.writeln(line);
+      }
     }
     buffer.writeln('  };');
     buffer.writeln();
@@ -400,6 +435,5 @@ void _writeDelegate(StringBuffer buffer, List<String> locales) {
 
   @override
   bool shouldReload(I18nDelegate old) => false;
-}
-''');
+}''');
 }
