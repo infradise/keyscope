@@ -5,7 +5,8 @@
  
   <h1>Keyscope</h1>
   <p>
-    A high-performance GUI client designed for <b>Redis</b>, <b>Valkey</b>, and <b>Dragonfly</b>.<br>
+    A high-performance GUI client designed for <b>Redis</b>, <b>Valkey</b>, and <b>Dragonfly</b>.
+    <br><br>    
     It supports Cluster, Sentinel, SSH tunneling, and handles millions of keys smoothly.<br>
   </p>
 
@@ -23,6 +24,60 @@
     <a href="#-translations">Translations</a> •
     <a href="#-build">Build</a> •
     <a href="#-installation">Installation</a>
+  </p>
+
+  <p>
+
+<table>
+<tr>
+<td>
+
+![Keyscope Intro](https://download.keyscope.dev/screenshots/keyscope-intro.png)
+
+</td>
+<td>
+
+![Keyscope Language Selector](https://download.keyscope.dev/screenshots/keyscope-language-selector.png)
+
+</td>
+<td>
+
+![Keyscope Connection Manager](https://download.keyscope.dev/screenshots/keyscope-connection-manager.png)
+
+</td>
+<td>
+
+![Keyscope Dashboard Server Stats](https://download.keyscope.dev/screenshots/keyscope-dashboard-server-stats.png)
+
+</td>
+<td>
+
+![Keyscope Data Explorer for String](https://download.keyscope.dev/screenshots/keyscope-data-explorer-string.png)
+
+</td>
+<td>
+
+![Keyscope Data Explorer for List](https://download.keyscope.dev/screenshots/keyscope-data-explorer-list.png)
+
+</td>
+<td>
+
+![Keyscope Data Explorer for Hash](https://download.keyscope.dev/screenshots/keyscope-data-explorer-hash.png)
+
+</td>
+<td>
+
+![Keyscope Data Explorer for Set](https://download.keyscope.dev/screenshots/keyscope-data-explorer-set.png)
+
+</td>
+<td>
+
+![Keyscope Data Explorer for ZSet](https://download.keyscope.dev/screenshots/keyscope-data-explorer-zset.png)
+
+</td>
+</tr>
+</table>
+
   </p>
 
 </div>
@@ -50,51 +105,16 @@ Built with ❤️ using [keyscope_client](https://pub.dev/packages/keyscope_clie
 
 ## 🌐 Translations
 
-### Internationalization (i18n)
-
-Keyscope provides multilingual support through the `assets/i18n.csv` file.  
-
-This file defines translation keys and maps them to localized values across multiple languages (English, Korean, Japanese, Chinese, Indonesian, Vietnamese, Thai, German, French, Italian, Spanish, Russian, Portuguese, etc.).
-
-Each row defines a translation key (e.g., `welcome`, `languageTitle`) and its corresponding localized strings. 
-For example:
-
-- `welcome` → "Welcome %name$s!" in English, "%name$s님, 환영합니다!" in Korean, "ようこそ、%name$sさん！" in Japanese, etc.
-
-During the build process, this CSV is compiled into `lib/i18n.dart`, ensuring that Keyscope can dynamically render UI text in the user’s preferred language.
-
-### Language Order
-
-The columns in `assets/i18n.csv` follow this order:
-
-```
-keys,en,ko,ja,zh_CN,zh_TW,id,vi,th,de,de_CH,fr,it,es,ru,pt_PT,pt_BR
-```
-
-For instance, the `languageTitle` row maps each language name to its localized form:
-
-```
-languageTitle,English,한국어,日本語,简体中文,繁體中文,Bahasa Indonesia,Tiếng Việt,ภาษาไทย,Deutsch,Schweizerdeutsch,Français,Italiano,Español,Русский,Português (Portugal),Português (Brasil)
-```
+For more details, check out the [Translation Guide](https://github.com/infradise/keyscope/blob/main/docs/TRANSLATIONS.md).
 
 ## 🔨 Build
 
-To build **Keyscope**, you need to generate the `i18n.dart` file first.
+For more details, check out the [Build Instructions](https://github.com/infradise/keyscope/blob/main/docs/BUILD.md).
 
-This can be done by running:
-
+## ▶️ Run
 ```sh
-dart run setup.dart
+lib/main.dart
 ```
-
-Alternatively, you can use the dedicated i18n generator:
-
-```sh
-dart run tool/i18n_generator.dart
-```
-
-The i18n generator compiles all translation resources into `lib/i18n.dart`, ensuring proper multi-language support.  
-This file is required for a successful build.
 
 ## 📦 Installation
 
