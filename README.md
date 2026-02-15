@@ -5,9 +5,8 @@
  
   <h1>Keyscope</h1>
   <p>
-    A high-performance GUI client designed for <b>Redis</b>, <b>Valkey</b>, and <b>Dragonfly</b>.
-    <br><br>    
-    It supports Cluster, Sentinel, SSH tunneling, and handles millions of keys smoothly.<br>
+    Redis, Valkey, and Dragonfly GUI with multi-language support.
+    <br><br>
   </p>
 
   [![pub package](https://img.shields.io/pub/v/keyscope.svg?label=Latest)](https://pub.dev/packages/keyscope)
@@ -17,6 +16,8 @@
 
   <!-- ![Build Status](https://img.shields.io/github/actions/workflow/status/infradise/keyscope/build.yml?branch=main) -->
 
+  ![Keyscope Data Explorer for ZSet](https://download.keyscope.dev/screenshots/commands/sorted-set/keyscope-data-explorer-zset.png)
+ 
   <p>
     <a href="#-why-keyscope">Why Keyscope?</a> •
     <a href="#-key-features">Key Features</a> •
@@ -26,59 +27,7 @@
     <a href="#-installation">Installation</a>
   </p>
 
-  <p>
-
-<table>
-<tr>
-<td>
-
-![Keyscope Intro](https://download.keyscope.dev/screenshots/keyscope-intro.png)
-
-</td>
-<td>
-
-![Keyscope Language Selector](https://download.keyscope.dev/screenshots/keyscope-language-selector.png)
-
-</td>
-<td>
-
-![Keyscope Connection Manager](https://download.keyscope.dev/screenshots/keyscope-connection-manager.png)
-
-</td>
-<td>
-
-![Keyscope Dashboard Server Stats](https://download.keyscope.dev/screenshots/keyscope-dashboard-server-stats.png)
-
-</td>
-<td>
-
-![Keyscope Data Explorer for String](https://download.keyscope.dev/screenshots/keyscope-data-explorer-string.png)
-
-</td>
-<td>
-
-![Keyscope Data Explorer for List](https://download.keyscope.dev/screenshots/keyscope-data-explorer-list.png)
-
-</td>
-<td>
-
-![Keyscope Data Explorer for Hash](https://download.keyscope.dev/screenshots/keyscope-data-explorer-hash.png)
-
-</td>
-<td>
-
-![Keyscope Data Explorer for Set](https://download.keyscope.dev/screenshots/keyscope-data-explorer-set.png)
-
-</td>
-<td>
-
-![Keyscope Data Explorer for ZSet](https://download.keyscope.dev/screenshots/keyscope-data-explorer-zset.png)
-
-</td>
-</tr>
-</table>
-
-  </p>
+  <br>
 
 </div>
 
