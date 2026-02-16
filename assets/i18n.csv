@@ -1,40 +1,92 @@
 keys,en,ko,ja,zh_CN,zh_TW,id,vi,th,de,de_CH,fr,it,es,ru,pt_PT,pt_BR
 otherKeys,en,ko,ja,zh_Hans,zh_Hant,id,vi,th,de,de_ch,fr,it,es,ru,pt_PT,pt_BR
 languageTitle,English,한국어,日本語,简体中文,繁體中文,Bahasa Indonesia,Tiếng Việt,ภาษาไทย,Deutsch,Schweizerdeutsch,Français,Italiano,Español,Русский,Português (Portugal),Português (Brasil)
-plainText,Hello world!,안녕하세요!,ハローワールド！,你好，世界！,你好，世界！,Halo dunia!,Chào thế giới!,สวัสดีชาวโลก!,Hallo Welt!,Hallo Welt!,Bonjour le monde !,Ciao mondo!,¡Hola mundo!,"Привет, мир!",Olá mundo!,Olá mundo!
+plainText,Hello world!,안녕하세요!,ハローワールド！,"你好，世界！","你好，世界！",Halo dunia!,Chào thế giới!,สวัสดีชาวโลก!,Hallo Welt!,Hallo Welt!,Bonjour le monde !,Ciao mondo!,¡Hola mundo!,"Привет, мир!",Olá mundo!,Olá mundo!
 welcome,Welcome %name$s!,"%name$s님, 환영합니다!",ようこそ、%name$sさん！,欢迎 %name$s！,歡迎 %name$s！,Selamat datang %name$s!,Chào mừng %name$s!,ยินดีต้อนรับ %name$s!,Willkommen %name$s!,Willkomme %name$s!,Bienvenue %name$s !,Benvenuto %name$s!,¡Bienvenido %name$s!,"Добро пожаловать, %name$s!",Bem-vindo %name$s!,Bem-vindo %name$s!
 language,Language,언어,言語,语言,語言,Bahasa,Ngôn ngữ,ภาษา,Sprache,Sprach,Langue,Lingua,Idioma,Язык,Idioma,Idioma
 chooseYourLanguage,Choose your language,언어를 선택하세요,言語を選択してください,选择你的语言,選擇您的語言,Pilih bahasamu,Chọn ngôn ngữ của bạn,เลือกภาษาของคุณ,Wähle deine Sprache,Wähl dini Sprach,Choisissez votre langue,Scegli la tua lingua,Elige tu idioma,Выберите язык,Escolhe o teu idioma,Escolha seu idioma
 home,Home,홈,ホーム,主页,首頁,Beranda,Trang chủ,หน้าหลัก,Startseite,Startsite,Accueil,Home,Inicio,Главная,Início,Início
-keyscope,Keyscope,키스코프,キースコープ
-empty,Empty,비어있음
-field,Field,필드
-value,Value,값
-actions,Actions,작업
-score,Score,점수
-member,Member,멤버
-enterStringValue,Enter string value...,문자열 값 입력
-deleteKey,Delete Key,키 삭제
-addMember,Add Member,멤버 추가,
-addSetMember,Add Set Member,집합 멤버 추가
-addZSetMember,Add ZSet Member,정렬 집합 멤버 추가,
-addItem,Add Item,항목 추가
-addField,Add Field,필드 추가
-cancel,Cancel,취소
-delete,Delete,삭제
-save,Save,저장
-saveChanges,Save Changes,변경사항 저장
-editValue,Edit Value,값 편집
-editField,Edit Field,필드 편집
-forever,Forever,만료없음
-valueUpdate1,Value updated!,값이 갱신됨!
-error,Error,오류
-deleteKey2,"Delete \"%key$s\"?","\"%key$s\"를 삭제할까요?"
-areYouSureYouWantToDeleteKey,"Are you sure you want to delete \"%key$s\"?","키 \"%key$s\"를 정말 삭제할까요?"
+keyscope,Keyscope,키스코프,キースコープ,键探,鍵探,Keyscope,Keyscope,Keyscope,Keyscope,Keyscope,Keyscope,Keyscope,Keyscope,Keyscope,Keyscope,Keyscope
+empty,Empty,비어있음,空,为空,為空,Kosong,Trống,ว่าง,Leer,Leer,Vide,Vuoto,Vacío,Пусто,Vazio,Vazio
+field,Field,필드,フィールド,字段,欄位,Kolom,Trường,ฟิลด์,Feld,Feld,Champ,Campo,Campo,Поле,Campo,Campo
+value,Value,값,値,值,值,Nilai,Giá trị,ค่า,Wert,Wert,Valeur,Valore,Valor,Значение,Valor,Valor
+actions,Actions,작업,操作,操作,操作,Tindakan,Hành động,การดำเนินการ,Aktionen,Aktionen,Actions,Azioni,Acciones,Действия,Ações,Ações
+score,Score,점수,スコア,分数,分數,Skor,Điểm,คะแนน,Punktzahl,Punktzahl,Score,Punteggio,Puntuación,Очки,Pontuação,Pontuação
+member,Member,멤버,メンバー,成员,成員,Anggota,Thành viên,สมาชิก,Mitglied,Mitglied,Membre,Membro,Miembro,Участник,Membro,Membro
+enterStringValue,Enter string value...,문자열 값 입력,文字列の値を入力...,输入字符串值...,輸入字串值...,Masukkan nilai string...,Nhập giá trị chuỗi...,ใส่ค่าสตริง...,Zeichenfolge eingeben...,Zeichenfolge eingeben...,Entrez la valeur de chaîne...,Inserisci valore stringa...,Introduce valor de cadena...,Введите строковое значение...,Introduza valor de cadeia...,Insira valor de string...
+deleteKey,Delete Key,키 삭제,キーを削除,删除键,刪除鍵,Hapus Kunci,Xóa khóa,ลบคีย์,Schlüssel löschen,Schlüssel löschen,Supprimer la clé,Elimina chiave,Eliminar clave,Удалить ключ,Eliminar chave,Excluir chave
+addMember,Add Member,멤버 추가,メンバーを追加,添加成员,新增成員,Tambah Anggota,Thêm thành viên,เพิ่มสมาชิก,Mitglied hinzufügen,Mitglied hinzufügen,Ajouter un membre,Aggiungi membro,Añadir miembro,Добавить участника,Adicionar membro,Adicionar membro
+addSetMember,Add Set Member,집합 멤버 추가,セットメンバーを追加,添加集合成员,新增集合成員,Tambah anggota set,Thêm thành viên tập hợp,เพิ่มสมาชิกชุด,Set-Mitglied hinzufügen,Set-Mitglied hinzufügen,Ajouter membre de l'ensemble,Aggiungi membro set,Añadir miembro de conjunto,Добавить элемент множества,Adicionar membro do conjunto,Adicionar membro do conjunto
+addZSetMember,Add ZSet Member,정렬 집합 멤버 추가,ソート済みセットメンバーを追加,添加有序集合成员,新增排序集合成員,Tambah anggota ZSet,Thêm thành viên ZSet,เพิ่มสมาชิก ZSet,ZSet-Mitglied hinzufügen,ZSet-Mitglied hinzufügen,Ajouter membre ZSet,Aggiungi membro ZSet,Añadir miembro ZSet,Добавить элемент ZSet,Adicionar membro ZSet,Adicionar membro ZSet
+addItem,Add Item,항목 추가,アイテムを追加,添加项,新增項目,Tambah Item,Thêm mục,เพิ่มรายการ,Element hinzufügen,Element hinzufügen,Ajouter un élément,Aggiungi elemento,Añadir elemento,Добавить элемент,Adicionar item,Adicionar item
+addField,Add Field,필드 추가,フィールドを追加,添加字段,新增欄位,Tambah Kolom,Thêm trường,เพิ่มฟิลด์,Feld hinzufügen,Feld hinzufügen,Ajouter un champ,Aggiungi campo,Añadir campo,Добавить поле,Adicionar campo,Adicionar campo
+cancel,Cancel,취소,キャンセル,取消,取消,Batal,Hủy,ยกเลิก,Abbrechen,Abbrechen,Annuler,Annulla,Cancelar,Отмена,Cancelar,Cancelar
+delete,Delete,삭제,削除,删除,刪除,Hapus,Xóa,ลบ,Löschen,Löschen,Supprimer,Elimina,Eliminar,Удалить,Eliminar,Excluir
+save,Save,저장,保存,保存,儲存,Simpan,Lưu,บันทึก,Speichern,Speichern,Enregistrer,Salva,Guardar,Сохранить,Guardar,Salvar
+saveChanges,Save Changes,변경사항 저장,変更を保存,保存更改,儲存變更,Simpan Perubahan,Lưu thay đổi,บันทึกการเปลี่ยนแปลง,Änderungen speichern,Änderungen speichern,Enregistrer les modifications,Salva modifiche,Guardar cambios,Сохранить изменения,Guardar alterações,Salvar alterações
+editValue,Edit Value,값 편집,値を編集,编辑值,編輯值,Edit Nilai,Chỉnh sửa giá trị,แก้ไขค่า,Wert bearbeiten,Wert bearbeiten,Modifier la valeur,Modifica valore,Editar valor,Редактировать значение,Editar valor,Editar valor
+editField,Edit Field,필드 편집,フィールドを編集,编辑字段,編輯欄位,Edit Kolom,Chỉnh sửa trường,แก้ไขฟิลด์,Feld bearbeiten,Feld bearbeiten,Modifier le champ,Modifica campo,Editar campo,Редактировать поле,Editar campo,Editar campo
+forever,Forever,만료없음,期限なし,永久,永久,Selamanya,Mãi mãi,ตลอดไป,Für immer,Für immer,Pour toujours,Per sempre,Para siempre,Навсегда,Para sempre,Para sempre
+valueUpdate1,Value updated!,값이 갱신됨!,値が更新されました！,值已更新！,值已更新！,Nilai diperbarui!,Giá trị đã được cập nhật!,อัปเดตค่าแล้ว!,Wert aktualisiert!,Wert aktualisiert!,Valeur mise à jour !,Valore aggiornato!,¡Valor actualizado!,Значение обновлено!,Valor atualizado!,Valor atualizado!
+error,Error,오류,エラー,错误,錯誤,Kesalahan,Lỗi,ข้อผิดพลาด,Fehler,Fehler,Erreur,Errore,Error,Ошибка,Erro,Erro
+deleteKey2,"Delete %key$s?","%key$s를 삭제할까요?","%key$sを削除しますか？","删除 %key$s?","刪除 %key$s?","Hapus %key$s?","Xóa %key$s?","ลบ %key$s?","Lösche %key$s?","Lösche %key$s?","Supprimer %key$s ?","Eliminare %key$s?","¿Eliminar %key$s?","Удалить %key$s?","Eliminar %key$s?","Excluir %key$s?"
+areYouSureYouWantToDeleteKey,"Are you sure you want to delete %key$s?","키 %key$s를 정말 삭제할까요?","本当に %key$s を削除しますか？","您确定要删除 %key$s 吗？","您確定要刪除 %key$s 嗎？","Apakah Anda yakin ingin menghapus %key$s?","Bạn có chắc muốn xóa %key$s không?","คุณแน่ใจหรือว่าต้องการลบ %key$s?","Sind Sie sicher, dass Sie %key$s löschen möchten?","Sind Sie sicher, dass Sie %key$s löschen möchten?","Êtes-vous sûr de vouloir supprimer %key$s ?","Sei sicuro di voler eliminare %key$s?","¿Estás seguro de que deseas eliminar %key$s?","Вы уверены, что хотите удалить %key$s?","Tem a certeza de que pretende eliminar %key$s?","Tem certeza de que deseja excluir %key$s?"
 openConnectionManager,Open Connection Manager,연결 관리자 열기,接続マネージャーを開く,打开连接管理器,打開連線管理器,Buka Manajer Koneksi,Mở Trình quản lý Kết nối,เปิดตัวจัดการการเชื่อมต่อ,Verbindungs-Manager öffnen,Verbindungs-Manager öffnen,Ouvrir le Gestionnaire de Connexion,Apri Gestore Connessioni,Abrir Administrador de Conexiones,Открыть диспетчер подключений,Abrir Gestor de Conexões,Abrir Gerenciador de Conexões
-selectKeyToViewDetails,Select a key to view details,상세보기할 키 선택
+selectKeyToViewDetails,Select a key to view details,상세보기할 키 선택,詳細を表示するキーを選択,选择一个键以查看详细信息,選擇一個鍵以查看詳細資訊,Pilih kunci untuk melihat detail,Chọn một khóa để xem chi tiết,เลือกคีย์เพื่อดูรายละเอียด,"Wählen Sie einen Schlüssel, um Details anzuzeigen","Wählen Sie einen Schlüssel, um Details anzuzeigen",Sélectionnez une clé pour voir les détails,Seleziona una chiave per visualizzare i dettagli,Selecciona una clave para ver detalles,"Выберите ключ, чтобы просмотреть детали",Selecione uma chave para ver detalhes,Selecione uma chave para ver detalhes
 changeLanguage,Change Language,언어 변경,言語を変更,更改语言,變更語言,Ganti Bahasa,Đổi ngôn ngữ,เปลี่ยนภาษา,Sprache ändern,Sprach ändere,Changer de langue,Cambia lingua,Cambiar idioma,Изменить язык,Alterar idioma,Alterar idioma
 searchLanguages,Search languages...,언어 검색...,言語を検索...,搜索语言...,搜尋語言...,Cari bahasa...,Tìm kiếm ngôn ngữ...,ค้นหาภาษา...,Sprachen suchen...,Sprach sueche...,Rechercher des langues...,Cerca lingue...,Buscar idiomas...,Поиск языков...,Procurar idiomas...,Pesquisar idiomas...
 currentlyUsedLanguage,Current Language,현재 사용 중인 언어,現在の言語,当前语言,目前使用的語言,Bahasa Saat Ini,Ngôn ngữ hiện tại,ภาษาปัจจุบัน,Aktuelle Sprache,Aktuelli Sprach,Langue actuelle,Lingua corrente,Idioma actual,Текущий язык,Idioma atual,Idioma atual
 recentlyUsedLanguages,Recently Used,최근 사용한 언어,最近使用した言語,最近使用,最近使用,Baru Saja Digunakan,Được sử dụng gần đây,ใช้ล่าสุด,Kürzlich verwendet,Vor churzem bruucht,Récemment utilisé,Usato di recente,Usado recientemente,Недавно использованные,Recentemente usado,Usado recentemente
 allLanguages,All Languages,모든 언어,すべての言語,所有语言,所有語言,Semua Bahasa,Tất cả ngôn ngữ,ทุกภาษา,Alle Sprachen,Alli Sprachä,Toutes les langues,Tutte le lingue,Todos los idiomas,Все языки,Todos os idiomas,Todos os idiomas
+dataExplorer,Data Explorer,데이터 탐색기,データエクスプローラー,数据浏览器,資料探索器,Penjelajah Data,Trình khám phá dữ liệu,ตัวสำรวจข้อมูล,Daten-Explorer,Daten-Explorer,Explorateur de données,Esplora dati,Explorador de datos,Обозреватель данных,Explorador de Dados,Explorador de Dados
+dashboard,Dashboard,대시보드,ダッシュボード,仪表板,儀表板,Dasbor,Bảng điều khiển,แดชบอร์ด,Dashboard,Dashboard,Tableau de bord,Cruscotto,Panel de control,Панель управления,Painel,Painel
+disconnect,Disconnect,접속해제,切断,断开连接,斷開連接,Putuskan Koneksi,Ngắt kết nối,ตัดการเชื่อมต่อ,Trennen,Trennen,Déconnecter,Disconnetti,Desconectar,Отключить,Desconectar,Desconectar
+refresh,Refresh,새로고침,更新,刷新,重新整理,Segarkan,Làm mới,รีเฟรช,Aktualisieren,Aktualisieren,Actualiser,Ricarica,Actualizar,Обновить,Abrir Atualizar,Abrir Atualizar
+server,Server,서버,サーバー,服务器,伺服器,Server,Máy chủ,เซิร์ฟเวอร์,Server,Server,Serveur,Server,Servidor,Сервер,Servidor,Servidor
+memory,Memory,메모리,メモリ,内存,記憶體,Memori,Bộ nhớ,หน่วยความจำ,Speicher,Speicher,Mémoire,Memoria,Memoria,Память,Memória,Memória
+stats,Stats,통계,統計,统计,統計,Statistik,Thống kê,สถิติ,Statistiken,Statistiken,Statistiques,Statistiche,Estadísticas,Статистика,Estatísticas,Estatísticas
+version,Version,버전,バージョン,版本,版本,Versi,Phiên bản,เวอร์ชัน,Version,Version,Version,Versione,Versión,Версия,Versão,Versão
+os,OS,운영체제,OS,操作系统,作業系統,OS,Hệ điều hành,ระบบปฏิบัติการ,Betriebssystem,Betriebssystem,Système d'exploitation,Sistema operativo,Sistema operativo,ОС,SO,SO
+port,Port,포트,ポート,端口,連接埠,Port,Cổng,พอร์ต,Port,Port,Port,Porta,Puerto,Порт,Porta,Porta
+uptime,Uptime,가동시간,稼働時間,运行时间,運行時間,Waktu aktif,Thời gian hoạt động,ระยะเวลาทำงาน,Betriebszeit,Betriebszeit,Temps de fonctionnement,Tempo di attività,Tiempo de actividad,Время работы,Tempo de atividade,Tempo de atividade
+usedMemory,Used Memory,사용 메모리,使用メモリ,已用内存,已用記憶體,Memori Terpakai,Bộ nhớ đã sử dụng,หน่วยความจำที่ใช้,Genutzter Speicher,Genutzter Speicher,Mémoire utilisée,Memoria utilizzata,Memoria usada,Используемая память,Memória usada,Memória usada
+peakMemory,Peak Memory,피크 메모리,ピークメモリ,峰值内存,峰值記憶體,Memori Puncak,Bộ nhớ đỉnh,หน่วยความจำสูงสุด,Spitzen-Speicher,Spitzen-Speicher,Mémoire maximale,Memoria di picco,Memoria máxima,Пиковая память,Memória máxima,Memória máxima
+fragRatio,Frag Ratio,단편화 비율,フラグメンテーション比,碎片率,碎片比率,Rasio fragmentasi,Tỷ lệ phân mảnh,อัตราการแตกเป็นชิ้น,Fragmentierungsquote,Fragmentierungsquote,Taux de fragmentation,Rapporto di frammentazione,Ratio de fragmentación,Коэффициент фрагментации,Taxa de fragmentação,Taxa de fragmentação
+connectedClients,Connected Clients,연결된 클라이언트,接続中のクライアント,已连接客户端,已連線客戶端,Klien Terhubung,Khách hàng kết nối,ไคลเอนต์ที่เชื่อมต่อ,Verbundenen Clients,Verbundenen Clients,Clients connectés,Client connessi,Clientes conectados,Подключенные клиенты,Clientes conectados,Clientes conectados
+totalConnections,Total Connections,총 연결 수,接続総数,连接总数,連線總數,Total Koneksi,Tổng kết nối,การเชื่อมต่อทั้งหมด,Gesamtverbindungen,Gesamtverbindungen,Connexions totales,Connessioni totali,Conexiones totales,Всего подключений,Conexões totais,Conexões totais
+totalCommands,Total Commands,총 명령 수,コマンド総数,命令总数,命令總數,Total Perintah,Tổng lệnh,คำสั่งทั้งหมด,Gesamtbefehle,Gesamtbefehle,Commandes totales,Comandi totali,Comandos totales,Всего команд,Comandos totais,Comandos totais
+noInfoAvailable,No info available,정보 없음,情報は利用できません,无可用信息,無可用資訊,Tidak ada informasi tersedia,Không có thông tin,ไม่มีข้อมูล,Keine Informationen verfügbar,Keine Informationen verfügbar,Aucune information disponible,Nessuna informazione disponibile,No hay información disponible,Информация недоступна,Nenhuma informação disponível,Nenhuma informação disponível
+retry,Retry,재시도,再試行,重试,重試,Coba lagi,Thử lại,ลองอีกครั้ง,Erneut versuchen,Erneut versuchen,Réessayer,Riprova,Reintentar,Повторить,Tentar novamente,Tentar novamente
+errorFetchingInfo,Error fetching INFO command,INFO 명령을 가져오는 중 오류 발생,INFO コマンドの取得中にエラーが発生しました,获取 INFO 命令时出错,擷取 INFO 命令時出錯,Kesalahan mengambil perintah INFO,Lỗi khi lấy lệnh INFO,เกิดข้อผิดพลาดในการดึงคำสั่ง INFO,Fehler beim Abrufen des INFO-Befehls,Fehler beim Abrufen des INFO-Befehls,Erreur lors de la récupération de la commande INFO,Errore durante il recupero del comando INFO,Error al obtener el comando INFO,Ошибка при получении команды INFO,Erro ao buscar o comando INFO,Erro ao buscar o comando INFO
+keyCreatedSuccessfully1,Key created successfully!,키가 생성되었습니다!,キーが作成されました！,键已创建！,鍵已建立！,Kunci berhasil dibuat!,Tạo khóa thành công!,สร้างคีย์สำเร็จ!,Schlüssel erfolgreich erstellt!,Schlüssel erfolgreich erstellt!,Clé créée avec succès !,Chiave creata con successo!,¡Clave creada con éxito!,Ключ успешно создан!,Chave criada com sucesso!,Chave criada com sucesso!
+createNewKey,Create New Key,새 키 생성,新しいキーを作成,创建新键,建立新鍵,Buat Kunci Baru,Tạo khóa mới,สร้างคีย์ใหม่,Neuen Schlüssel erstellen,Neuen Schlüssel erstellen,Créer une nouvelle clé,Crea nuova chiave,Crear nueva clave,Создать новый ключ,Criar nova chave,Criar nova chave
+searchKeysHint,Search keys (e.g. user:*),키 검색 (예: user:*),キーを検索（例: user:*）,搜索键（例如：user:*）,搜尋鍵（例如：user:*）,Cari kunci (mis. user:*),Tìm kiếm khóa (ví dụ: user:*),ค้นหาคีย์ (เช่น user:*),Schlüssel suchen (z.B. user:*),Schlüssel suchen (z.B. user:*),Rechercher des clés (ex. user:*),Cerca chiavi (es. user:*),Buscar claves (p. ej. user:*),Поиск ключей (например: user:*),Pesquisar chaves (ex. user:*),Pesquisar chaves (ex. user:*)
+keysLoaded,%keysLength$s keys loaded,%keysLength$s개의 키 로드됨,%keysLength$s 個のキーを読み込みました,已加载 %keysLength$s 个键,已載入 %keysLength$s 個鍵,Telah dimuat %keysLength$s kunci,Đã tải %keysLength$s khóa,โหลดคีย์ %keysLength$s รายการแล้ว,%keysLength$s Schlüssel geladen,%keysLength$s Schlüssel geladen,%keysLength$s clés chargées,Caricate %keysLength$s chiavi,Se cargaron %keysLength$s claves,Загружено %keysLength$s ключей,%keysLength$s chaves carregadas,%keysLength$s chaves carregadas
+operationSuccessful,Operation successful,작업 성공,操作が成功しました,操作成功,操作成功,Operasi berhasil,Thao tác thành công,การดำเนินการสำเร็จ,Vorgang erfolgreich,Vorgang erfolgreich,Opération réussie,Operazione riuscita,Operación exitosa,Операция выполнена успешно,Operação bem-sucedida,Operação bem-sucedida
+addHashField,Add Hash Field,해시 필드 추가,ハッシュフィールドを追加,添加哈希字段,新增哈希欄位,Tambah Field Hash,Thêm trường Hash,เพิ่มฟิลด์แฮช,Hash-Feld hinzufügen,Hash-Feld hinzufügen,Ajouter un champ de hachage,Aggiungi campo hash,Agregar campo hash,Добавить поле хэша,Adicionar campo hash,Adicionar campo hash
+addListItem,Add List Item,리스트 항목 추가,リスト項目を追加,添加列表项,新增列表項目,Tambah Item Daftar,Thêm mục danh sách,เพิ่มรายการในรายการ,Listeneintrag hinzufügen,Listeneintrag hinzufügen,Ajouter un élément de liste,Aggiungi elemento alla lista,Agregar elemento de lista,Добавить элемент списка,Adicionar item à lista,Adicionar item à lista
+editItemAt,Edit Item at #%index$s,#%index$s에서 항목 편집,#%index$s の項目を編集,编辑 #%index$s 处的项,編輯 #%index$s 處的項目,Edit Item di #%index$s,Chỉnh sửa mục tại #%index$s,แก้ไขรายการที่ #%index$s,Element an #%index$s bearbeiten,Element an #%index$s bearbeiten,Modifier l'élément à #%index$s,Modifica elemento in #%index$s,Editar elemento en #%index$s,Редактировать элемент на #%index$s,Editar item em #%index$s,Editar item em #%index$s
+updateScore,Update Score: %member$s, 점수 업데이트: %member$s,スコアを更新: %member$s,更新分数：%member$s,更新分數：%member$s,Perbarui Skor: %member$s,Cập nhật điểm: %member$s,อัปเดตคะแนน: %member$s,Punktestand aktualisieren: %member$s,Punktestand aktualisieren: %member$s,Mettre à jour le score : %member$s,Aggiorna punteggio: %member$s,Actualizar puntuación: %member$s,Обновить счет: %member$s,Atualizar pontuação: %member$s,Atualizar pontuação: %member$s
+keyName,Key Name,키 이름,キー名,键名,鍵名,Nama Kunci,Tên khóa,ชื่อคีย์,Schlüsselname,Schlüsselname,Nom de la clé,Nome chiave,Nombre de la clave,Имя ключа,Nome da chave,Nome da chave
+eg,e.g.,예:,例：,例如：,例如：,mis.,ví dụ:,เช่น:,z. B.,z. B.,p.ex.,es.,p. ej.,напр.:,p.ex.,p.ex.
+required,Required,필수,必須,必填,必填,Diperlukan,Bắt buộc,จำเป็น,Erforderlich,Erforderlich,Requis,Obbligatorio,Requerido,Обязательно,Obrigatório,Obrigatório
+type,Type,타입,タイプ,类型,類型,Tipe,Loại,ประเภท,Typ,Typ,Type,Tipo,Tipo,Тип,Tipo,Tipo
+initialValue,Initial Value,초기 값,初期値,初始值,初始值,Nilai Awal,Giá trị ban đầu,ค่าตั้งต้น,Anfangswert,Anfangswert,Valeur initiale,Valore iniziale,Valor inicial,Начальное значение,Valor inicial,Valor inicial
+initialItem,Initial Item,초기 항목,初期項目,初始项,初始項目,Item Awal,Mục ban đầu,รายการเริ่มต้น,Anfangselement,Anfangselement,Élément initial,Elemento iniziale,Elemento inicial,Начальный элемент,Item inicial,Item inicial
+ttlSecondsOptional,"TTL (Seconds, Optional)","TTL (초 단위, 선택사항)","TTL（秒、任意）","TTL（秒，可选）","TTL（秒，可選）","TTL (Detik, Opsional)","TTL (Giây, Tùy chọn)","TTL (วินาที, ไม่บังคับ)","TTL (Sekunden, optional)","TTL (Sekunden, optional)","TTL (secondes, optionnel)","TTL (secondi, opzionale)","TTL (segundos, opcional)","TTL (секунды, необязательно)","TTL (Segundos, Opcional)","TTL (Segundos, Opcional)"
+create,Create,생성,作成,创建,建立,Buat,Tạo,สร้าง,Erstellen,Erstellen,Créer,Crea,Crear,Создать,Criar,Criar
+newConnection,New Connection,새 연결,新しい接続,新连接,新連線,Koneksi Baru,Kết nối mới,การเชื่อมต่อใหม่,Neue Verbindung,Neue Verbindung,Nouvelle connexion,Nuova connessione,Nueva conexión,Новое подключение,Nova conexão,Nova conexão
+connections,Connections,접속,接続,连接,連線,Koneksi,Kết nối,การเชื่อมต่อ,Verbindungen,Verbindungen,Connexions,Connessioni,Conexiones,Подключения,Conexões,Conexões
+editConnection,Edit Connection,연결 편집,接続を編集,编辑连接,編輯連線,Edit Koneksi,Chỉnh sửa kết nối,แก้ไขการเชื่อมต่อ,Verbindung bearbeiten,Verbindung bearbeiten,Modifier la connexion,Modifica connessione,Editar conexión,Редактировать подключение,Editar conexão,Editar conexão
+general,General,일반,一般,常规,一般,Umum,Chung,ทั่วไป,Allgemein,Allgemein,Général,Generale,General,Общие,Geral,Geral
+name,Name,이름,名前,名称,名稱,Nama,Tên,ชื่อ,Name,Name,Nom,Nome,Nombre,Имя,Nome,Nome
+connectionDetails,Connection Details,연결 상세,接続の詳細,连接详情,連線詳細,Detail Koneksi,Chi tiết kết nối,รายละเอียดการเชื่อมต่อ,Verbindungsdetails,Verbindungsdetails,Détails de la connexion,Dettagli connessione,Detalles de conexión,Детали подключения,Detalhes da conexão,Detalhes da conexão
+host,Host,호스트,ホスト,主机,主機,Host,Máy chủ,โฮสต์,Host,Host,Hôte,Host,Host,Хост,Host,Host
+username,Username,사용자 이름,ユーザー名,用户名,使用者名稱,Nama pengguna,Tên đăng nhập,ชื่อผู้ใช้,Benutzername,Benutzername,Nom d'utilisateur,Nome utente,Nombre de usuario,Имя пользователя,Nome de usuário,Nome de usuário
+password,Password,비밀번호,パスワード,密码,密碼,Kata sandi,Mật khẩu,รหัสผ่าน,Passwort,Passwort,Mot de passe,Password,Contraseña,Пароль,Senha,Senha
+advanced,Advanced,고급,詳細設定,高级,進階,Lanjutan,Nâng cao,ขั้นสูง,Erweitert,Erweitert,Avancé,Avanzato,Avanzado,Дополнительно,Avançado,Avançado
+useSshTunneling,Use SSH Tunneling,SSH 터널링 사용,SSHトンネリングを使用,使用 SSH 隧道,使用 SSH 隧道,Gunakan Tunneling SSH,Sử dụng SSH Tunneling,ใช้การเชื่อมต่อ SSH,SSH-Tunneling verwenden,SSH-Tunneling verwenden,Utiliser le tunneling SSH,Usa tunneling SSH,Usar túnel SSH,Использовать SSH-туннелирование,Usar tunelamento SSH,Usar tunelamento SSH
+testConnection,Test Connection,연결 테스트,接続をテスト,测试连接,測試連線,Uji Koneksi,Kiểm tra kết nối,ทดสอบการเชื่อมต่อ,Verbindung testen,Verbindung testen,Tester la connexion,Testa connessione,Probar conexión,Проверить подключение,Testar conexão,Testar conexão
+connecting,Connecting...,연결 중...,接続中...,连接中...,連線中...,Menghubungkan...,Đang kết nối...,กำลังเชื่อมต่อ...,Verbinden...,Verbinden...,Connexion en cours...,Connessione in corso...,Conectando...,Подключение...,A ligar...,Conectando...
+ok,OK,확인,オッケー,确定,確定,OK,OK,ตกลง,OK,OK,OK,OK,OK,OK,OK,OK
+connectionSuccessful1,Connection Successful!,연결 성공!,接続に成功しました！,连接成功！,連線成功！,Koneksi Berhasil!,Kết nối thành công!,เชื่อมต่อสำเร็จ!,Verbindung erfolgreich!,Verbindung erfolgreich!,Connexion réussie !,Connessione riuscita!,¡Conexión exitosa!,Подключение успешно!,Conexão bem-sucedida!,Conexão bem-sucedida!
