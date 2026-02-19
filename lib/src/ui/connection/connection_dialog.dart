@@ -19,6 +19,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../i18n.dart' show I18n;
 import '../dashboard/dashboard_screen.dart';
+import 'connections_provider.dart';
 import 'model/connection_config.dart';
 import 'repository/connection_repository.dart';
 

@@ -35,4 +35,48 @@ class ConnectionConfig {
     this.useSsh = false,
     this.useTls = false,
   });
+
+  ConnectionConfig copyWith({
+    String? id,
+    String? name,
+    String? host,
+    int? port,
+    String? username,
+    String? password,
+    bool? useSsh,
+    bool? useTls,
+  }) =>
+      ConnectionConfig(
+        id: id ?? this.id,
+        name: name ?? this.name,
+        host: host ?? this.host,
+        port: port ?? this.port,
+        username: username ?? this.username,
+        password: password ?? this.password,
+        useSsh: useSsh ?? this.useSsh,
+        useTls: useTls ?? this.useTls,
+      );
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': name,
+        'host': host,
+        'port': port,
+        if (username != null) 'username': username,
+        if (password != null) 'password': password,
+        'useSsh': useSsh,
+        'useTls': useTls,
+      };
+
+  factory ConnectionConfig.fromJson(Map<String, dynamic> json) =>
+      ConnectionConfig(
+        id: json['id'] as String,
+        name: json['name'] as String? ?? 'New Connection',
+        host: json['host'] as String? ?? '127.0.0.1',
+        port: json['port'] as int? ?? 6379,
+        username: json['username'] as String?,
+        password: json['password'] as String?,
+        useSsh: json['useSsh'] as bool? ?? false,
+        useTls: json['useTls'] as bool? ?? false,
+      );
 }

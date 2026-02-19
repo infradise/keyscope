@@ -493,21 +493,21 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
   }
 
   Color _getTypeColor(String type) => switch (type) {
-    'string' => Colors.blue,
-    'hash' => Colors.green,
-    'list' => Colors.orange,
-    'set' => Colors.purple,
-    'zset' => Colors.indigo,
-    'ReJSON-RL' => Colors.brown,
-    'stream' => Colors.blueGrey,
-    'MBbloom--' => Colors.pink,
-    'vectorset' => Colors.amber,
-    'TSDB-TYPE' => Colors.teal,
-    _ => () {
-      print('Type: $type');
-      return Colors.grey;
-    }(),
-  };  
+        'string' => Colors.blue,
+        'hash' => Colors.green,
+        'list' => Colors.orange,
+        'set' => Colors.purple,
+        'zset' => Colors.indigo,
+        'ReJSON-RL' => Colors.brown,
+        'stream' => Colors.blueGrey,
+        'MBbloom--' => Colors.pink,
+        'vectorset' => Colors.amber,
+        'TSDB-TYPE' => Colors.teal,
+        _ => () {
+            print('Type: $type');
+            return Colors.grey;
+          }(),
+      };
 
   // --- Actions & Dialogs ---
 

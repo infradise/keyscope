@@ -58,7 +58,7 @@ dependencies:
   #   git:
   #     url: https://github.com/infradise/keyscope_client
   #     ref: main
-  # shared_preferences: ^2.5.4
+  shared_preferences: ^2.5.4
   # system_theme: ^3.2.0
   # toastification: ^3.0.3
   # uuid: ^4.5.2
