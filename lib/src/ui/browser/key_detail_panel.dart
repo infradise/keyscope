@@ -503,9 +503,17 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
       case 'set':
         return Colors.purple;
       case 'zset':
-        return Colors.red;
+        return Colors.indigo;
       case 'ReJSON-RL':
         return Colors.brown;
+      case 'stream':
+        return Colors.blueGrey;
+      case 'MBbloom--':
+        return Colors.pink;
+      case 'vectorset':
+        return Colors.amber;
+      case 'TSDB-TYPE':
+        return Colors.teal;
       default:
         print('Type: $type');
         return Colors.grey;
