@@ -98,6 +98,9 @@ class I18n {
 
   String get selectKeyToViewDetails => _getText("selectKeyToViewDetails");
 
+  String get selectConnectionToViewDetails =>
+      _getText("selectConnectionToViewDetails");
+
   String get changeLanguage => _getText("changeLanguage");
 
   String get searchLanguages => _getText("searchLanguages");
@@ -151,6 +154,8 @@ class I18n {
   String get keyCreatedSuccessfully1 => _getText("keyCreatedSuccessfully1");
 
   String get createNewKey => _getText("createNewKey");
+
+  String get createNewConnection => _getText("createNewConnection");
 
   String get searchKeysHint => _getText("searchKeysHint");
 
@@ -252,6 +257,7 @@ class I18n {
     "areYouSureYouWantToDeleteKey": r"Are you sure you want to delete %key$s?",
     "openConnectionManager": "Open Connection Manager",
     "selectKeyToViewDetails": "Select a key to view details",
+    "selectConnectionToViewDetails": "Select a connection to view details",
     "changeLanguage": "Change Language",
     "searchLanguages": "Search languages...",
     "currentlyUsedLanguage": "Current Language",
@@ -279,6 +285,7 @@ class I18n {
     "errorFetchingInfo": "Error fetching INFO command",
     "keyCreatedSuccessfully1": "Key created successfully!",
     "createNewKey": "Create New Key",
+    "createNewConnection": "Create New Connection",
     "searchKeysHint": "Search keys (e.g. user:*)",
     "keysLoaded": r"%keysLength$s keys loaded",
     "operationSuccessful": "Operation successful",
@@ -346,6 +353,7 @@ class I18n {
     "areYouSureYouWantToDeleteKey": r"키 %key$s를 정말 삭제할까요?",
     "openConnectionManager": "연결 관리자 열기",
     "selectKeyToViewDetails": "상세보기할 키 선택",
+    "selectConnectionToViewDetails": "상세 정보를 보려면 연결을 선택하세요",
     "changeLanguage": "언어 변경",
     "searchLanguages": "언어 검색...",
     "currentlyUsedLanguage": "현재 사용 중인 언어",
@@ -373,6 +381,7 @@ class I18n {
     "errorFetchingInfo": "INFO 명령을 가져오는 중 오류 발생",
     "keyCreatedSuccessfully1": "키가 생성되었습니다!",
     "createNewKey": "새 키 생성",
+    "createNewConnection": "새 연결 생성",
     "searchKeysHint": "키 검색 (예: user:*)",
     "keysLoaded": r"%keysLength$s개의 키 로드됨",
     "operationSuccessful": "작업 성공",
@@ -389,7 +398,7 @@ class I18n {
     "ttlSecondsOptional": "TTL (초 단위, 선택사항)",
     "create": "생성",
     "newConnection": "새 연결",
-    "connections": "접속",
+    "connections": "연결",
     "editConnection": "연결 편집",
     "general": "일반",
     "name": "이름",
@@ -440,6 +449,7 @@ class I18n {
     "areYouSureYouWantToDeleteKey": r"本当に %key$s を削除しますか？",
     "openConnectionManager": "接続マネージャーを開く",
     "selectKeyToViewDetails": "詳細を表示するキーを選択",
+    "selectConnectionToViewDetails": "詳細を表示する接続を選択してください",
     "changeLanguage": "言語を変更",
     "searchLanguages": "言語を検索...",
     "currentlyUsedLanguage": "現在の言語",
@@ -467,6 +477,7 @@ class I18n {
     "errorFetchingInfo": "INFO コマンドの取得中にエラーが発生しました",
     "keyCreatedSuccessfully1": "キーが作成されました！",
     "createNewKey": "新しいキーを作成",
+    "createNewConnection": "新しい接続を作成",
     "searchKeysHint": "キーを検索（例: user:*）",
     "keysLoaded": r"%keysLength$s 個のキーを読み込みました",
     "operationSuccessful": "操作が成功しました",
@@ -534,6 +545,7 @@ class I18n {
     "areYouSureYouWantToDeleteKey": r"您确定要删除 %key$s 吗？",
     "openConnectionManager": "打开连接管理器",
     "selectKeyToViewDetails": "选择一个键以查看详细信息",
+    "selectConnectionToViewDetails": "选择一个连接以查看详细信息",
     "changeLanguage": "更改语言",
     "searchLanguages": "搜索语言...",
     "currentlyUsedLanguage": "当前语言",
@@ -561,6 +573,7 @@ class I18n {
     "errorFetchingInfo": "获取 INFO 命令时出错",
     "keyCreatedSuccessfully1": "键已创建！",
     "createNewKey": "创建新键",
+    "createNewConnection": "创建新连接",
     "searchKeysHint": "搜索键（例如：user:*）",
     "keysLoaded": r"已加载 %keysLength$s 个键",
     "operationSuccessful": "操作成功",
@@ -628,6 +641,7 @@ class I18n {
     "areYouSureYouWantToDeleteKey": r"您確定要刪除 %key$s 嗎？",
     "openConnectionManager": "打開連線管理器",
     "selectKeyToViewDetails": "選擇一個鍵以查看詳細資訊",
+    "selectConnectionToViewDetails": "選擇一個連線以查看詳細資訊",
     "changeLanguage": "變更語言",
     "searchLanguages": "搜尋語言...",
     "currentlyUsedLanguage": "目前使用的語言",
@@ -655,6 +669,7 @@ class I18n {
     "errorFetchingInfo": "擷取 INFO 命令時出錯",
     "keyCreatedSuccessfully1": "鍵已建立！",
     "createNewKey": "建立新鍵",
+    "createNewConnection": "建立新連線",
     "searchKeysHint": "搜尋鍵（例如：user:*）",
     "keysLoaded": r"已載入 %keysLength$s 個鍵",
     "operationSuccessful": "操作成功",
@@ -723,6 +738,7 @@ class I18n {
         r"Apakah Anda yakin ingin menghapus %key$s?",
     "openConnectionManager": "Buka Manajer Koneksi",
     "selectKeyToViewDetails": "Pilih kunci untuk melihat detail",
+    "selectConnectionToViewDetails": "Pilih koneksi untuk melihat detail",
     "changeLanguage": "Ganti Bahasa",
     "searchLanguages": "Cari bahasa...",
     "currentlyUsedLanguage": "Bahasa Saat Ini",
@@ -750,6 +766,7 @@ class I18n {
     "errorFetchingInfo": "Kesalahan mengambil perintah INFO",
     "keyCreatedSuccessfully1": "Kunci berhasil dibuat!",
     "createNewKey": "Buat Kunci Baru",
+    "createNewConnection": "Buat Koneksi Baru",
     "searchKeysHint": "Cari kunci (mis. user:*)",
     "keysLoaded": r"Telah dimuat %keysLength$s kunci",
     "operationSuccessful": "Operasi berhasil",
@@ -817,6 +834,7 @@ class I18n {
     "areYouSureYouWantToDeleteKey": r"Bạn có chắc muốn xóa %key$s không?",
     "openConnectionManager": "Mở Trình quản lý Kết nối",
     "selectKeyToViewDetails": "Chọn một khóa để xem chi tiết",
+    "selectConnectionToViewDetails": "Chọn một kết nối để xem chi tiết",
     "changeLanguage": "Đổi ngôn ngữ",
     "searchLanguages": "Tìm kiếm ngôn ngữ...",
     "currentlyUsedLanguage": "Ngôn ngữ hiện tại",
@@ -844,6 +862,7 @@ class I18n {
     "errorFetchingInfo": "Lỗi khi lấy lệnh INFO",
     "keyCreatedSuccessfully1": "Tạo khóa thành công!",
     "createNewKey": "Tạo khóa mới",
+    "createNewConnection": "Tạo kết nối mới",
     "searchKeysHint": "Tìm kiếm khóa (ví dụ: user:*)",
     "keysLoaded": r"Đã tải %keysLength$s khóa",
     "operationSuccessful": "Thao tác thành công",
@@ -911,6 +930,7 @@ class I18n {
     "areYouSureYouWantToDeleteKey": r"คุณแน่ใจหรือว่าต้องการลบ %key$s?",
     "openConnectionManager": "เปิดตัวจัดการการเชื่อมต่อ",
     "selectKeyToViewDetails": "เลือกคีย์เพื่อดูรายละเอียด",
+    "selectConnectionToViewDetails": "เลือกการเชื่อมต่อเพื่อดูรายละเอียด",
     "changeLanguage": "เปลี่ยนภาษา",
     "searchLanguages": "ค้นหาภาษา...",
     "currentlyUsedLanguage": "ภาษาปัจจุบัน",
@@ -938,6 +958,7 @@ class I18n {
     "errorFetchingInfo": "เกิดข้อผิดพลาดในการดึงคำสั่ง INFO",
     "keyCreatedSuccessfully1": "สร้างคีย์สำเร็จ!",
     "createNewKey": "สร้างคีย์ใหม่",
+    "createNewConnection": "สร้างการเชื่อมต่อใหม่",
     "searchKeysHint": "ค้นหาคีย์ (เช่น user:*)",
     "keysLoaded": r"โหลดคีย์ %keysLength$s รายการแล้ว",
     "operationSuccessful": "การดำเนินการสำเร็จ",
@@ -1007,6 +1028,8 @@ class I18n {
     "openConnectionManager": "Verbindungs-Manager öffnen",
     "selectKeyToViewDetails":
         "Wählen Sie einen Schlüssel, um Details anzuzeigen",
+    "selectConnectionToViewDetails":
+        "Verbindung auswählen, um Details anzuzeigen",
     "changeLanguage": "Sprache ändern",
     "searchLanguages": "Sprachen suchen...",
     "currentlyUsedLanguage": "Aktuelle Sprache",
@@ -1034,6 +1057,7 @@ class I18n {
     "errorFetchingInfo": "Fehler beim Abrufen des INFO-Befehls",
     "keyCreatedSuccessfully1": "Schlüssel erfolgreich erstellt!",
     "createNewKey": "Neuen Schlüssel erstellen",
+    "createNewConnection": "Neue Verbindung erstellen",
     "searchKeysHint": "Schlüssel suchen (z.B. user:*)",
     "keysLoaded": r"%keysLength$s Schlüssel geladen",
     "operationSuccessful": "Vorgang erfolgreich",
@@ -1103,6 +1127,7 @@ class I18n {
     "openConnectionManager": "Verbindungs-Manager öffnen",
     "selectKeyToViewDetails":
         "Wählen Sie einen Schlüssel, um Details anzuzeigen",
+    "selectConnectionToViewDetails": "Verbindig ussuche zum Detail aaluege",
     "changeLanguage": "Sprach ändere",
     "searchLanguages": "Sprach sueche...",
     "currentlyUsedLanguage": "Aktuelli Sprach",
@@ -1130,6 +1155,7 @@ class I18n {
     "errorFetchingInfo": "Fehler beim Abrufen des INFO-Befehls",
     "keyCreatedSuccessfully1": "Schlüssel erfolgreich erstellt!",
     "createNewKey": "Neuen Schlüssel erstellen",
+    "createNewConnection": "Neue Verbindig aalege",
     "searchKeysHint": "Schlüssel suchen (z.B. user:*)",
     "keysLoaded": r"%keysLength$s Schlüssel geladen",
     "operationSuccessful": "Vorgang erfolgreich",
@@ -1198,6 +1224,8 @@ class I18n {
         r"Êtes-vous sûr de vouloir supprimer %key$s ?",
     "openConnectionManager": "Ouvrir le Gestionnaire de Connexion",
     "selectKeyToViewDetails": "Sélectionnez une clé pour voir les détails",
+    "selectConnectionToViewDetails":
+        "Sélectionnez une connexion pour afficher les détails",
     "changeLanguage": "Changer de langue",
     "searchLanguages": "Rechercher des langues...",
     "currentlyUsedLanguage": "Langue actuelle",
@@ -1225,6 +1253,7 @@ class I18n {
     "errorFetchingInfo": "Erreur lors de la récupération de la commande INFO",
     "keyCreatedSuccessfully1": "Clé créée avec succès !",
     "createNewKey": "Créer une nouvelle clé",
+    "createNewConnection": "Créer une nouvelle connexion",
     "searchKeysHint": "Rechercher des clés (ex. user:*)",
     "keysLoaded": r"%keysLength$s clés chargées",
     "operationSuccessful": "Opération réussie",
@@ -1293,6 +1322,8 @@ class I18n {
     "openConnectionManager": "Apri Gestore Connessioni",
     "selectKeyToViewDetails":
         "Seleziona una chiave per visualizzare i dettagli",
+    "selectConnectionToViewDetails":
+        "Seleziona una connessione per visualizzare i dettagli",
     "changeLanguage": "Cambia lingua",
     "searchLanguages": "Cerca lingue...",
     "currentlyUsedLanguage": "Lingua corrente",
@@ -1320,6 +1351,7 @@ class I18n {
     "errorFetchingInfo": "Errore durante il recupero del comando INFO",
     "keyCreatedSuccessfully1": "Chiave creata con successo!",
     "createNewKey": "Crea nuova chiave",
+    "createNewConnection": "Crea nuova connessione",
     "searchKeysHint": "Cerca chiavi (es. user:*)",
     "keysLoaded": r"Caricate %keysLength$s chiavi",
     "operationSuccessful": "Operazione riuscita",
@@ -1388,6 +1420,8 @@ class I18n {
         r"¿Estás seguro de que deseas eliminar %key$s?",
     "openConnectionManager": "Abrir Administrador de Conexiones",
     "selectKeyToViewDetails": "Selecciona una clave para ver detalles",
+    "selectConnectionToViewDetails":
+        "Selecciona una conexión para ver los detalles",
     "changeLanguage": "Cambiar idioma",
     "searchLanguages": "Buscar idiomas...",
     "currentlyUsedLanguage": "Idioma actual",
@@ -1415,6 +1449,7 @@ class I18n {
     "errorFetchingInfo": "Error al obtener el comando INFO",
     "keyCreatedSuccessfully1": "¡Clave creada con éxito!",
     "createNewKey": "Crear nueva clave",
+    "createNewConnection": "Crear nueva conexión",
     "searchKeysHint": "Buscar claves (p. ej. user:*)",
     "keysLoaded": r"Se cargaron %keysLength$s claves",
     "operationSuccessful": "Operación exitosa",
@@ -1482,6 +1517,8 @@ class I18n {
     "areYouSureYouWantToDeleteKey": r"Вы уверены, что хотите удалить %key$s?",
     "openConnectionManager": "Открыть диспетчер подключений",
     "selectKeyToViewDetails": "Выберите ключ, чтобы просмотреть детали",
+    "selectConnectionToViewDetails":
+        "Выберите подключение для просмотра сведений",
     "changeLanguage": "Изменить язык",
     "searchLanguages": "Поиск языков...",
     "currentlyUsedLanguage": "Текущий язык",
@@ -1509,6 +1546,7 @@ class I18n {
     "errorFetchingInfo": "Ошибка при получении команды INFO",
     "keyCreatedSuccessfully1": "Ключ успешно создан!",
     "createNewKey": "Создать новый ключ",
+    "createNewConnection": "Создать новое подключение",
     "searchKeysHint": "Поиск ключей (например: user:*)",
     "keysLoaded": r"Загружено %keysLength$s ключей",
     "operationSuccessful": "Операция выполнена успешно",
@@ -1577,6 +1615,8 @@ class I18n {
         r"Tem a certeza de que pretende eliminar %key$s?",
     "openConnectionManager": "Abrir Gestor de Conexões",
     "selectKeyToViewDetails": "Selecione uma chave para ver detalhes",
+    "selectConnectionToViewDetails":
+        "Selecione uma conexão para ver os detalhes",
     "changeLanguage": "Alterar idioma",
     "searchLanguages": "Procurar idiomas...",
     "currentlyUsedLanguage": "Idioma atual",
@@ -1604,6 +1644,7 @@ class I18n {
     "errorFetchingInfo": "Erro ao buscar o comando INFO",
     "keyCreatedSuccessfully1": "Chave criada com sucesso!",
     "createNewKey": "Criar nova chave",
+    "createNewConnection": "Criar nova conexão",
     "searchKeysHint": "Pesquisar chaves (ex. user:*)",
     "keysLoaded": r"%keysLength$s chaves carregadas",
     "operationSuccessful": "Operação bem-sucedida",
@@ -1672,6 +1713,8 @@ class I18n {
         r"Tem certeza de que deseja excluir %key$s?",
     "openConnectionManager": "Abrir Gerenciador de Conexões",
     "selectKeyToViewDetails": "Selecione uma chave para ver detalhes",
+    "selectConnectionToViewDetails":
+        "Selecione uma ligação para ver os detalhes",
     "changeLanguage": "Alterar idioma",
     "searchLanguages": "Pesquisar idiomas...",
     "currentlyUsedLanguage": "Idioma atual",
@@ -1699,6 +1742,7 @@ class I18n {
     "errorFetchingInfo": "Erro ao buscar o comando INFO",
     "keyCreatedSuccessfully1": "Chave criada com sucesso!",
     "createNewKey": "Criar nova chave",
+    "createNewConnection": "Criar nova ligação",
     "searchKeysHint": "Pesquisar chaves (ex. user:*)",
     "keysLoaded": r"%keysLength$s chaves carregadas",
     "operationSuccessful": "Operação bem-sucedida",
