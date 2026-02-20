@@ -256,7 +256,13 @@ void _writeClass(StringBuffer buffer, List<Map<String, dynamic>> keyDataList) {
 
     if (args.isEmpty) {
       // Simple getter for plain text
-      buffer.writeln('  String get $key => _getText("$key");');
+      final line = '  String get $key => _getText("$key");';
+      if (line.length > 80) {
+        buffer.writeln('  String get $key =>');
+        buffer.writeln('      _getText("$key");');
+      } else {
+        buffer.writeln(line);
+      }
     } else {
       // Method for strings with arguments
       final methodArgs = args.map((a) => 'required String $a').join(', ');
