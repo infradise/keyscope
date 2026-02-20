@@ -61,7 +61,7 @@ dependencies:
   shared_preferences: ^2.5.4
   # system_theme: ^3.2.0
   # toastification: ^3.0.3
-  # uuid: ^4.5.2
+  uuid: ^4.5.2
 
 dev_dependencies:
   # build_runner: ^2.10.5
