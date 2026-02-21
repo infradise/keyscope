@@ -17,9 +17,10 @@
 # - A high-performance GUI for Redis, Valkey, and Dragonfly. 
 # - Provides support for Cluster, Sentinel, SSH/TLS, and handling millions of keys. 
 # - Built on top of keyscope_client, a Dart library for Redis, Valkey, Dragonfly.
+# - GUI with built-in multilingual support for Redis and Valkey. It also supports Dragonfly and Google Memorystore.
 
 name: keyscope
-description: Redis, Valkey, and Dragonfly GUI with built-in multilingual support for global users.
+description: GUI for Redis, Valkey, Dragonfly, and Google Memorystore.
 version: 0.9.0
 homepage: https://github.com/infradise/keyscope
 repository: https://github.com/infradise/keyscope
