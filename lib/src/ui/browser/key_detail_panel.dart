@@ -503,6 +503,7 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
         'MBbloom--' => Colors.pink,
         'vectorset' => Colors.amber,
         'TSDB-TYPE' => Colors.teal,
+        'TDIS-TYPE' => Colors.lime,
         _ => () {
             print('Type: $type');
             return Colors.grey;
