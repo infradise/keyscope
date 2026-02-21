@@ -40,11 +40,11 @@ While existing tools are heavy (Electron-based) or lack support for modern Valke
 <a id="-supported-data-stores"></a>
 ## 🗄️ Supported Data Stores
 
-We've checked that it works: Redis, Valkeyh, Dragonfly, Google Memorystore.
+We have verified that it works with: Redis, Valkey, Dragonfly, and Google Memorystore.
 
-The remainin things would be tested as planned when cost for testing is prepared.
+The remaining items will be tested as planned once the budget for testing is available.
 
-### ✅ Done. It works.
+### ✅ Completed – Functioning as expected
 
 | Type | Data Store |
 | :--- | :--- |
@@ -55,7 +55,7 @@ The remainin things would be tested as planned when cost for testing is prepared
 *Note: Memorystore for Valkey 9.0 (MEMORYSTORE_20251030_01_00).*
 
 
-### 📅 Planned later.
+### 📅 Planned – Scheduled for later
 
 We look forward to working well. If you have some troubles, please let us know.
 
