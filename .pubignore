@@ -64,3 +64,6 @@ analysis_options.yaml
 
 # No CLI docs
 CLI.md
+
+# No tool for SSH tunneling
+/tool/ssh_tunneling/
