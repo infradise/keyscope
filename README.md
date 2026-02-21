@@ -20,6 +20,7 @@
  
   <p>
     <a href="#-why-keyscope">Why Keyscope?</a> •
+    <a href="#-supported-data-stores">Supported Data Stores</a> •
     <a href="#-key-features">Key Features</a> •
     <a href="#-powered-by">Powered By</a> •
     <a href="#-translations">Translations</a> •
@@ -35,6 +36,59 @@
 ## ✨ Why Keyscope?
 
 While existing tools are heavy (Electron-based) or lack support for modern Valkey and Dragonfly features, Keyscope runs natively and supports [Redis](https://redis.io), [Valkey](https://valkey.io), and [Dragonfly](https://www.dragonflydb.io/), with built-in multilingual support for global users.
+
+<a id="-supported-data-stores"></a>
+## 🗄️ Supported Data Stores
+
+We've checked that it works: Redis, Valkeyh, Dragonfly, Google Memorystore.
+
+The remainin things would be tested as planned when cost for testing is prepared.
+
+### ✅ Done. It works.
+
+| Type | Data Store |
+| :--- | :--- |
+| **Standard** | [Redis](https://redis.io) |
+| **Open Source / Self-hosted** | [Valkey](https://valkey.io), [Dragonfly](https://dragonflydb.io) |
+| **Managed Cloud / Serverless** | [Google Cloud Memorystore](https://cloud.google.com/memorystore) |
+
+*Note: Memorystore for Valkey 9.0 (MEMORYSTORE_20251030_01_00).*
+
+
+### 📅 Planned later.
+
+We look forward to working well. If you have some troubles, please let us know.
+
+| Type | Data Store |
+| :--- | :--- |
+| **Open Source / Self-hosted** | ⏳ [KeyDB](https://docs.keydb.dev), [Garnet](https://microsoft.github.io/garnet), [Redict](https://redict.io), [Apache Kvrocks](https://kvrocks.apache.org) |
+| **Managed Cloud / Serverless** | [Amazon MemoryDB](https://aws.amazon.com/memorydb), [Azure Cache for Redis](https://azure.microsoft.com/products/cache/), [Alibaba Cloud Tair](https://www.alibabacloud.com/product/tair), [Upstash](https://upstash.com) |
+
+<!-- ## Supported Data Stores
+This package supports **[Redis](https://redis.io)** and various RESP (Redis Serialization Protocol) compatible alternatives.
+
+**Open Source & High-Performance Replacements**
+- [Valkey](https://valkey.io) - Open-source alternative backed by the Linux Foundation.
+- [Dragonfly](https://dragonflydb.io) - Modern, multi-threaded drop-in replacement.
+- [KeyDB](https://docs.keydb.dev) - Multithreaded fork of Redis.
+- [Garnet](https://microsoft.github.io/garnet) - High-performance cache-store by Microsoft.
+- [Redict](https://redict.io) - Independent, copyleft fork of Redis.
+- [Apache Kvrocks](https://kvrocks.apache.org) - Distributed key-value NoSQL database backed by RocksDB.
+
+**☁️ Managed Cloud & Serverless Services**
+- [Amazon MemoryDB](https://aws.amazon.com/memorydb) (AWS)
+- [Azure Cache for Redis](https://azure.microsoft.com/products/cache/) (Microsoft Azure)
+- [Google Cloud Memorystore](https://cloud.google.com/memorystore) (GCP)
+- [Alibaba Cloud Tair](https://www.alibabacloud.com/product/tair) (Alibaba)
+- [Upstash](https://upstash.com) (Serverless Redis) -->
+
+<!-- ## 🗄️ Redis and RESP Compatible Alternatives
+
+| Type | Data Store |
+| :--- | :--- |
+| **Standard** | [Redis](https://redis.io) |
+| **Open Source / Self-hosted** | [Valkey](https://valkey.io), [Dragonfly](https://dragonflydb.io), [KeyDB](https://docs.keydb.dev), [Garnet](https://microsoft.github.io/garnet), [Redict](https://redict.io), [Apache Kvrocks](https://kvrocks.apache.org) |
+| **Managed Cloud / Serverless** | [Amazon MemoryDB](https://aws.amazon.com/memorydb), [Azure Cache for Redis](https://azure.microsoft.com/products/cache/), [Google Cloud Memorystore](https://cloud.google.com/memorystore), [Alibaba Cloud Tair](https://www.alibabacloud.com/product/tair), [Upstash](https://upstash.com) | -->
 
 ## 🚀 Key Features
 
@@ -59,9 +113,9 @@ Keyscope currently supports **15+ languages**, making it accessible to developer
 
 | Region | Languages |
 | :--- | :--- |
-| **Asia** | 🇰🇷 한국어, 🇯🇵 日本語, 🇨🇳 简体中文, 🇹🇼 繁體中文, 🇮🇩 Bahasa Indonesia, 🇻🇳 Tiếng Việt, 🇹🇭 ภาษาไทย |
-| **Europe** | 🇩🇪 Deutsch (Standard/CH), 🇫🇷 Français, 🇮🇹 Italiano, 🇪🇸 Español, 🇵🇹 Português (PT), 🇷🇺 Русский |
-| **Americas** | 🇺🇸 English, 🇵🇹 Português (BR) |
+| **Asia** | 🇰🇷 한국어 (KR), 🇯🇵 日本語 (JP), 🇨🇳 简体中文 (CN), 🇹🇼 繁體中文 (TW), 🇮🇩 Bahasa Indonesia (ID), 🇻🇳 Tiếng Việt (VN), 🇹🇭 ภาษาไทย (TH) |
+| **Europe** | 🇩🇪 Deutsch (DE), 🇨🇭 Deutsch (CH), 🇫🇷 Français (FR), 🇮🇹 Italiano (IT), 🇪🇸 Español (ES), 🇵🇹 Português (PT), 🇷🇺 Русский (RU) |
+| **Americas** | 🇺🇸 English (US), 🇧🇷 Português (BR) |
 
 For more details or to contribute a new language, check out the [Translation Guide](https://github.com/infradise/keyscope/blob/main/docs/TRANSLATIONS.md).
 
