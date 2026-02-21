@@ -57,7 +57,7 @@ The remaining items will be tested as planned once the budget for testing is ava
 
 ### 📅 Planned – Scheduled for later
 
-We look forward to working well. If you have some troubles, please let us know.
+We look forward to ensuring smooth progress. If you encounter any issues, please let us know.
 
 | Type | Data Store |
 | :--- | :--- |
