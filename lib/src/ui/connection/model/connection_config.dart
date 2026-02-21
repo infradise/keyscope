@@ -117,6 +117,22 @@ class GenerateRandomName {
       };
 }
 
+final redisAlternatives = [
+  'Redis',
+  'Valkey',
+  'Dragonfly',
+  'KeyDB',
+  'Amazon MemoryDB',
+  'Garnet',
+  'Redict',
+  'Apache Kvrocks',
+  'Upstash',
+  'Azure Cache for Redis',
+  'Google Cloud Memorystore',
+  'Alibaba Cloud Tair'
+];
+// In-Memory DB: 'Memcached', 'Hazelcast', 'MongoDB', 'RethinkDB', 'SAP HANA'
+
 final usCities = [
   'New York',
   'Los Angeles',
@@ -219,12 +235,3 @@ final usCities = [
   'Spokane',
   'Des Moines'
 ];
-
-final redisAlternatives = [
-  'Redis',
-  'Valkey',
-  'Dragonfly',
-  'KeyDB',
-  'Amazon MemoryDB'
-];
-// In-Memory DB: 'Memcached', 'Hazelcast', 'MongoDB', 'RethinkDB', 'SAP HANA'
