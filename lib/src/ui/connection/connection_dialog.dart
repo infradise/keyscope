@@ -32,19 +32,6 @@ class ConnectionDialog extends ConsumerStatefulWidget {
 }
 
 class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
-  // Temporary list for UI demonstration
-  // final List<ConnectionConfig> _savedConnections = [
-  //   ConnectionConfig(id: '1', name: 'myRedis-Local', port: 6379),
-  //   ConnectionConfig(id: '2', name: 'myValkey-Local', port: 6379),
-  //   ConnectionConfig(id: '3', name: 'myDragonfly-Local', port: 6379),
-  //   ConnectionConfig(
-  //     id: '4',
-  //     name: 'Production-Cluster',
-  //     host: '127.0.0.1',
-  //     port: 7001,
-  //   ),
-  // ];
-
   ConnectionConfig? _selectedConfig;
   final _formKey = GlobalKey<FormState>();
 

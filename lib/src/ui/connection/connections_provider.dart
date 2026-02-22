@@ -24,16 +24,17 @@ import 'model/connection_config.dart';
 const _kConnectionsKey = 'saved_connections';
 
 /// Default connections shown on first launch.
-final _defaultConnections = [
-  ConnectionConfig(id: '1', name: 'myRedis-Local', port: 6379),
-  ConnectionConfig(id: '2', name: 'myValkey-Local', port: 6379),
-  ConnectionConfig(id: '3', name: 'myDragonfly-Local', port: 6379),
-  ConnectionConfig(
-    id: '4',
-    name: 'Production-Cluster',
-    host: '127.0.0.1',
-    port: 7001,
-  ),
+final _defaultConnections = <List>[
+  // ConnectionConfig(id: '1'),
+  // ConnectionConfig(id: '1', name: 'myRedis-Local', port: 6379),
+  // ConnectionConfig(id: '2', name: 'myValkey-Local', port: 6379),
+  // ConnectionConfig(id: '3', name: 'myDragonfly-Local', port: 6379),
+  // ConnectionConfig(
+  //   id: '4',
+  //   name: 'Production-Cluster',
+  //   host: '127.0.0.1',
+  //   port: 7001,
+  // ),
 ];
 
 /// Manages the persisted list of [ConnectionConfig] entries.
