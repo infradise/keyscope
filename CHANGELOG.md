@@ -1,5 +1,41 @@
 # Changelog
 
+## 0.9.0 🎉
+
+### ✨ New Features
+* **Revamped Connection Dialog**
+  * Easily add new connections via the Connection Manager in the Side Bar (includes scrolling support, `+` button, and dotted box UI).
+  * Users can now create, edit, and save custom connection configurations (`ConnectionConfig`) locally.
+  * Auto-save configurations upon clicking the 'Test Connect' or 'Connect' buttons. (The hardcoded default connection example has been removed).
+* **Auto-generate Names for New Connections (`GenerateRandomName`)**
+  * Automatically assigns random names in the format: `[Server]-[US City]-[UUID v4]`.
+  * Supported servers: `Redis`, `Valkey`, `Dragonfly`, `KeyDB`, `Amazon MemoryDB`, `Garnet`, `Redict`, `Apache Kvrocks`, `Upstash`, `Azure Cache for Redis`, `Google Cloud Memorystore`, `Alibaba Cloud Tair`.
+
+### 🎨 UI/UX & Localization
+* **Updated Data Type Label Colors**
+  * **New assigned colors (changed from default Gray):**
+    * `STREAM`: Blue Gray
+    * `MBbloom--`: Pink
+    * `vectorset`: Amber
+    * `TSDB-TYPE`: Teal
+    * `TDIS-TYPE`: Lime
+  * **Modified colors:**
+    * `ZSET`: Red to Indigo
+* Enhanced visual effects (hover, color selection, press/tap animations) in the Connection Dialog for better usability.
+* Updated and improved multilingual translation data.
+
+### 🐛 Bug Fixes
+* Fixed an issue where the `hDel` command was duplicated in the `deleteHashField` execution.
+
+### 🛠️ Refactoring & Chores
+* **Dart Code Optimization:** Refactored the `_getTypeColor` function to use modern Dart `switch expression` syntax.
+* **Abstract Class Cleanup:** Removed the empty bodies of `deleteKey` and `setStringValue` in the `ConnectionRepository`.
+* **Internal Tool Update:** Updated the i18n Generator (`i18n_generator.dart`) to include line length checks for simple getters without arguments.
+
+### 📦 Dependencies
+* Added `uuid` package for generating random names in the connection dialog.
+* Added `shared_preferences` package for saving connection configurations locally.
+
 ## 0.8.3
 * **Refactor (i18n)**: Externalized all text resources to `assets/i18n.csv` and applied localization keys to UI components via generated `lib/i18n.dart`.
 * **Style**: Updated `tool/i18n_generator.dart` to enforce 80-character line limit in generated `lib/i18n.dart`.
