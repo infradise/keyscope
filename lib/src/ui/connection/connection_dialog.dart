@@ -19,6 +19,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../i18n.dart' show I18n;
 import '../dashboard/dashboard_screen.dart';
+import '../widgets/dotted_box.dart' show DottedBox;
 import 'connections_provider.dart';
 import 'model/connection_config.dart';
 import 'repository/connection_repository.dart';
@@ -32,19 +33,19 @@ class ConnectionDialog extends ConsumerStatefulWidget {
 
 class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
   // Temporary list for UI demonstration
-  final List<ConnectionConfig> _savedConnections = [
-    ConnectionConfig(id: '1', name: 'myRedis-Local', port: 6379),
-    ConnectionConfig(id: '2', name: 'myValkey-Local', port: 6379),
-    ConnectionConfig(id: '3', name: 'myDragonfly-Local', port: 6379),
-    ConnectionConfig(
-      id: '4',
-      name: 'Production-Cluster',
-      host: '127.0.0.1',
-      port: 7001,
-    ),
-  ];
+  // final List<ConnectionConfig> _savedConnections = [
+  //   ConnectionConfig(id: '1', name: 'myRedis-Local', port: 6379),
+  //   ConnectionConfig(id: '2', name: 'myValkey-Local', port: 6379),
+  //   ConnectionConfig(id: '3', name: 'myDragonfly-Local', port: 6379),
+  //   ConnectionConfig(
+  //     id: '4',
+  //     name: 'Production-Cluster',
+  //     host: '127.0.0.1',
+  //     port: 7001,
+  //   ),
+  // ];
 
-  late ConnectionConfig _selectedConfig;
+  ConnectionConfig? _selectedConfig;
   final _formKey = GlobalKey<FormState>();
 
   late TextEditingController _nameController;
@@ -53,22 +54,20 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
   late TextEditingController _usernameController;
   late TextEditingController _passwordController;
 
+  bool _isConfirmPasswordObscured = true;
+
+  // final ScrollController _connectionScrollController = ScrollController();
+  late ScrollController _connectionScrollController;
+
   @override
   void initState() {
     super.initState();
-    _selectedConfig = _savedConnections.first;
-
-    _nameController = TextEditingController(text: _selectedConfig.name);
-    _hostController = TextEditingController(text: _selectedConfig.host);
-    _portController = TextEditingController(
-      text: _selectedConfig.port.toString(),
-    );
-    _usernameController = TextEditingController(
-      text: _selectedConfig.username ?? '',
-    );
-    _passwordController = TextEditingController(
-      text: _selectedConfig.password ?? '',
-    );
+    _nameController = TextEditingController();
+    _hostController = TextEditingController();
+    _portController = TextEditingController();
+    _usernameController = TextEditingController();
+    _passwordController = TextEditingController();
+    _connectionScrollController = ScrollController();
   }
 
   @override
@@ -78,30 +77,50 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
     _portController.dispose();
     _usernameController.dispose();
     _passwordController.dispose();
+    _connectionScrollController.dispose();
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) => Dialog(
-        backgroundColor: const Color(0xFF2B2D30), // Grey Panel
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        child: SizedBox(
-          width: 900,
-          height: 600,
-          child: Row(
-            children: [
-              // [Left Panel] Saved Connections List
-              Expanded(flex: 1, child: _buildSidebar()),
-              const VerticalDivider(width: 1, color: Color(0xFF3F4246)),
-              // [Right Panel] Connection Form
-              Expanded(flex: 2, child: _buildFormPanel()),
-            ],
-          ),
-        ),
-      );
+  void _selectConfig(ConnectionConfig config) {
+    setState(() {
+      _selectedConfig = config;
+      _nameController.text = config.name;
+      _hostController.text = config.host;
+      _portController.text = config.port.toString();
+      _usernameController.text = config.username ?? '';
+      _passwordController.text = config.password ?? '';
+    });
+  }
 
-  Widget _buildSidebar() => Container(
-        color: const Color(0xFF2B2D30),
+  @override
+  Widget build(BuildContext context) {
+    final connectionsAsync = ref.watch(connectionsProvider);
+
+    return Dialog(
+      backgroundColor: const Color(0xFF2B2D30), // Grey Panel
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      child: SizedBox(
+        width: 900,
+        height: 600,
+        child: Row(
+          children: [
+            // [Left Panel] Saved Connections List
+            Expanded(
+              flex: 1,
+              child: _buildSidebar(connectionsAsync),
+            ),
+            const VerticalDivider(width: 1, color: Color(0xFF3F4246)),
+            // [Right Panel] Connection Form
+            Expanded(flex: 2, child: _buildFormPanel()),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSidebar(AsyncValue<List<ConnectionConfig>> connectionsAsync) =>
+      Container(
+        // color: const Color(0xFF2B2D30), // NOTE: Do not use for now.
         child: Column(
           children: [
             Padding(
@@ -117,9 +136,8 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
                   const Spacer(),
                   IconButton(
                     icon: const Icon(Icons.add, size: 20),
-                    onPressed: () {
-                      // TODO: Add connection logic
-                    },
+                    tooltip: I18n.of(context).createNewConnection,
+                    onPressed: _addNewConnection,
                     padding: EdgeInsets.zero,
                     constraints: const BoxConstraints(),
                   ),
@@ -128,26 +146,40 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
             ),
             const Divider(height: 1, color: Color(0xFF3F4246)),
             Expanded(
-              child: ListView.builder(
-                itemCount: _savedConnections.length,
-                itemBuilder: (context, index) {
-                  final config = _savedConnections[index];
-                  final isSelected = config == _selectedConfig;
-                  return ListTile(
-                    title:
-                        Text(config.name, style: const TextStyle(fontSize: 13)),
-                    dense: true,
-                    selected: isSelected,
-                    selectedTileColor:
-                        const Color(0xFF393B40), // Selection color
-                    selectedColor: Colors.white,
-                    onTap: () {
-                      setState(() {
-                        _selectedConfig = config;
-                      });
-                    },
-                  );
-                },
+              child: connectionsAsync.when(
+                loading: () => const Center(child: CircularProgressIndicator()),
+                error: (e, _) => Center(child: Text('Error: $e')),
+                data: (connections) => ListView.builder(
+                  cacheExtent: 5000.0, // NOTE: Tune (+/-).
+                  controller: _connectionScrollController,
+                  itemCount: connections.length,
+                  itemBuilder: (context, index) {
+                    final config = connections[index];
+                    final isSelected = config.id == _selectedConfig?.id;
+                    return ListTile(
+                      title: Text(
+                        config.name,
+                        style: const TextStyle(fontSize: 13),
+                      ),
+                      dense: true,
+                      selected: isSelected,
+                      selectedTileColor: const Color(0xFF393B40),
+                      selectedColor: Colors.white,
+                      onTap: () => _selectConfig(config),
+                      trailing: IconButton(
+                        icon: const Icon(
+                          Icons.close,
+                          size: 16,
+                          color: Colors.grey,
+                        ),
+                        onPressed: () => _removeConnection(config.id),
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                        tooltip: I18n.of(context).delete,
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           ],
@@ -176,60 +208,111 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
 
           // Form Fields
           Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(24.0),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildSectionHeader(I18n.of(context).general),
-                    _buildTextField(I18n.of(context).name, _nameController),
-                    const SizedBox(height: 16),
-                    _buildSectionHeader(I18n.of(context).connectionDetails),
-                    Row(
+            child: _selectedConfig == null
+                ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Expanded(
-                          flex: 3,
-                          child: _buildTextField(
-                              I18n.of(context).host, _hostController),
+                        InkWell(
+                          child:
+                              // Container(
+                              //   width: 80,
+                              //   height: 80,
+                              //   decoration: BoxDecoration(
+                              //     border: Border.all(
+                              //       color: Colors.grey,
+                              //       style: BorderStyle.solid,
+                              //     ),
+                              //   ),
+                              //   child: const Center(
+                              //     child: Icon(
+                              //       Icons.add,
+                              //       size: 48,
+                              //       color: Colors.grey,
+                              //     ),
+                              //   ),
+                              // ),
+                              const DottedBox(size: 80),
+                          onTap: _addNewConnection,
                         ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          flex: 1,
-                          child: _buildTextField(
-                              I18n.of(context).port, _portController),
+                        const SizedBox(height: 16),
+                        Text(
+                          I18n.of(context).selectConnectionToViewDetails,
+                          style: const TextStyle(color: Colors.grey),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 16),
-                    _buildTextField(
-                        I18n.of(context).username, _usernameController),
-                    const SizedBox(height: 16),
-                    _buildTextField(
-                      I18n.of(context).password,
-                      _passwordController,
-                      obscureText: true,
-                    ),
-                    const SizedBox(height: 24),
-                    _buildSectionHeader(I18n.of(context).advanced),
-                    CheckboxListTile(
-                      title: Text(
-                        I18n.of(context).useSshTunneling,
-                        style: const TextStyle(fontSize: 13),
+                  )
+                : SingleChildScrollView(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _buildSectionHeader(I18n.of(context).general),
+                          _buildTextField(
+                              I18n.of(context).name, _nameController),
+                          const SizedBox(height: 16),
+                          _buildSectionHeader(
+                              I18n.of(context).connectionDetails),
+                          Row(
+                            children: [
+                              Expanded(
+                                flex: 3,
+                                child: _buildTextField(
+                                    I18n.of(context).host, _hostController),
+                              ),
+                              const SizedBox(width: 16),
+                              Expanded(
+                                flex: 1,
+                                child: _buildTextField(
+                                    I18n.of(context).port, _portController),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 16),
+                          _buildTextField(
+                              I18n.of(context).username, _usernameController,
+                              defaultLabelText: 'default',
+                              prefixIcon: const Icon(Icons.person)),
+                          const SizedBox(height: 16),
+                          _buildTextField(
+                            I18n.of(context).password,
+                            _passwordController,
+                            obscureText: _isConfirmPasswordObscured,
+                            prefixIcon: const Icon(Icons.lock),
+                            suffixIcon: IconButton(
+                              icon: Icon(_isConfirmPasswordObscured
+                                  ? Icons.visibility_off
+                                  : Icons.visibility),
+                              onPressed: () => setState(() =>
+                                  _isConfirmPasswordObscured =
+                                      !_isConfirmPasswordObscured),
+                            ),
+                          ),
+                          const SizedBox(height: 24),
+                          _buildSectionHeader(I18n.of(context).advanced),
+                          CheckboxListTile(
+                            title: Text(
+                              I18n.of(context).useSshTunneling,
+                              style: const TextStyle(fontSize: 13),
+                            ),
+                            value: _selectedConfig!.useSsh,
+                            onChanged: (val) {
+                              setState(() {
+                                _selectedConfig = _selectedConfig!
+                                    .copyWith(useSsh: val ?? false);
+                              });
+                            },
+                            contentPadding: EdgeInsets.zero,
+                            controlAffinity: ListTileControlAffinity.leading,
+                            dense: true,
+                          ),
+                        ],
                       ),
-                      value: _selectedConfig.useSsh,
-                      onChanged: (val) {
-                        setState(() => _selectedConfig.useSsh = val!);
-                      },
-                      contentPadding: EdgeInsets.zero,
-                      controlAffinity: ListTileControlAffinity.leading,
-                      dense: true,
                     ),
-                  ],
-                ),
-              ),
-            ),
+                  ),
           ),
 
           // Footer Actions
@@ -243,7 +326,7 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextButton(
-                  onPressed: _testConnection,
+                  onPressed: _selectedConfig == null ? null : _testConnection,
                   child: Text(I18n.of(context).testConnection),
                 ),
                 Row(
@@ -254,37 +337,8 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
                     ),
                     const SizedBox(width: 12),
                     FilledButton(
-                      onPressed: () async {
-                        try {
-                          // 1. Show loading indicator
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(I18n.of(context).connecting),
-                              duration: const Duration(milliseconds: 500),
-                            ),
-                          );
-
-                          await _connectToRepo();
-
-                          if (!mounted) return;
-
-                          // 3. Navigate to Dashboard
-                          Navigator.of(context).pop(); // Close Dialog
-                          await Navigator.of(context).push(
-                            MaterialPageRoute<DashboardScreen>(
-                              builder: (context) => const DashboardScreen(),
-                            ),
-                          );
-                        } catch (e) {
-                          if (!mounted) return;
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text('❌ ${I18n.of(context).error}}: $e'),
-                              backgroundColor: Colors.red,
-                            ),
-                          );
-                        }
-                      },
+                      onPressed:
+                          _selectedConfig == null ? null : _handleConnect,
                       child: Text(I18n.of(context).ok),
                     ),
                   ],
@@ -311,6 +365,9 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
     String label,
     TextEditingController controller, {
     bool obscureText = false,
+    Widget? prefixIcon,
+    Widget? suffixIcon,
+    String? defaultLabelText,
   }) =>
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -324,55 +381,134 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
             controller: controller,
             obscureText: obscureText,
             style: const TextStyle(fontSize: 13),
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
+              prefixIcon: prefixIcon,
               isDense: true,
               contentPadding:
-                  EdgeInsets.symmetric(horizontal: 12, vertical: 14),
-              border: OutlineInputBorder(),
-              enabledBorder: OutlineInputBorder(
+                  const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+              border: const OutlineInputBorder(),
+              enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(color: Color(0xFF6B6F77)),
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(color: Color(0xFF3574F0)),
               ),
+              // NOTE: Use hintText instead of labelText(w/o font style).
+              // labelText: defaultLabelText,
+              hintText: defaultLabelText,
+              suffixIcon: suffixIcon,
             ),
           ),
         ],
       );
 
-  /// Update _selectedConfig with sanitized values from controllers.
-  /// NOTE: All inputs are trimmed to avoid leading/trailing whitespace issues.
-  void _updateSelectedConfigFromControllers() {
-    _selectedConfig.name = _sanitize(_nameController.text.trim());
-    _selectedConfig.host = _sanitize(_hostController.text.trim());
-    _selectedConfig.port =
-        int.tryParse(_sanitize(_portController.text.trim())) ?? 0;
-    _selectedConfig.username = _sanitize(_usernameController.text.trim());
-    // NOTE: Always trim the password input.
-    // Without trimming, leading/trailing spaces may cause authentication mismatches.
-    _selectedConfig.password = _sanitize(_passwordController.text.trim());
+  // --- Actions ---
+
+  /// Add a blank new connection to the list, then select it.
+  void _addNewConnection() {
+    final newConfig = ConnectionConfig(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+    );
+    ref.read(connectionsProvider.notifier).addConnection(newConfig);
+    _selectConfig(newConfig);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // NOTE: Style 1
+      // _connectionScrollController.animateTo(
+      //   _connectionScrollController.position.maxScrollExtent,
+      //   duration: const Duration(milliseconds: 300),
+      //   curve: Curves.easeOut,
+      // );
+      // NOTE: Style 2
+      _connectionScrollController.jumpTo(
+        _connectionScrollController.position.maxScrollExtent,
+      );
+    });
   }
 
-  /// Helper function to remove all leading/trailing whitespace characters.
+  /// Remove a connection by id.
+  void _removeConnection(String id) {
+    ref.read(connectionsProvider.notifier).removeConnection(id);
+    if (_selectedConfig?.id == id) {
+      setState(() => _selectedConfig = null);
+    }
+  }
+
+  /// Sync controller values back to _selectedConfig, then persist.
+  ///
+  /// Update _selectedConfig with sanitized values from controllers.
+  /// - NOTE: All inputs are trimmed to avoid leading/trailing whitespace issues.
+  ///
+  /// ```dart
+  /// name: _sanitize( ... text.trim() ),
+  ///  |
+  /// password: _sanitize( ... text.trim() ),
+  /// ```
+  void _syncAndSave() {
+    if (_selectedConfig == null) return;
+    final updated = _selectedConfig!.copyWith(
+      name: _sanitize(_nameController.text),
+      host: _sanitize(_hostController.text),
+      port: int.tryParse(_sanitize(_portController.text)) ?? 6379,
+      username: _sanitize(_usernameController.text),
+      // NOTE: Always trim the password input.
+      // Without trimming, leading/trailing spaces may cause authentication
+      // mismatches.
+      password: _sanitize(_passwordController.text),
+    );
+    _selectedConfig = updated;
+    ref.read(connectionsProvider.notifier).updateConnection(updated);
+  }
+
+  /// Helper: remove all leading/trailing whitespace characters.
   /// This covers normal spaces, tabs, newlines, non-breaking spaces,
   /// full-width spaces, etc.
   String _sanitize(String input) => input.replaceAll(RegExp(r'^\s+|\s+$'), '');
 
   Future<void> _connectToRepo() async {
-    _updateSelectedConfigFromControllers();
-
+    _syncAndSave();
+    final config = _selectedConfig!;
     final repo = ref.read(connectionRepositoryProvider);
-
     return repo.connect(
-      host: _selectedConfig.host,
-      port: _selectedConfig.port,
+      host: config.host,
+      port: config.port,
       // NOTE: If the username is empty (length == 0),
       // defaulting to "default" is required for proper authentication.
-      username: _selectedConfig.username?.isEmpty ?? true
-          ? 'default'
-          : _selectedConfig.username,
-      password: _selectedConfig.password,
+      username: config.username?.isEmpty ?? true ? 'default' : config.username,
+      password: config.password,
     );
+  }
+
+  Future<void> _handleConnect() async {
+    try {
+      // Show loading indicator
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(I18n.of(context).connecting),
+          duration: const Duration(milliseconds: 500),
+        ),
+      );
+
+      await _connectToRepo();
+
+      if (!mounted) return;
+
+      // Navigate to Dashboard
+      Navigator.of(context).pop(); // Close Dialog
+      await Navigator.of(context).push(
+        MaterialPageRoute<DashboardScreen>(
+          builder: (context) => const DashboardScreen(),
+        ),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('❌ ${I18n.of(context).error}}: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
   }
 
   Future<void> _testConnection() async {
@@ -385,7 +521,7 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
         SnackBar(
           content: Text(
             '✅ ${I18n.of(context).connectionSuccessful1} '
-            '(SSH: ${_selectedConfig.useSsh})',
+            '(SSH: ${_selectedConfig!.useSsh})',
           ),
           backgroundColor: Colors.green,
           behavior: SnackBarBehavior.floating,
@@ -395,8 +531,9 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-            content: Text('❌ ${I18n.of(context).error}: $e'),
-            backgroundColor: Colors.red),
+          content: Text('❌ ${I18n.of(context).error}: $e'),
+          backgroundColor: Colors.red,
+        ),
       );
     }
   }

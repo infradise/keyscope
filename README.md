@@ -5,7 +5,7 @@
  
   <h1>Keyscope</h1>
   <p>
-    Redis, Valkey, and Dragonfly GUI with built-in multilingual support for global users.
+    Redis, Valkey, Dragonfly, and Google Cloud Memorystore GUI with built-in multilingual support for global developers and DevOps engineers.
     <br><br>
   </p>
 
@@ -35,12 +35,12 @@
 
 ## ✨ Why Keyscope?
 
-While existing tools are heavy (Electron-based) or lack support for modern Valkey and Dragonfly features, Keyscope runs natively and supports [Redis](https://redis.io), [Valkey](https://valkey.io), and [Dragonfly](https://www.dragonflydb.io/), with built-in multilingual support for global users.
+While existing tools are heavy (Electron-based) or lack support for modern Valkey and Dragonfly features, Keyscope runs natively and supports [Redis](https://redis.io), [Valkey](https://valkey.io), [Dragonfly](https://www.dragonflydb.io/), and [Google Cloud Memorystore](https://cloud.google.com/memorystore), with built-in multilingual support for global developers and DevOps engineers.
 
 <a id="-supported-data-stores"></a>
 ## 🗄️ Supported Data Stores
 
-We have verified that it works with: Redis, Valkey, Dragonfly, and Google Memorystore.
+We have verified that it works with: Redis, Valkey, Dragonfly, and Google Cloud Memorystore.
 
 The remaining items will be tested as planned once the budget for testing is available.
 
