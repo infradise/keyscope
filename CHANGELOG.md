@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming Next
+* **SSH Tunneling** 🎉
+    * Now connect to Google Cloud Memorystore via SSH tunneling on Connection Manager.
+
 ## 0.9.0 🎉
 
 ### ✨ New Features
