@@ -498,12 +498,15 @@ class _KeyDetailPanelState extends ConsumerState<KeyDetailPanel> {
         'list' => Colors.orange,
         'set' => Colors.purple,
         'zset' => Colors.indigo,
-        'ReJSON-RL' => Colors.brown,
         'stream' => Colors.blueGrey,
-        'MBbloom--' => Colors.pink,
         'vectorset' => Colors.amber,
+        'ReJSON-RL' => Colors.brown,
+        'MBbloom--' => Colors.pink,
+        'MBbloomCF' => Colors.pink,
         'TSDB-TYPE' => Colors.teal,
-        'TDIS-TYPE' => Colors.lime,
+        'CMSk-TYPE' => Colors.deepPurpleAccent,
+        'TopK-TYPE' => Colors.deepPurple,
+        'TDIS-TYPE' => Colors.lightBlueAccent,
         _ => () {
             print('Type: $type');
             return Colors.grey;
