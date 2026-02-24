@@ -610,7 +610,8 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
       username: config.username?.isEmpty ?? true ? 'default' : config.username,
       password: config.password,
 
-      // TODO: Consider later if keyscope_client internalize SSH client's core features.
+      // TODO: Consider later if keyscope_client internalize
+      //       SSH client's core features.
       // bastionHost: config.bastionHost,
       // bastionUsername: config.bastionUsername,
       // serverHost: config.serverHost,
