@@ -84,6 +84,7 @@ general,General,일반,一般,常规,一般,Umum,Chung,ทั่วไป,Allgem
 name,Name,이름,名前,名称,名稱,Nama,Tên,ชื่อ,Name,Name,Nom,Nome,Nombre,Имя,Nome,Nome
 connectionDetails,Connection Details,연결 상세,接続の詳細,连接详情,連線詳細,Detail Koneksi,Chi tiết kết nối,รายละเอียดการเชื่อมต่อ,Verbindungsdetails,Verbindungsdetails,Détails de la connexion,Dettagli connessione,Detalles de conexión,Детали подключения,Detalhes da conexão,Detalhes da conexão
 host,Host,호스트,ホスト,主机,主機,Host,Máy chủ,โฮสต์,Host,Host,Hôte,Host,Host,Хост,Host,Host
+bastionHost,Bastion Host,배스천 호스트,踏み台ホスト,堡垒主机,堡壘主機,Bastion Host,Máy chủ Bastion,Bastion Host,Bastion-Host,Bastion-Host,Hôte bastion,Host bastione,Host bastión,Бастион-хост,Host bastião,Host bastião
 username,Username,사용자 이름,ユーザー名,用户名,使用者名稱,Nama pengguna,Tên đăng nhập,ชื่อผู้ใช้,Benutzername,Benutzername,Nom d'utilisateur,Nome utente,Nombre de usuario,Имя пользователя,Nome de usuário,Nome de usuário
 password,Password,비밀번호,パスワード,密码,密碼,Kata sandi,Mật khẩu,รหัสผ่าน,Passwort,Passwort,Mot de passe,Password,Contraseña,Пароль,Senha,Senha
 advanced,Advanced,고급,詳細設定,高级,進階,Lanjutan,Nâng cao,ขั้นสูง,Erweitert,Erweitert,Avancé,Avanzato,Avanzado,Дополнительно,Avançado,Avançado
