@@ -39,6 +39,7 @@ executables:
 
 dependencies:
   args: ^2.7.0 # Add this for CLI argument parsing
+  dartssh2: ^2.13.0
   # envied: ^1.3.2
   flutter:
     sdk: flutter
