@@ -14,6 +14,16 @@
  * limitations under the License.
  */
 
+import 'dart:async' show unawaited;
+
+import 'dart:io' show File, InternetAddress, ServerSocket, Socket;
+// \ import 'dart:nativewrappers/_internal/vm/bin/common_patch.dart';
+
+// import 'dart:typed_data';
+
+import 'package:dartssh2/dartssh2.dart' show SSHClient, SSHKeyPair, SSHSocket;
+import 'package:file_picker/file_picker.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -42,9 +52,17 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
   late TextEditingController _passwordController;
 
   bool _isConfirmPasswordObscured = true;
+  bool _isSshKeyPassphraseObscured = true;
 
   // final ScrollController _connectionScrollController = ScrollController();
   late ScrollController _connectionScrollController;
+
+  late TextEditingController _bastionHostController;
+  late TextEditingController _bastionUsernameController;
+  late TextEditingController _serverHostController;
+  late TextEditingController _serverPortController;
+  late TextEditingController _sshKeyFilePathController;
+  late TextEditingController _sshKeyPassphraseController;
 
   @override
   void initState() {
@@ -55,6 +73,12 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
     _usernameController = TextEditingController();
     _passwordController = TextEditingController();
     _connectionScrollController = ScrollController();
+    _bastionHostController = TextEditingController();
+    _bastionUsernameController = TextEditingController();
+    _serverHostController = TextEditingController();
+    _serverPortController = TextEditingController();
+    _sshKeyFilePathController = TextEditingController();
+    _sshKeyPassphraseController = TextEditingController();
   }
 
   @override
@@ -65,6 +89,12 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
     _usernameController.dispose();
     _passwordController.dispose();
     _connectionScrollController.dispose();
+    _bastionHostController.dispose();
+    _bastionUsernameController.dispose();
+    _serverHostController.dispose();
+    _serverPortController.dispose();
+    _sshKeyFilePathController.dispose();
+    _sshKeyPassphraseController.dispose();
     super.dispose();
   }
 
@@ -76,6 +106,13 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
       _portController.text = config.port.toString();
       _usernameController.text = config.username ?? '';
       _passwordController.text = config.password ?? '';
+
+      _bastionHostController.text = config.bastionHost ?? '';
+      _bastionUsernameController.text = config.bastionUsername ?? '';
+      _serverHostController.text = config.serverHost ?? '';
+      _serverPortController.text = config.serverPort.toString();
+      _sshKeyFilePathController.text = config.sshKeyFilePath ?? '';
+      _sshKeyPassphraseController.text = config.sshKeyPassphrase ?? '';
     });
   }
 
@@ -258,26 +295,60 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
                               ),
                             ],
                           ),
+
+                          // const SizedBox(height: 16),
+                          // _buildTextField(
+                          //     I18n.of(context).username, _usernameController,
+                          //     defaultLabelText: 'default',
+                          //     prefixIcon: const Icon(Icons.person)),
+                          // const SizedBox(height: 16),
+                          // _buildTextField(
+                          //   I18n.of(context).password,
+                          //   _passwordController,
+                          //   obscureText: _isConfirmPasswordObscured,
+                          //   prefixIcon: const Icon(Icons.lock),
+                          //   suffixIcon: IconButton(
+                          //     icon: Icon(_isConfirmPasswordObscured
+                          //         ? Icons.visibility_off
+                          //         : Icons.visibility),
+                          //     onPressed: () => setState(() =>
+                          //         _isConfirmPasswordObscured =
+                          //             !_isConfirmPasswordObscured),
+                          //   ),
+                          // ),
+
                           const SizedBox(height: 16),
-                          _buildTextField(
-                              I18n.of(context).username, _usernameController,
-                              defaultLabelText: 'default',
-                              prefixIcon: const Icon(Icons.person)),
-                          const SizedBox(height: 16),
-                          _buildTextField(
-                            I18n.of(context).password,
-                            _passwordController,
-                            obscureText: _isConfirmPasswordObscured,
-                            prefixIcon: const Icon(Icons.lock),
-                            suffixIcon: IconButton(
-                              icon: Icon(_isConfirmPasswordObscured
-                                  ? Icons.visibility_off
-                                  : Icons.visibility),
-                              onPressed: () => setState(() =>
-                                  _isConfirmPasswordObscured =
-                                      !_isConfirmPasswordObscured),
-                            ),
+                          Row(
+                            children: [
+                              Expanded(
+                                flex: 1,
+                                child: _buildTextField(
+                                    I18n.of(context).username,
+                                    _usernameController,
+                                    defaultLabelText: 'default',
+                                    prefixIcon: const Icon(Icons.person)),
+                              ),
+                              const SizedBox(width: 16),
+                              Expanded(
+                                flex: 1,
+                                child: _buildTextField(
+                                  I18n.of(context).password,
+                                  _passwordController,
+                                  obscureText: _isConfirmPasswordObscured,
+                                  prefixIcon: const Icon(Icons.lock),
+                                  suffixIcon: IconButton(
+                                    icon: Icon(_isConfirmPasswordObscured
+                                        ? Icons.visibility_off
+                                        : Icons.visibility),
+                                    onPressed: () => setState(() =>
+                                        _isConfirmPasswordObscured =
+                                            !_isConfirmPasswordObscured),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
+
                           const SizedBox(height: 24),
                           _buildSectionHeader(I18n.of(context).advanced),
                           CheckboxListTile(
@@ -295,6 +366,75 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
                             contentPadding: EdgeInsets.zero,
                             controlAffinity: ListTileControlAffinity.leading,
                             dense: true,
+                          ),
+
+                          // ---------------------------------
+                          // SSH Tunneling
+                          // ---------------------------------
+
+                          const SizedBox(height: 16),
+
+                          Row(
+                            children: [
+                              Expanded(
+                                flex: 3,
+                                child: _buildTextField(
+                                    I18n.of(context).bastionHost,
+                                    _bastionHostController),
+                              ),
+                              const SizedBox(width: 16),
+                              Expanded(
+                                flex: 1,
+                                child: _buildTextField(
+                                  I18n.of(context).username,
+                                  _bastionUsernameController,
+                                  // prefixIcon: const Icon(Icons.person),
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          const SizedBox(height: 16),
+                          Row(
+                            children: [
+                              Expanded(
+                                flex: 3,
+                                child: _buildTextField(I18n.of(context).server,
+                                    _serverHostController),
+                              ),
+                              const SizedBox(width: 16),
+                              Expanded(
+                                flex: 1,
+                                child: _buildTextField(I18n.of(context).port,
+                                    _serverPortController),
+                              ),
+                            ],
+                          ),
+
+                          const SizedBox(height: 16),
+                          _buildTextField(
+                            I18n.of(context).sshKeyFilePath,
+                            _sshKeyFilePathController,
+                            prefixIcon: const Icon(Icons.key),
+                            suffixIcon: IconButton(
+                                icon: const Icon(Icons.folder_outlined),
+                                onPressed: chooseSshKeyFile),
+                          ),
+
+                          const SizedBox(height: 16),
+                          _buildTextField(
+                            I18n.of(context).sshKeyPassphrase,
+                            _sshKeyPassphraseController,
+                            obscureText: _isSshKeyPassphraseObscured,
+                            prefixIcon: const Icon(Icons.password),
+                            suffixIcon: IconButton(
+                              icon: Icon(_isSshKeyPassphraseObscured
+                                  ? Icons.visibility_off
+                                  : Icons.visibility),
+                              onPressed: () => setState(() =>
+                                  _isSshKeyPassphraseObscured =
+                                      !_isSshKeyPassphraseObscured),
+                            ),
                           ),
                         ],
                       ),
@@ -442,6 +582,12 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
       // Without trimming, leading/trailing spaces may cause authentication
       // mismatches.
       password: _sanitize(_passwordController.text),
+      bastionHost: _sanitize(_bastionHostController.text),
+      bastionUsername: _sanitize(_bastionUsernameController.text),
+      serverHost: _sanitize(_serverHostController.text),
+      serverPort: int.tryParse(_sanitize(_serverPortController.text)) ?? 6379,
+      sshKeyFilePath: _sanitize(_sshKeyFilePathController.text),
+      sshKeyPassphrase: _sanitize(_sshKeyPassphraseController.text),
     );
     _selectedConfig = updated;
     ref.read(connectionsProvider.notifier).updateConnection(updated);
@@ -463,6 +609,12 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
       // defaulting to "default" is required for proper authentication.
       username: config.username?.isEmpty ?? true ? 'default' : config.username,
       password: config.password,
+
+      // TODO: Consider later if keyscope_client internalize SSH client's core features.
+      // bastionHost: config.bastionHost,
+      // bastionUsername: config.bastionUsername,
+      // serverHost: config.serverHost,
+      // serverPort: config.serverPort,
     );
   }
 
@@ -476,7 +628,11 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
         ),
       );
 
-      await _connectToRepo();
+      if (_selectedConfig!.useSsh == true) {
+        await _connectUsingSshTunneling();
+      } else {
+        await _connectToRepo();
+      }
 
       if (!mounted) return;
 
@@ -500,7 +656,11 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
 
   Future<void> _testConnection() async {
     try {
-      await _connectToRepo();
+      if (_selectedConfig!.useSsh == true) {
+        await _connectUsingSshTunneling();
+      } else {
+        await _connectToRepo();
+      }
 
       if (!mounted) return;
 
@@ -523,5 +683,150 @@ class _ConnectionDialogState extends ConsumerState<ConnectionDialog> {
         ),
       );
     }
+  }
+
+  Future<void> chooseSshKeyFile() async {
+    final result = await FilePicker.platform.pickFiles(
+      initialDirectory: '~/.ssh/',
+      // allowMultiple: false,
+      // type: FileType.custom,
+      // allowedExtensions: ['pem'],
+    );
+
+    if (result != null) {
+      final privateKeyFilePath = result.files.single.path!;
+
+      final config = _selectedConfig!;
+
+      config.sshKeyFilePath = privateKeyFilePath;
+      _sshKeyFilePathController.text = privateKeyFilePath;
+    } else {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(I18n.of(context).cancel),
+          backgroundColor: Colors.grey,
+        ),
+      );
+    }
+  }
+
+  Future<void> _connectUsingSshTunneling() async {
+    final config = _selectedConfig!;
+    final host = config.host;
+    final localPort = config.port;
+    const sshPort = 22;
+    final bastionHost = config.bastionHost!;
+    final bastionUsername = config.bastionUsername!;
+    final serverHost = config.serverHost!;
+    final serverPort = config.serverPort!;
+
+    try {
+      final sshKeyFilePath = _sanitize(_sshKeyFilePathController.text);
+      final passphrase = _sanitize(_sshKeyPassphraseController.text);
+      final privateKey = File(sshKeyFilePath).readAsStringSync();
+      final socket = await SSHSocket.connect(bastionHost, sshPort);
+      final keyPair = SSHKeyPair.fromPem(
+          privateKey, passphrase.isEmpty ? null : passphrase);
+      final sshClient = SSHClient(
+        socket,
+        username: bastionUsername,
+        identities: [...keyPair],
+      );
+
+      await sshClient.authenticated;
+      print('✅ SSH Authentication Confirmed!');
+
+      final serverSocket =
+          await ServerSocket.bind(InternetAddress.loopbackIPv4, localPort);
+
+      serverSocket.listen((Socket localSocket) async {
+        print('⚡ [Tunnel] Local connection detected: '
+            'Port ${localSocket.remotePort}');
+
+        try {
+          print('⚡ [Tunnel] Requesting forwarding to $serverHost:$serverPort '
+              'via Bastion...');
+          final sshChannel =
+              await sshClient.forwardLocal(serverHost, serverPort);
+          print('⚡ [Tunnel] SSH Channel established successfully!');
+
+          unawaited(localSocket.cast<List<int>>().pipe(sshChannel.sink));
+          // await localSocket
+          //     .cast<List<int>>()
+          //     .pipe(sshChannel.sink)
+          //     .catchError((e) {
+          //   print('❌ [Tunnel] Local -> SSH Pipeline Error: $e');
+          // });
+
+          unawaited(sshChannel.stream.cast<List<int>>().pipe(localSocket));
+          // await sshChannel.stream
+          //     .cast<List<int>>()
+          //     .pipe(localSocket)
+          //     .catchError((e) {
+          //   print('❌ [Tunnel] SSH -> Local Pipeline Error: $e');
+          // });
+        } catch (e) {
+          // This is where the root cause of Errno 54 will be caught.
+          print('❌ [Tunnel] Critical Forwarding Error: $e');
+          localSocket.destroy();
+        }
+      });
+
+      // Allow the OS to bind the local port
+      await Future<void>.delayed(const Duration(milliseconds: 500));
+
+      // Wait until the port is actually ready (up to 15 seconds)
+      final isPortReady = await _waitForPort(localPort);
+      if (!isPortReady) {
+        throw Exception('Failed to open local port $localPort. '
+            'Tunnel might have failed to start.');
+      }
+      print('✅ Tunnel is ready!\n');
+
+      _syncAndSave();
+
+      final repo = ref.read(connectionRepositoryProvider);
+
+      print('2. Connecting to server...');
+
+      print(config.host);
+      print(localPort);
+
+      await repo.connect(
+        host: host,
+        port: localPort,
+        // NOTE: If the username is empty (length == 0),
+        // defaulting to "default" is required for proper authentication.
+        username:
+            config.username?.isEmpty ?? true ? 'default' : config.username,
+        password: config.password,
+      );
+    } catch (e) {
+      print('Connection or Tunneling Error: $e');
+      // Case 1. If passphrase is null
+      // Invalid argument(s): Passphrase is not required for unencrypted keys
+    } finally {
+      // strict: ensure this runs even if an exception occurs
+      // if (context.mounted) {
+      //   Navigator.pop(context);
+      // }
+    }
+  }
+
+  // Actively waits for the local port to open
+  Future<bool> _waitForPort(int port, {int maxRetries = 15}) async {
+    print('⏳ Waiting for SSH tunnel to open on port $port...');
+    for (var i = 0; i < maxRetries; i++) {
+      try {
+        final socket = await Socket.connect('127.0.0.1', port,
+            timeout: const Duration(seconds: 1));
+        socket.destroy();
+        return true;
+      } catch (_) {
+        await Future<void>.delayed(const Duration(seconds: 1));
+      }
+    }
+    return false;
   }
 }
