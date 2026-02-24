@@ -31,6 +31,42 @@ class ConnectionConfig {
   bool useTls;
   bool useUuid;
 
+  /// Enter the public IP address of your Google Cloud VM
+  /// (must be a VPC-reachable public IP).
+  ///
+  /// Public IP address
+  /// - Google Cloud VM (e.g., VPC IP address)
+  String? bastionHost;
+
+  /// Enter the shell account name used to access the Google Cloud VM.
+  ///
+  /// - Google Cloud VM (e.g., your username in VM)
+  String? bastionUsername;
+
+  /// Enter the internal IP address of your Google Cloud Memorystore instance.
+  ///
+  /// Private IP address
+  /// - Google Cloud Memorystore (e.g., 10.128.0.8)
+  String? serverHost;
+
+  /// Enter the internal port number of your Google Cloud Memorystore instance.
+  ///
+  /// Private Port number
+  /// - Google Cloud Memorystore (e.g., 6379)
+  int? serverPort;
+
+  /// SSH Key File Path: Click the folder icon to select your private key
+  /// (e.g., id_rsa).
+  ///
+  /// The file picker defaults to the ~/.ssh directory.
+  ///
+  String? sshKeyFilePath;
+
+  /// SSH Key Passphrase: If your key is encrypted, enter the passphrase here.
+  /// (Optional)
+  ///
+  String? sshKeyPassphrase;
+
   ConnectionConfig({
     required this.id,
     String? name, // Previously, this.name = 'New Connection',
@@ -42,6 +78,12 @@ class ConnectionConfig {
     this.useTls = false,
     String? uuid, // Previously, this.uuid,
     this.useUuid = true,
+    this.bastionHost,
+    this.bastionUsername,
+    this.serverHost,
+    this.serverPort = 6379,
+    this.sshKeyFilePath,
+    this.sshKeyPassphrase,
   })  : name = name ?? GenerateRandomName(useUuid: useUuid).getName(),
         uuid = uuid ?? const Uuid().v4().substring(0, 8);
 
@@ -56,6 +98,12 @@ class ConnectionConfig {
     bool? useSsh,
     bool? useTls,
     bool? useUuid,
+    String? bastionHost,
+    String? bastionUsername,
+    String? serverHost,
+    int? serverPort,
+    String? sshKeyFilePath,
+    String? sshKeyPassphrase,
   }) =>
       ConnectionConfig(
         id: id ?? this.id,
@@ -68,6 +116,12 @@ class ConnectionConfig {
         useSsh: useSsh ?? this.useSsh,
         useTls: useTls ?? this.useTls,
         useUuid: useTls ?? this.useUuid,
+        bastionHost: bastionHost ?? this.bastionHost,
+        bastionUsername: bastionUsername ?? this.bastionUsername,
+        serverHost: serverHost ?? this.serverHost,
+        serverPort: serverPort ?? this.serverPort,
+        sshKeyFilePath: sshKeyFilePath ?? this.sshKeyFilePath,
+        sshKeyPassphrase: sshKeyPassphrase ?? this.sshKeyPassphrase,
       );
 
   Map<String, dynamic> toJson() => {
@@ -81,6 +135,12 @@ class ConnectionConfig {
         'useSsh': useSsh,
         'useTls': useTls,
         'useUuid': useUuid,
+        if (bastionHost != null) 'bastionHost': bastionHost,
+        if (bastionUsername != null) 'bastionUsername': bastionUsername,
+        if (serverHost != null) 'serverHost': serverHost,
+        if (serverPort != null) 'serverPort': serverPort,
+        if (sshKeyFilePath != null) 'sshKeyFilePath': sshKeyFilePath,
+        if (sshKeyPassphrase != null) 'sshKeyPassphrase': sshKeyPassphrase,
       };
 
   factory ConnectionConfig.fromJson(Map<String, dynamic> json) =>
@@ -95,6 +155,12 @@ class ConnectionConfig {
         useSsh: json['useSsh'] as bool? ?? false,
         useTls: json['useTls'] as bool? ?? false,
         useUuid: json['useUuid'] as bool? ?? true,
+        bastionHost: json['bastionHost'] as String?,
+        bastionUsername: json['bastionUsername'] as String?,
+        serverHost: json['serverHost'] as String?,
+        serverPort: json['serverPort'] as int? ?? 6379,
+        sshKeyFilePath: json['sshKeyFilePath'] as String?,
+        sshKeyPassphrase: json['sshKeyPassphrase'] as String?,
       );
 }
 
