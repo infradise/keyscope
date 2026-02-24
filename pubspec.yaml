@@ -20,7 +20,7 @@
 # - GUI with built-in multilingual support for Redis and Valkey. It also supports Dragonfly and Google Memorystore.
 
 name: keyscope
-description: GUI for Redis, Valkey, Dragonfly, and Google Memorystore.
+description: GUI for Redis, Valkey, Dragonfly, and Google Memorystore via SSH Tunneling Support. Multilingual.
 version: 0.10.0
 homepage: https://github.com/infradise/keyscope
 repository: https://github.com/infradise/keyscope
