@@ -114,7 +114,7 @@ Keyscope currently supports **15+ languages**, making it accessible to developer
 | Region | Languages |
 | :--- | :--- |
 | **Asia** | 🇰🇷 한국어 (KR), 🇯🇵 日本語 (JP), 🇨🇳 简体中文 (CN), 🇹🇼 繁體中文 (TW), 🇮🇩 Bahasa Indonesia (ID), 🇻🇳 Tiếng Việt (VN), 🇹🇭 ภาษาไทย (TH) |
-| **Europe** | 🇩🇪 Deutsch (DE), 🇨🇭 Deutsch (CH), 🇫🇷 Français (FR), 🇮🇹 Italiano (IT), 🇪🇸 Español (ES), 🇵🇹 Português (PT), 🇷🇺 Русский (RU) |
+| **Europe** | 🇩🇪 Deutsch (DE), 🇨🇭 Schweizerdeutsch (CH), 🇫🇷 Français (FR), 🇮🇹 Italiano (IT), 🇪🇸 Español (ES), 🇵🇹 Português (PT), 🇷🇺 Русский (RU) |
 | **Americas** | 🇺🇸 English (US), 🇧🇷 Português (BR) |
 
 For more details or to contribute a new language, check out the [Translation Guide](https://github.com/infradise/keyscope/blob/main/docs/TRANSLATIONS.md).
