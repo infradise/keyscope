@@ -3,16 +3,21 @@
 ## 0.10.0
 * **SSH Tunneling Support** 🎉
     * You can now connect to **Google Cloud Memorystore** via SSH tunneling through the Connection Manager.
-    * To get started, enable the **[ ] Use SSH Tunneling** checkbox and configure the following fields:
-        * **Bastion Host**: Enter the public IP address of your Google Cloud VM (must be a VPC-reachable public IP).
-        * **Username**: Enter the shell account name used to access the Google Cloud VM.
-        * **Server**: Enter the internal IP address of your Google Cloud Memorystore instance.
-        * **Port**: Enter the internal port number of your Google Cloud Memorystore instance.
-    * **SSH Key Management**:
-        * **SSH Key File Path**: Click the folder icon to select your private key (e.g., `id_rsa`). For your convenience, the file picker **defaults to the `~/.ssh` directory**.
-        * **SSH Key Passphrase**: If your key is encrypted, enter the passphrase here. (Optional)
+    * To get started, enable the `[ ] Use SSH Tunneling` checkbox and configure the following fields:
+        * `Bastion Host`: Enter the public IP address of your Google Cloud VM (must be a VPC-reachable public IP).
+        * `Username`: Enter the shell account name used to access the Google Cloud VM.
+        * `Server`: Enter the internal IP address of your Google Cloud Memorystore instance.
+        * `Port`: Enter the internal port number of your Google Cloud Memorystore instance.
+        * **SSH Key Management**:
+            * `SSH Key File Path`: Click the folder icon to select your private key (e.g., `id_rsa`). For your convenience, the file picker **defaults to the `~/.ssh` directory**.
+            * `SSH Key Passphrase`: If your key is encrypted, enter the passphrase here. *(Optional)*
     
     > **⚠️ Note on Key Storage**: In this version (v0.10.0), private keys are **not saved** in the connection settings. You will need to manually select the key for each session. We are working on a secure storage solution using the **OS Keychain**, which will be available in **v0.11.0**.    
+
+* **Important Security Notice: Connection Password**
+    * Please be advised that passwords in the connection settings (introduced in v0.9.0) are currently stored in **plain text**.
+    * We are scheduled to implement secure storage using **AES-256 encryption** integrated with the **OS Keychain** in version **v0.12.0**. 
+    * Until this update, please exercise caution when managing your passwords.  
 
 ## 0.9.0 🎉
 
