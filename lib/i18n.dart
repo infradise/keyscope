@@ -222,6 +222,10 @@ class I18n {
 
   String get connectionSuccessful1 => _getText("connectionSuccessful1");
 
+  String get sshKeyFilePath => _getText("sshKeyFilePath");
+
+  String get sshKeyPassphrase => _getText("sshKeyPassphrase");
+
   static late Map<String, String> _localizedValues;
 
   static const _enValues = {
@@ -319,6 +323,8 @@ class I18n {
     "connecting": "Connecting...",
     "ok": "OK",
     "connectionSuccessful1": "Connection Successful!",
+    "sshKeyFilePath": "SSH Key File Path",
+    "sshKeyPassphrase": "SSH Key Passphrase",
   };
 
   static const _koValues = {
@@ -416,6 +422,8 @@ class I18n {
     "connecting": "연결 중...",
     "ok": "확인",
     "connectionSuccessful1": "연결 성공!",
+    "sshKeyFilePath": "SSH 키 파일 경로",
+    "sshKeyPassphrase": "SSH 키 암호",
   };
 
   static const _jaValues = {
@@ -513,6 +521,8 @@ class I18n {
     "connecting": "接続中...",
     "ok": "オッケー",
     "connectionSuccessful1": "接続に成功しました！",
+    "sshKeyFilePath": "SSHキーファイルパス",
+    "sshKeyPassphrase": "SSHキー パスフレーズ",
   };
 
   static const _zhCNValues = {
@@ -610,6 +620,8 @@ class I18n {
     "connecting": "连接中...",
     "ok": "确定",
     "connectionSuccessful1": "连接成功！",
+    "sshKeyFilePath": "SSH密钥文件路径",
+    "sshKeyPassphrase": "SSH密钥密码短语",
   };
 
   static const _zhTWValues = {
@@ -707,6 +719,8 @@ class I18n {
     "connecting": "連線中...",
     "ok": "確定",
     "connectionSuccessful1": "連線成功！",
+    "sshKeyFilePath": "SSH金鑰檔案路徑",
+    "sshKeyPassphrase": "SSH金鑰密碼片語",
   };
 
   static const _idValues = {
@@ -805,6 +819,8 @@ class I18n {
     "connecting": "Menghubungkan...",
     "ok": "OK",
     "connectionSuccessful1": "Koneksi Berhasil!",
+    "sshKeyFilePath": "Path File Kunci SSH",
+    "sshKeyPassphrase": "Frasa sandi Kunci SSH",
   };
 
   static const _viValues = {
@@ -902,6 +918,8 @@ class I18n {
     "connecting": "Đang kết nối...",
     "ok": "OK",
     "connectionSuccessful1": "Kết nối thành công!",
+    "sshKeyFilePath": "Đường dẫn tệp khóa SSH",
+    "sshKeyPassphrase": "Cụm mật khẩu khóa SSH",
   };
 
   static const _thValues = {
@@ -999,6 +1017,8 @@ class I18n {
     "connecting": "กำลังเชื่อมต่อ...",
     "ok": "ตกลง",
     "connectionSuccessful1": "เชื่อมต่อสำเร็จ!",
+    "sshKeyFilePath": "เส้นทางไฟล์คีย์ SSH",
+    "sshKeyPassphrase": "วลีรหัสผ่านคีย์ SSH",
   };
 
   static const _deValues = {
@@ -1099,6 +1119,8 @@ class I18n {
     "connecting": "Verbinden...",
     "ok": "OK",
     "connectionSuccessful1": "Verbindung erfolgreich!",
+    "sshKeyFilePath": "SSH-Schlüsseldateipfad",
+    "sshKeyPassphrase": "SSH-Schlüssel-Passphrase",
   };
 
   static const _deCHValues = {
@@ -1198,6 +1220,8 @@ class I18n {
     "connecting": "Verbinden...",
     "ok": "OK",
     "connectionSuccessful1": "Verbindung erfolgreich!",
+    "sshKeyFilePath": "SSH-Schlüsseldateipfad",
+    "sshKeyPassphrase": "SSH-Schlüssel-Passphrase",
   };
 
   static const _frValues = {
@@ -1297,6 +1321,8 @@ class I18n {
     "connecting": "Connexion en cours...",
     "ok": "OK",
     "connectionSuccessful1": "Connexion réussie !",
+    "sshKeyFilePath": "Chemin du fichier de clé SSH",
+    "sshKeyPassphrase": "Passphrase de clé SSH",
   };
 
   static const _itValues = {
@@ -1396,6 +1422,8 @@ class I18n {
     "connecting": "Connessione in corso...",
     "ok": "OK",
     "connectionSuccessful1": "Connessione riuscita!",
+    "sshKeyFilePath": "Percorso file chiave SSH",
+    "sshKeyPassphrase": "Passphrase chiave SSH",
   };
 
   static const _esValues = {
@@ -1495,6 +1523,8 @@ class I18n {
     "connecting": "Conectando...",
     "ok": "OK",
     "connectionSuccessful1": "¡Conexión exitosa!",
+    "sshKeyFilePath": "Ruta del archivo de clave SSH",
+    "sshKeyPassphrase": "Frase de contraseña de clave SSH",
   };
 
   static const _ruValues = {
@@ -1593,6 +1623,8 @@ class I18n {
     "connecting": "Подключение...",
     "ok": "OK",
     "connectionSuccessful1": "Подключение успешно!",
+    "sshKeyFilePath": "Путь к файлу ключа SSH",
+    "sshKeyPassphrase": "Парольная фраза ключа SSH",
   };
 
   static const _ptPTValues = {
@@ -1692,6 +1724,8 @@ class I18n {
     "connecting": "A ligar...",
     "ok": "OK",
     "connectionSuccessful1": "Conexão bem-sucedida!",
+    "sshKeyFilePath": "Caminho do ficheiro de chave SSH",
+    "sshKeyPassphrase": "Frase secreta da chave SSH",
   };
 
   static const _ptBRValues = {
@@ -1791,6 +1825,8 @@ class I18n {
     "connecting": "Conectando...",
     "ok": "OK",
     "connectionSuccessful1": "Conexão bem-sucedida!",
+    "sshKeyFilePath": "Caminho do arquivo de chave SSH",
+    "sshKeyPassphrase": "Frase secreta da chave SSH",
   };
 
   static const _allValues = {
