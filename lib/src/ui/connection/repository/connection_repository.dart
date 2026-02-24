@@ -51,6 +51,8 @@ abstract class ConnectionRepository {
 
   bool get isConnected => _client?.isConnected ?? false;
 
+  Future<String?> ping();
+
   /// Establishes a connection to the specified host and port.
   Future<void> connect({
     required String host,
@@ -230,7 +232,7 @@ class BasicConnectionRepository implements ConnectionRepository {
 
   @override
   Future<Map<String, String>> getInfo() async {
-    if (_client == null) {
+    if (_client == null || _client?.isConnected == false) {
       throw Exception('Not connected');
     }
 
@@ -459,6 +461,9 @@ class BasicConnectionRepository implements ConnectionRepository {
     if (_client == null) throw Exception('Not connected');
     await _client!.zRem(key, [member]);
   }
+
+  @override
+  Future<String?> ping() async => _client?.ping();
 }
 
 /// A global provider for [ConnectionRepository].
