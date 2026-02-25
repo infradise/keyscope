@@ -58,6 +58,8 @@ class I18n {
 
   String get enterStringValue => _getText("enterStringValue");
 
+  String get enterCommand => _getText("enterCommand");
+
   String get deleteKey => _getText("deleteKey");
 
   String get addMember => _getText("addMember");
@@ -226,6 +228,8 @@ class I18n {
 
   String get sshKeyPassphrase => _getText("sshKeyPassphrase");
 
+  String get copyToClipboard => _getText("copyToClipboard");
+
   static late Map<String, String> _localizedValues;
 
   static const _enValues = {
@@ -244,6 +248,7 @@ class I18n {
     "score": "Score",
     "member": "Member",
     "enterStringValue": "Enter string value...",
+    "enterCommand": "Enter command...",
     "deleteKey": "Delete Key",
     "addMember": "Add Member",
     "addSetMember": "Add Set Member",
@@ -325,6 +330,7 @@ class I18n {
     "connectionSuccessful1": "Connection Successful!",
     "sshKeyFilePath": "SSH Key File Path",
     "sshKeyPassphrase": "SSH Key Passphrase",
+    "copyToClipboard": "Copied to clipboard.",
   };
 
   static const _koValues = {
@@ -343,6 +349,7 @@ class I18n {
     "score": "점수",
     "member": "멤버",
     "enterStringValue": "문자열 값 입력",
+    "enterCommand": "명령어 입력...",
     "deleteKey": "키 삭제",
     "addMember": "멤버 추가",
     "addSetMember": "집합 멤버 추가",
@@ -424,6 +431,7 @@ class I18n {
     "connectionSuccessful1": "연결 성공!",
     "sshKeyFilePath": "SSH 키 파일 경로",
     "sshKeyPassphrase": "SSH 키 암호",
+    "copyToClipboard": "클립보드에 복사되었습니다.",
   };
 
   static const _jaValues = {
@@ -442,6 +450,7 @@ class I18n {
     "score": "スコア",
     "member": "メンバー",
     "enterStringValue": "文字列の値を入力...",
+    "enterCommand": "コマンドを入力...",
     "deleteKey": "キーを削除",
     "addMember": "メンバーを追加",
     "addSetMember": "セットメンバーを追加",
@@ -523,6 +532,7 @@ class I18n {
     "connectionSuccessful1": "接続に成功しました！",
     "sshKeyFilePath": "SSHキーファイルパス",
     "sshKeyPassphrase": "SSHキー パスフレーズ",
+    "copyToClipboard": "クリップボードにコピーされました。",
   };
 
   static const _zhCNValues = {
@@ -541,6 +551,7 @@ class I18n {
     "score": "分数",
     "member": "成员",
     "enterStringValue": "输入字符串值...",
+    "enterCommand": "输入命令...",
     "deleteKey": "删除键",
     "addMember": "添加成员",
     "addSetMember": "添加集合成员",
@@ -622,6 +633,7 @@ class I18n {
     "connectionSuccessful1": "连接成功！",
     "sshKeyFilePath": "SSH密钥文件路径",
     "sshKeyPassphrase": "SSH密钥密码短语",
+    "copyToClipboard": "已复制到剪贴板",
   };
 
   static const _zhTWValues = {
@@ -640,6 +652,7 @@ class I18n {
     "score": "分數",
     "member": "成員",
     "enterStringValue": "輸入字串值...",
+    "enterCommand": "輸入指令...",
     "deleteKey": "刪除鍵",
     "addMember": "新增成員",
     "addSetMember": "新增集合成員",
@@ -721,6 +734,7 @@ class I18n {
     "connectionSuccessful1": "連線成功！",
     "sshKeyFilePath": "SSH金鑰檔案路徑",
     "sshKeyPassphrase": "SSH金鑰密碼片語",
+    "copyToClipboard": "已複製到剪貼簿",
   };
 
   static const _idValues = {
@@ -739,6 +753,7 @@ class I18n {
     "score": "Skor",
     "member": "Anggota",
     "enterStringValue": "Masukkan nilai string...",
+    "enterCommand": "Masukkan perintah...",
     "deleteKey": "Hapus Kunci",
     "addMember": "Tambah Anggota",
     "addSetMember": "Tambah anggota set",
@@ -821,6 +836,7 @@ class I18n {
     "connectionSuccessful1": "Koneksi Berhasil!",
     "sshKeyFilePath": "Path File Kunci SSH",
     "sshKeyPassphrase": "Frasa sandi Kunci SSH",
+    "copyToClipboard": "Disalin ke papan klip.",
   };
 
   static const _viValues = {
@@ -839,6 +855,7 @@ class I18n {
     "score": "Điểm",
     "member": "Thành viên",
     "enterStringValue": "Nhập giá trị chuỗi...",
+    "enterCommand": "Nhập lệnh...",
     "deleteKey": "Xóa khóa",
     "addMember": "Thêm thành viên",
     "addSetMember": "Thêm thành viên tập hợp",
@@ -920,6 +937,7 @@ class I18n {
     "connectionSuccessful1": "Kết nối thành công!",
     "sshKeyFilePath": "Đường dẫn tệp khóa SSH",
     "sshKeyPassphrase": "Cụm mật khẩu khóa SSH",
+    "copyToClipboard": "Đã sao chép vào bộ nhớ tạm.",
   };
 
   static const _thValues = {
@@ -938,6 +956,7 @@ class I18n {
     "score": "คะแนน",
     "member": "สมาชิก",
     "enterStringValue": "ใส่ค่าสตริง...",
+    "enterCommand": "ป้อนคำสั่ง...",
     "deleteKey": "ลบคีย์",
     "addMember": "เพิ่มสมาชิก",
     "addSetMember": "เพิ่มสมาชิกชุด",
@@ -1019,6 +1038,7 @@ class I18n {
     "connectionSuccessful1": "เชื่อมต่อสำเร็จ!",
     "sshKeyFilePath": "เส้นทางไฟล์คีย์ SSH",
     "sshKeyPassphrase": "วลีรหัสผ่านคีย์ SSH",
+    "copyToClipboard": "คัดลอกลงในคลิปบอร์ดแล้ว",
   };
 
   static const _deValues = {
@@ -1037,6 +1057,7 @@ class I18n {
     "score": "Punktzahl",
     "member": "Mitglied",
     "enterStringValue": "Zeichenfolge eingeben...",
+    "enterCommand": "Befehl eingeben...",
     "deleteKey": "Schlüssel löschen",
     "addMember": "Mitglied hinzufügen",
     "addSetMember": "Set-Mitglied hinzufügen",
@@ -1121,6 +1142,7 @@ class I18n {
     "connectionSuccessful1": "Verbindung erfolgreich!",
     "sshKeyFilePath": "SSH-Schlüsseldateipfad",
     "sshKeyPassphrase": "SSH-Schlüssel-Passphrase",
+    "copyToClipboard": "In die Zwischenablage kopiert.",
   };
 
   static const _deCHValues = {
@@ -1139,6 +1161,7 @@ class I18n {
     "score": "Punktzahl",
     "member": "Mitglied",
     "enterStringValue": "Zeichenfolge eingeben...",
+    "enterCommand": "Befehl eingeben...",
     "deleteKey": "Schlüssel löschen",
     "addMember": "Mitglied hinzufügen",
     "addSetMember": "Set-Mitglied hinzufügen",
@@ -1222,6 +1245,7 @@ class I18n {
     "connectionSuccessful1": "Verbindung erfolgreich!",
     "sshKeyFilePath": "SSH-Schlüsseldateipfad",
     "sshKeyPassphrase": "SSH-Schlüssel-Passphrase",
+    "copyToClipboard": "In die Zwischenablage kopiert.",
   };
 
   static const _frValues = {
@@ -1240,6 +1264,7 @@ class I18n {
     "score": "Score",
     "member": "Membre",
     "enterStringValue": "Entrez la valeur de chaîne...",
+    "enterCommand": "Saisir une commande...",
     "deleteKey": "Supprimer la clé",
     "addMember": "Ajouter un membre",
     "addSetMember": "Ajouter membre de l'ensemble",
@@ -1323,6 +1348,7 @@ class I18n {
     "connectionSuccessful1": "Connexion réussie !",
     "sshKeyFilePath": "Chemin du fichier de clé SSH",
     "sshKeyPassphrase": "Passphrase de clé SSH",
+    "copyToClipboard": "Copié dans le presse-papiers.",
   };
 
   static const _itValues = {
@@ -1341,6 +1367,7 @@ class I18n {
     "score": "Punteggio",
     "member": "Membro",
     "enterStringValue": "Inserisci valore stringa...",
+    "enterCommand": "Inserisci comando...",
     "deleteKey": "Elimina chiave",
     "addMember": "Aggiungi membro",
     "addSetMember": "Aggiungi membro set",
@@ -1424,6 +1451,7 @@ class I18n {
     "connectionSuccessful1": "Connessione riuscita!",
     "sshKeyFilePath": "Percorso file chiave SSH",
     "sshKeyPassphrase": "Passphrase chiave SSH",
+    "copyToClipboard": "Copiato negli appunti.",
   };
 
   static const _esValues = {
@@ -1442,6 +1470,7 @@ class I18n {
     "score": "Puntuación",
     "member": "Miembro",
     "enterStringValue": "Introduce valor de cadena...",
+    "enterCommand": "Escribir comando...",
     "deleteKey": "Eliminar clave",
     "addMember": "Añadir miembro",
     "addSetMember": "Añadir miembro de conjunto",
@@ -1525,6 +1554,7 @@ class I18n {
     "connectionSuccessful1": "¡Conexión exitosa!",
     "sshKeyFilePath": "Ruta del archivo de clave SSH",
     "sshKeyPassphrase": "Frase de contraseña de clave SSH",
+    "copyToClipboard": "Copiado al portapapeles.",
   };
 
   static const _ruValues = {
@@ -1543,6 +1573,7 @@ class I18n {
     "score": "Очки",
     "member": "Участник",
     "enterStringValue": "Введите строковое значение...",
+    "enterCommand": "Введите команду...",
     "deleteKey": "Удалить ключ",
     "addMember": "Добавить участника",
     "addSetMember": "Добавить элемент множества",
@@ -1625,6 +1656,7 @@ class I18n {
     "connectionSuccessful1": "Подключение успешно!",
     "sshKeyFilePath": "Путь к файлу ключа SSH",
     "sshKeyPassphrase": "Парольная фраза ключа SSH",
+    "copyToClipboard": "Скопировано в буфер обмена.",
   };
 
   static const _ptPTValues = {
@@ -1643,6 +1675,7 @@ class I18n {
     "score": "Pontuação",
     "member": "Membro",
     "enterStringValue": "Introduza valor de cadeia...",
+    "enterCommand": "Introduzir comando...",
     "deleteKey": "Eliminar chave",
     "addMember": "Adicionar membro",
     "addSetMember": "Adicionar membro do conjunto",
@@ -1726,6 +1759,7 @@ class I18n {
     "connectionSuccessful1": "Conexão bem-sucedida!",
     "sshKeyFilePath": "Caminho do ficheiro de chave SSH",
     "sshKeyPassphrase": "Frase secreta da chave SSH",
+    "copyToClipboard": "Copiado para a área de transferência.",
   };
 
   static const _ptBRValues = {
@@ -1744,6 +1778,7 @@ class I18n {
     "score": "Pontuação",
     "member": "Membro",
     "enterStringValue": "Insira valor de string...",
+    "enterCommand": "Digitar comando...",
     "deleteKey": "Excluir chave",
     "addMember": "Adicionar membro",
     "addSetMember": "Adicionar membro do conjunto",
@@ -1827,6 +1862,7 @@ class I18n {
     "connectionSuccessful1": "Conexão bem-sucedida!",
     "sshKeyFilePath": "Caminho do arquivo de chave SSH",
     "sshKeyPassphrase": "Frase secreta da chave SSH",
+    "copyToClipboard": "Copiado para a área de transferência.",
   };
 
   static const _allValues = {
