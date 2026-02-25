@@ -92,6 +92,7 @@ This package supports **[Redis](https://redis.io)** and various RESP (Redis Seri
 
 ## 🚀 Key Features
 
+* **Command Palette:** Command console and palette with **grid and list views**
 * **High Performance:** Render 100k+ keys smoothly using `dense_table` virtualization.
 * **Cluster Ready:** First-class support for Redis/Valkey Cluster & Sentinel.
 * **Secure:** Built-in SSH Tunneling and TLS (SSL) support.
