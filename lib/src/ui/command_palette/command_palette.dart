@@ -60,16 +60,16 @@ class _KeyscopeCommandPaletteState
   final List<String> _redisCommands = [
     'INFO',
     'PING',
-    // 'GET',
-    // 'SET',
-    // 'DEL',
-    // 'EXISTS',
-    // 'INCR',
-    // 'DECR',
-    // 'HGETALL',
-    // 'LPUSH',
-    // 'SCAN',
-    // 'KEYS'
+    'GET',
+    'SET',
+    'DEL',
+    'EXISTS',
+    'INCR',
+    'DECR',
+    'HGETALL',
+    'LPUSH',
+    'SCAN',
+    'KEYS'
   ];
 
   final List<Color> _responseColors = [
@@ -96,12 +96,76 @@ class _KeyscopeCommandPaletteState
 
   // TODO: Command guidance & auto-complete & example & help
 
-  // TODO: Single/Double Quote support
+  /// quotes and escapes
+  ///
+  /// Parses a raw command string into a list of arguments (argv).
+  /// Handles double quotes (""), single quotes (''), and escape characters (\).
   List<String> parseCommand(String input) {
-    // return input.trim().split(RegExp(r'\s+'));
-    final argv = input.split(' ');
-    return argv;
+    final result = <String>[];
+    final currentToken = StringBuffer();
+
+    // Tracks if we are inside ' or "
+    String? quoteType; // null, "'", or '"'
+    var isEscaped = false;
+
+    for (var i = 0; i < input.length; i++) {
+      final char = input[i];
+
+      if (isEscaped) {
+        // Handle escaped character: add literally and reset flag
+        // After a backslash, add the character literally and reset the flag
+        currentToken.write(char);
+        isEscaped = false;
+      } else if (char == r'\') {
+        // '\\'
+        // Initiate escape sequence
+        // Start of an escape sequence
+        isEscaped = true;
+      } else if (quoteType != null) {
+        // Inside a quoted section
+        // Currently inside a quoted string
+        if (char == quoteType) {
+          // Closing quote found
+          // Matching closing quote found
+          quoteType = null;
+        } else {
+          currentToken.write(char);
+        }
+      } else {
+        // Outside quotes
+        // Outside of any quotes
+        if (char == '"' || char == "'") {
+          quoteType = char;
+        } else if (char == ' ') {
+          // Space acts as a delimiter only when not quoted/escaped
+          // Split by space only when not quoted or escaped
+          if (currentToken.isNotEmpty) {
+            result.add(currentToken.toString());
+            currentToken.clear();
+          }
+        } else {
+          currentToken.write(char);
+        }
+      }
+    }
+
+    // Add the final token if exists
+    // Add the last remaining token to the list
+    if (currentToken.isNotEmpty) {
+      result.add(currentToken.toString());
+    }
+
+    return result;
   }
+
+  // void testcases() {
+  //   assert(parseCommand('SET key "a b c"').length == 3);
+  //   assert(parseCommand(
+  //     'SET key "escaped \\"quote\\""')[2] == 'escaped "quote"');
+  //   print(parseCommand('SET key "a b c"')); // [SET, key, a b c]
+  //   print(parseCommand('SET key "escaped \\"quote\\""'));
+  //   // [SET, key, escaped "quote"]
+  // }
 
   Future<void> _handleExecute() async {
     final cmd = _controller.text.trim();
@@ -116,7 +180,11 @@ class _KeyscopeCommandPaletteState
       // await Future<void>.delayed(const Duration(milliseconds: 600));
 
       final repo = ref.read(connectionRepositoryProvider);
+      // final argv1 = ['SET', 'pp', 'a b c'];
+      // final result = await repo.raw(argv1);
+
       final result = await repo.raw(argv);
+
       final output = result.toString();
       ref.read(resultProvider.notifier).state = CommandResult(output);
       _updateSearchMatches(

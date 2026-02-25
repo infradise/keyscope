@@ -464,8 +464,9 @@ class BasicConnectionRepository implements ConnectionRepository {
     if (_client == null) throw Exception('Not connected');
     await _client!.zRem(key, [member]);
   }
+
   @override
-  Future<dynamic> raw(List<String> cmd) async => _client!.raw(cmd);
+  Future<dynamic> raw(List<dynamic> cmd) async => _client!.raw(cmd);
 
   @override
   Future<dynamic> execute(List<String> cmd) async => _client!.execute(cmd);
