@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.11.0
+* **Command Palette Support** 🎉
+    * This update introduces the new **Command Palette** feature.  
+    * No more relying on the CLI in the console — you can now query with ease.  
+    * **Command Palette:** Command console and palette with **grid and list views**  
+    * You can now run full queries using raw commands, similar to redis-cli.
+
 ## 0.10.0
 * **SSH Tunneling Support** 🎉
     * You can now connect to **Google Cloud Memorystore** via SSH tunneling through the Connection Manager.
