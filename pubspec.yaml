@@ -53,7 +53,7 @@ dependencies:
   # freezed_annotation: ^3.1.0
   # gap: ^3.0.1
   # intl: ^0.20.2
-  keyscope_client: ^4.6.0
+  keyscope_client: ^4.6.1
   # --- for debugging ---
   # keyscope_client:
   #   path: ../keyscope_client
