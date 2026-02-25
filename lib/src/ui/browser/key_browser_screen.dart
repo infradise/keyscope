@@ -18,6 +18,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../i18n.dart' show I18n;
+import '../command_palette/command_palette.dart' show KeyscopeCommandPalette;
 import 'dialog/create_key_dialog.dart';
 import 'key_detail_panel.dart';
 import 'logic/key_browser_provider.dart';
@@ -70,6 +71,20 @@ class _KeyBrowserScreenState extends ConsumerState<KeyBrowserScreen> {
                   .refresh(pattern: _searchController.text);
             },
             tooltip: I18n.of(context).refresh,
+          ),
+          IconButton(
+            icon: const Icon(Icons.keyboard_command_key),
+            onPressed: () async {
+              // await showDialog<bool>(
+              //   context: context,
+              //   builder: (context) => const KeyscopeCommandPalette());
+              await Navigator.of(context).push(
+                MaterialPageRoute<KeyscopeCommandPalette>(
+                  builder: (context) => const KeyscopeCommandPalette(),
+                ),
+              );
+            },
+            tooltip: I18n.of(context).commandPalette,
           ),
         ],
       ),

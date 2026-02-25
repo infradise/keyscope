@@ -240,6 +240,8 @@ class I18n {
 
   String get search => _getText("search");
 
+  String get commandPalette => _getText("commandPalette");
+
   static late Map<String, String> _localizedValues;
 
   static const _enValues = {
@@ -346,6 +348,7 @@ class I18n {
     "run": "Run",
     "executing": "Executing...",
     "search": "Search...",
+    "commandPalette": "Command Palette",
   };
 
   static const _koValues = {
@@ -452,6 +455,7 @@ class I18n {
     "run": "실행",
     "executing": "실행 중...",
     "search": "검색...",
+    "commandPalette": "명령 팔레트",
   };
 
   static const _jaValues = {
@@ -558,6 +562,7 @@ class I18n {
     "run": "実行",
     "executing": "実行中...",
     "search": "検索...",
+    "commandPalette": "コマンドパレット",
   };
 
   static const _zhCNValues = {
@@ -664,6 +669,7 @@ class I18n {
     "run": "运行",
     "executing": "正在执行...",
     "search": "搜索...",
+    "commandPalette": "命令面板",
   };
 
   static const _zhTWValues = {
@@ -770,6 +776,7 @@ class I18n {
     "run": "執行",
     "executing": "正在執行...",
     "search": "搜尋...",
+    "commandPalette": "指令調色盤",
   };
 
   static const _idValues = {
@@ -877,6 +884,7 @@ class I18n {
     "run": "Jalankan",
     "executing": "Sedang mengeksekusi...",
     "search": "Cari...",
+    "commandPalette": "Palet Perintah",
   };
 
   static const _viValues = {
@@ -983,6 +991,7 @@ class I18n {
     "run": "Chạy",
     "executing": "Đang thực thi...",
     "search": "Tìm kiếm...",
+    "commandPalette": "Bảng lệnh",
   };
 
   static const _thValues = {
@@ -1089,6 +1098,7 @@ class I18n {
     "run": "เรียกใช้",
     "executing": "กำลังดำเนินการ...",
     "search": "ค้นหา...",
+    "commandPalette": "พาเลทคำสั่ง",
   };
 
   static const _deValues = {
@@ -1198,6 +1208,7 @@ class I18n {
     "run": "Ausführen",
     "executing": "Wird ausgeführt...",
     "search": "Suche...",
+    "commandPalette": "Befehls-Palette",
   };
 
   static const _deCHValues = {
@@ -1306,6 +1317,7 @@ class I18n {
     "run": "Ausführen",
     "executing": "Wird ausgeführt...",
     "search": "Suche...",
+    "commandPalette": "Befehls-Palette",
   };
 
   static const _frValues = {
@@ -1414,6 +1426,7 @@ class I18n {
     "run": "Exécuter",
     "executing": "Exécution en cours...",
     "search": "Recherche...",
+    "commandPalette": "Palette de commandes",
   };
 
   static const _itValues = {
@@ -1522,6 +1535,7 @@ class I18n {
     "run": "Esegui",
     "executing": "In esecuzione...",
     "search": "Cerca...",
+    "commandPalette": "Palette comandi",
   };
 
   static const _esValues = {
@@ -1630,6 +1644,7 @@ class I18n {
     "run": "Ejecutar",
     "executing": "Ejecutando...",
     "search": "Buscar...",
+    "commandPalette": "Paleta de comandos",
   };
 
   static const _ruValues = {
@@ -1737,6 +1752,7 @@ class I18n {
     "run": "Запуск",
     "executing": "Выполняется...",
     "search": "Поиск...",
+    "commandPalette": "Палитра команд",
   };
 
   static const _ptPTValues = {
@@ -1845,6 +1861,7 @@ class I18n {
     "run": "Executar",
     "executing": "Em execução...",
     "search": "Pesquisar...",
+    "commandPalette": "Paleta de comandos",
   };
 
   static const _ptBRValues = {
@@ -1953,6 +1970,7 @@ class I18n {
     "run": "Executar",
     "executing": "Em execução...",
     "search": "Pesquisar...",
+    "commandPalette": "Paleta de comandos",
   };
 
   static const _allValues = {

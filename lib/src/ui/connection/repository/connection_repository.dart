@@ -102,6 +102,9 @@ abstract class ConnectionRepository {
     int count = 100,
   });
 
+  Future<dynamic> raw(List<String> command);
+  Future<dynamic> execute(List<String> command);
+
   /// Closes the current connection.
   Future<void> disconnect();
 
@@ -461,6 +464,11 @@ class BasicConnectionRepository implements ConnectionRepository {
     if (_client == null) throw Exception('Not connected');
     await _client!.zRem(key, [member]);
   }
+  @override
+  Future<dynamic> raw(List<String> cmd) async => _client!.raw(cmd);
+
+  @override
+  Future<dynamic> execute(List<String> cmd) async => _client!.execute(cmd);
 
   @override
   Future<String?> ping() async => _client?.ping();

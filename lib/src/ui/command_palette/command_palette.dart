@@ -179,30 +179,69 @@ class _KeyscopeCommandPaletteState
     final isExecuting = ref.watch(isExecutingProvider);
     final result = ref.watch(resultProvider);
 
+    // Column commandPaletteWidget() =>
+    //   Column(
+    //     crossAxisAlignment: CrossAxisAlignment.stretch,
+    //     children: [
+    //       _buildInputBar(isExecuting, isExpanded),
+    //       // Use Expanded to make the content area grow/shrink with the window
+    //       Expanded(
+    //         child: Column(
+    //           children: [
+    //             if (isExpanded) _buildPaletteContent(),
+    //             // Response area also uses Expanded to take remaining space
+    //             if (result != null || isExecuting)
+    //               Expanded(child: _buildResultPanel(result, isExecuting)),
+    //           ],
+    //         ),
+    //       ),
+    //     ],
+    //   );
+
     return Scaffold(
       backgroundColor: const Color(0xFF0D0D0D),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              _buildInputBar(isExecuting, isExpanded),
-              // Use Expanded to make the content area grow/shrink with the window
-              Expanded(
-                child: Column(
-                  children: [
-                    if (isExpanded) _buildPaletteContent(),
-                    // Response area also uses Expanded to take remaining space
-                    if (result != null || isExecuting)
-                      Expanded(child: _buildResultPanel(result, isExecuting)),
-                  ],
+      body: // SafeArea(child:
+          Padding(
+        padding: const EdgeInsets.all(16.0),
+        // child: commandPaletteWidget(),
+        // OR
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Wrap the existing InputBar Container with a Row and
+            // add an IconButton
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                IconButton(
+                  hoverColor: Colors.transparent,
+                  visualDensity: const VisualDensity(vertical: 3.0),
+                  // NOTE: Tune (^/v)
+                  padding: const EdgeInsets.only(bottom: 10.0),
+                  icon: const Icon(Icons.arrow_back_ios_new,
+                      size: 18,
+                      // color: Colors.grey
+                      color: Colors.blueGrey),
+                  onPressed: () => Navigator.of(context).pop(),
                 ),
+                Expanded(child: _buildInputBar(isExecuting, isExpanded)),
+              ],
+            ),
+            // Use Expanded to make the content area grow/shrink with the window
+            Expanded(
+              child: Column(
+                children: [
+                  if (isExpanded) _buildPaletteContent(),
+                  // Response area also uses Expanded to take remaining space
+                  if (result != null || isExecuting)
+                    Expanded(child: _buildResultPanel(result, isExecuting)),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
+      // ),
     );
   }
 
