@@ -16,8 +16,17 @@
 
   <!-- ![Build Status](https://img.shields.io/github/actions/workflow/status/infradise/keyscope/build.yml?branch=main) -->
 
+  Screenshots (1 of 3) - Data Explorer
   ![Keyscope Data Explorer for ZSet](https://download.keyscope.dev/screenshots/commands/sorted-set/keyscope-data-explorer-zset.png)
- 
+
+  Screenshots (2 of 3) - Command Palette
+  ![Keyscope GUI Command Palette - Set a key](https://download.keyscope.dev/screenshots/v0.11.0/command_palette/keyscope-gui-set-a-key.png)
+
+  <!-- ![Keyscope GUI Command Palette - Get a key](https://download.keyscope.dev/screenshots/v0.11.0/command_palette/keyscope-gui-get-a-key.png) -->
+
+  Screenshots (3 of 3) - SSH Tunneling
+  ![Keyscope GUI SSH Tunneling Configuration](https://download.keyscope.dev/screenshots/v0.10.0/ssh_tunneling/keyscope-gui-ssh-tunneling-support-2.png)
+
   <p>
     <a href="#-why-keyscope">Why Keyscope?</a> •
     <a href="#-supported-data-stores">Supported Data Stores</a> •
