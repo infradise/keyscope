@@ -230,6 +230,16 @@ class I18n {
 
   String get copyToClipboard => _getText("copyToClipboard");
 
+  String get palette => _getText("palette");
+
+  String get response => _getText("response");
+
+  String get run => _getText("run");
+
+  String get executing => _getText("executing");
+
+  String get search => _getText("search");
+
   static late Map<String, String> _localizedValues;
 
   static const _enValues = {
@@ -331,6 +341,11 @@ class I18n {
     "sshKeyFilePath": "SSH Key File Path",
     "sshKeyPassphrase": "SSH Key Passphrase",
     "copyToClipboard": "Copied to clipboard.",
+    "palette": "PALETTE",
+    "response": "RESPONSE",
+    "run": "Run",
+    "executing": "Executing...",
+    "search": "Search...",
   };
 
   static const _koValues = {
@@ -432,6 +447,11 @@ class I18n {
     "sshKeyFilePath": "SSH 키 파일 경로",
     "sshKeyPassphrase": "SSH 키 암호",
     "copyToClipboard": "클립보드에 복사되었습니다.",
+    "palette": "팔레트",
+    "response": "응답",
+    "run": "실행",
+    "executing": "실행 중...",
+    "search": "검색...",
   };
 
   static const _jaValues = {
@@ -533,6 +553,11 @@ class I18n {
     "sshKeyFilePath": "SSHキーファイルパス",
     "sshKeyPassphrase": "SSHキー パスフレーズ",
     "copyToClipboard": "クリップボードにコピーされました。",
+    "palette": "パレット",
+    "response": "レスポンス",
+    "run": "実行",
+    "executing": "実行中...",
+    "search": "検索...",
   };
 
   static const _zhCNValues = {
@@ -634,6 +659,11 @@ class I18n {
     "sshKeyFilePath": "SSH密钥文件路径",
     "sshKeyPassphrase": "SSH密钥密码短语",
     "copyToClipboard": "已复制到剪贴板",
+    "palette": "调色板",
+    "response": "响应",
+    "run": "运行",
+    "executing": "正在执行...",
+    "search": "搜索...",
   };
 
   static const _zhTWValues = {
@@ -735,6 +765,11 @@ class I18n {
     "sshKeyFilePath": "SSH金鑰檔案路徑",
     "sshKeyPassphrase": "SSH金鑰密碼片語",
     "copyToClipboard": "已複製到剪貼簿",
+    "palette": "調色盤",
+    "response": "回應",
+    "run": "執行",
+    "executing": "正在執行...",
+    "search": "搜尋...",
   };
 
   static const _idValues = {
@@ -837,6 +872,11 @@ class I18n {
     "sshKeyFilePath": "Path File Kunci SSH",
     "sshKeyPassphrase": "Frasa sandi Kunci SSH",
     "copyToClipboard": "Disalin ke papan klip.",
+    "palette": "Palet",
+    "response": "Respons",
+    "run": "Jalankan",
+    "executing": "Sedang mengeksekusi...",
+    "search": "Cari...",
   };
 
   static const _viValues = {
@@ -938,6 +978,11 @@ class I18n {
     "sshKeyFilePath": "Đường dẫn tệp khóa SSH",
     "sshKeyPassphrase": "Cụm mật khẩu khóa SSH",
     "copyToClipboard": "Đã sao chép vào bộ nhớ tạm.",
+    "palette": "Bảng lệnh",
+    "response": "Phản hồi",
+    "run": "Chạy",
+    "executing": "Đang thực thi...",
+    "search": "Tìm kiếm...",
   };
 
   static const _thValues = {
@@ -1039,6 +1084,11 @@ class I18n {
     "sshKeyFilePath": "เส้นทางไฟล์คีย์ SSH",
     "sshKeyPassphrase": "วลีรหัสผ่านคีย์ SSH",
     "copyToClipboard": "คัดลอกลงในคลิปบอร์ดแล้ว",
+    "palette": "พาเลท",
+    "response": "การตอบสนอง",
+    "run": "เรียกใช้",
+    "executing": "กำลังดำเนินการ...",
+    "search": "ค้นหา...",
   };
 
   static const _deValues = {
@@ -1143,6 +1193,11 @@ class I18n {
     "sshKeyFilePath": "SSH-Schlüsseldateipfad",
     "sshKeyPassphrase": "SSH-Schlüssel-Passphrase",
     "copyToClipboard": "In die Zwischenablage kopiert.",
+    "palette": "Palette",
+    "response": "Antwort",
+    "run": "Ausführen",
+    "executing": "Wird ausgeführt...",
+    "search": "Suche...",
   };
 
   static const _deCHValues = {
@@ -1246,6 +1301,11 @@ class I18n {
     "sshKeyFilePath": "SSH-Schlüsseldateipfad",
     "sshKeyPassphrase": "SSH-Schlüssel-Passphrase",
     "copyToClipboard": "In die Zwischenablage kopiert.",
+    "palette": "Palette",
+    "response": "Antwort",
+    "run": "Ausführen",
+    "executing": "Wird ausgeführt...",
+    "search": "Suche...",
   };
 
   static const _frValues = {
@@ -1349,6 +1409,11 @@ class I18n {
     "sshKeyFilePath": "Chemin du fichier de clé SSH",
     "sshKeyPassphrase": "Passphrase de clé SSH",
     "copyToClipboard": "Copié dans le presse-papiers.",
+    "palette": "Palette",
+    "response": "Réponse",
+    "run": "Exécuter",
+    "executing": "Exécution en cours...",
+    "search": "Recherche...",
   };
 
   static const _itValues = {
@@ -1452,6 +1517,11 @@ class I18n {
     "sshKeyFilePath": "Percorso file chiave SSH",
     "sshKeyPassphrase": "Passphrase chiave SSH",
     "copyToClipboard": "Copiato negli appunti.",
+    "palette": "Palette",
+    "response": "Risposta",
+    "run": "Esegui",
+    "executing": "In esecuzione...",
+    "search": "Cerca...",
   };
 
   static const _esValues = {
@@ -1555,6 +1625,11 @@ class I18n {
     "sshKeyFilePath": "Ruta del archivo de clave SSH",
     "sshKeyPassphrase": "Frase de contraseña de clave SSH",
     "copyToClipboard": "Copiado al portapapeles.",
+    "palette": "Paleta",
+    "response": "Respuesta",
+    "run": "Ejecutar",
+    "executing": "Ejecutando...",
+    "search": "Buscar...",
   };
 
   static const _ruValues = {
@@ -1657,6 +1732,11 @@ class I18n {
     "sshKeyFilePath": "Путь к файлу ключа SSH",
     "sshKeyPassphrase": "Парольная фраза ключа SSH",
     "copyToClipboard": "Скопировано в буфер обмена.",
+    "palette": "Палитра",
+    "response": "Ответ",
+    "run": "Запуск",
+    "executing": "Выполняется...",
+    "search": "Поиск...",
   };
 
   static const _ptPTValues = {
@@ -1760,6 +1840,11 @@ class I18n {
     "sshKeyFilePath": "Caminho do ficheiro de chave SSH",
     "sshKeyPassphrase": "Frase secreta da chave SSH",
     "copyToClipboard": "Copiado para a área de transferência.",
+    "palette": "Paleta",
+    "response": "Resposta",
+    "run": "Executar",
+    "executing": "Em execução...",
+    "search": "Pesquisar...",
   };
 
   static const _ptBRValues = {
@@ -1863,6 +1948,11 @@ class I18n {
     "sshKeyFilePath": "Caminho do arquivo de chave SSH",
     "sshKeyPassphrase": "Frase secreta da chave SSH",
     "copyToClipboard": "Copiado para a área de transferência.",
+    "palette": "Paleta",
+    "response": "Resposta",
+    "run": "Executar",
+    "executing": "Em execução...",
+    "search": "Pesquisar...",
   };
 
   static const _allValues = {
