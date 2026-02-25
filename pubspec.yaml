@@ -21,7 +21,7 @@
 
 name: keyscope
 description: GUI for Redis, Valkey, Dragonfly, and Google Memorystore via SSH Tunneling Support. Multilingual.
-version: 0.10.0
+version: 0.11.0
 homepage: https://github.com/infradise/keyscope
 repository: https://github.com/infradise/keyscope
 issue_tracker: https://github.com/infradise/keyscope/issues
