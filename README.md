@@ -6,10 +6,10 @@
   <h1>Keyscope : Unified Redis/Valkey GUI</h1>
 
   <p>
-    <a href="https://keyscope.dev"><img src="https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-blue?style=flat-square" alt="Supported Platforms"></a>
-    <a href="#"><img src="https://img.shields.io/badge/Supports-Redis%20%7C%20Valkey-red?style=flat-square" alt="Redis & Valkey"></a>
-    <a href="#"><img src="https://img.shields.io/badge/Security-TLS%20%7C%20SSH-success?style=flat-square" alt="Security"></a>
-    <a href="#"><img src="https://img.shields.io/badge/Languages-16%20Supported-orange?style=flat-square" alt="Multilingual"></a>
+    <img src="https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-blue?style=flat-square" alt="Supported Platforms">
+    <img src="https://img.shields.io/badge/Supports-Redis%20%7C%20Valkey-red?style=flat-square" alt="Redis & Valkey">
+    <img src="https://img.shields.io/badge/Security-TLS%20%7C%20SSH-success?style=flat-square" alt="Security">
+    <img src="https://img.shields.io/badge/Languages-16%20Supported-orange?style=flat-square" alt="Multilingual">
   </p>
 
   **A lightweight, native GUI client for unified Redis and Valkey management.**
