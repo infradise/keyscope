@@ -37,15 +37,15 @@ Keyscope is designed to prioritize developer productivity and zero-configuration
 - **Real-time Watch:** Enables monitoring of key changes in real time while maintaining visibility across clusters.
 - **Multilingual UI:** Supports more than 15 languages.
 
-## Unmatched Compatibility & Keyscope Library
+## Unmatched Compatibility & Keyscope Engine
 
-Keyscope is powered by the proprietary **Keyscope Library**, designed to provide a native command experience.
+Keyscope is powered by the proprietary **Keyscope Engine**, designed to provide a native command experience.
 
-The library is continuously updated to provide full command coverage across Redis, Valkey, and major cloud providers, with an in-app **Compatibility Matrix**.
+The engine is continuously updated to provide full command coverage across Redis, Valkey, and major cloud providers, with an in-app **Compatibility Matrix**.
 
 ### Supported Data Types & Commands
 
-Keyscope Library supports a wide range of commands beyond basic string operations:
+Keyscope Engine supports a wide range of commands beyond basic string operations:
 
 * **Core Data Types:**
   String • Hash • List • Set • Sorted Set • Bitmap • HyperLogLog • Geospatial Indices • Stream • Generic
