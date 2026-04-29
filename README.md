@@ -73,7 +73,7 @@ Keyscope supports more than 15 languages.
 
 | Region | Languages |
 | :--- | :--- |
-| **Asia** | 한국어 (KR), 日本語 (JP), 简体中文 (CN), 繁體中文 (TW), Tiếng Việt (VN), ภาษาไทย (TH), Bahasa Indonesia (ID) |
+| **Asia** | 한국어 (KR), 日本語 (JP), 繁體中文 (TW), Tiếng Việt (VN), ภาษาไทย (TH), Bahasa Indonesia (ID) |
 | **Europe** | Français (FR), Deutsch (DE), Schweizerdeutsch (CH), Italiano (IT), Español (ES), Português (PT), Русский (RU) |
 | **Americas** | English (US), Português (BR) |
 
