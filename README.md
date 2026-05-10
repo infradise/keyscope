@@ -90,8 +90,18 @@ Download the latest native builds for your operating system from the official we
 > [!NOTE]
 > For feature requests, bug reports, or more information, open a GitHub issue, start a discussion, or visit the official website.
 
+<br />
+
 ---
 
 <div align="center">
+  <h1>
+    <img src="https://www.infradise.com/images/logo.png" height=24 alt="Infradise Logo">
+    Infradise
+  </h1>
+
+  **True Native Engineering.**  
+  Simplified Management. Boundless Connection.
+
   © 2025-2026 Infradise Inc. All rights reserved.
 </div>
