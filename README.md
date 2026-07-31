@@ -1,19 +1,24 @@
 <br />
 <div align="center">
-  <a href="#"><img src="https://download.keyscope.dev/logo.png" alt="Keyscope Logo" width="128"></a>
-  <br />
+  <a href="https://keyscope.dev">
+    <img src="https://download.keyscope.dev/logo.png" alt="Keyscope logo — Unified GUI for Your Entire Data Stack" width="128">
+  </a>
 
-  <h1>Keyscope : Unified Redis/Valkey GUI</h1>
+  <h1>Keyscope <br /><br /> Unified GUI for Your Entire Data Stack</h1>
 
   <p>
     <a href="#"><img src="https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-blue?style=flat-square" alt="Supported Platforms"></a>
-    <a href="#"><img src="https://img.shields.io/badge/Supports-Redis%20%7C%20Valkey-red?style=flat-square" alt="Redis & Valkey"></a>
+    <a href="#"><img src="https://img.shields.io/badge/Supports-Redis%20%7C%20Cloudflare%20%7C%20K8s%20%7C%20Valkey-teal?style=flat-square" alt="Supported Integrations"></a>
     <a href="#"><img src="https://img.shields.io/badge/Security-TLS%20%7C%20SSH-success?style=flat-square" alt="Security"></a>
-    <a href="#"><img src="https://img.shields.io/badge/Languages-16%20Supported-orange?style=flat-square" alt="Multilingual"></a>
+    <a href="#"><img src="https://img.shields.io/badge/Languages-16%20Supported-brown?style=flat-square" alt="Multilingual"></a>
   </p>
 
-  **A lightweight, native GUI client for unified Redis and Valkey management.**
+  <p>
+    <strong>A lightweight native app to manage Redis, Valkey, Cloudflare, <br /> Kubernetes, Upstash, and modern databases with CLI-like precision.</strong>
+  </p>
 </div>
+
+![Keyscope Cloudflare R2 Management on Windows](https://download.keyscope.dev/screenshots/v0.20.0/keyscope-cloudflare-r2-windows.png)
 
 <br />
 
@@ -23,7 +28,7 @@ Keyscope provides both a `redis-cli` style shell for direct server interaction a
 
 Keyscope supports **TLS, SSH, and SSH tunneling** to securely manage instances such as Upstash, Google Cloud Memorystore, AWS ElastiCache, and Azure Cache.
 
-![Keyscope UI Screenshot](https://download.keyscope.dev/screenshots/v1.0.0/keyscope-connection-manager.png)
+![Keyscope Redis/Valkey Connection Manager](https://download.keyscope.dev/screenshots/v0.20.0/keyscope-redis-valkey-connection-manager.png)
 
 ## Key Features
 
@@ -81,9 +86,9 @@ Keyscope supports more than 15 languages.
 
 Keyscope provides a full-featured experience in under 20MB.
 
-- **macOS Universal** (Silicon & Intel) — 19.1 MB (.dmg installer)
-- **Windows** (64-bit, zipped installer) — 11.4 MB
-- **Linux** (x86_64, .AppImage) — 10.5 MB
+- **macOS Universal** (Silicon & Intel) — 20.3 MB (.dmg installer)
+- **Windows** (64-bit, zipped installer) — 12.7 MB
+- **Linux** (x86_64, .AppImage) — 11.9 MB
 
 Download the latest native builds for your operating system from the official website or from GitHub releases.
 
