@@ -13,12 +13,14 @@
     <a href="#"><img src="https://img.shields.io/badge/Languages-16%20Supported-brown?style=flat-square" alt="Multilingual"></a>
   </p>
 
+  <br />
+
   <p>
-    <strong>A lightweight native app to manage Redis, Valkey, Cloudflare, <br /> Kubernetes, Upstash, and modern databases with CLI-like precision.</strong>
+    <strong>A lightweight native app to manage Redis, Valkey, Upstash, Cloudflare, Kubernetes, and modern databases in one place.</strong>
   </p>
 </div>
 
-![Keyscope Cloudflare R2 Management on Windows](https://download.keyscope.dev/screenshots/v0.20.0/keyscope-cloudflare-r2-windows.png)
+![Keyscope Welcome Screen](https://download.keyscope.dev/screenshots/main/keyscope-welcome-screen.png)
 
 <br />
 
