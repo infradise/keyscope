@@ -16,7 +16,8 @@
   <br />
 
   <p>
-    <strong>A lightweight native app to manage Redis, Valkey, Upstash, Cloudflare, Kubernetes, and modern databases in one place.</strong>
+    <strong>A lightweight native app to manage Redis, Valkey, Upstash,<br />
+    Cloudflare, Kubernetes, and modern databases in one place.</strong>
   </p>
 </div>
 
