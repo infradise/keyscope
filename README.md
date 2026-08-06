@@ -21,7 +21,7 @@
   </p>
 </div>
 
-![Keyscope Welcome Screen](https://download.keyscope.dev/screenshots/main/keyscope-welcome-screen.png)
+![Keyscope Native Workspace Integration](https://download.keyscope.dev/screenshots/main/keyscope-native-workspace-integration.png)
 
 <br />
 
