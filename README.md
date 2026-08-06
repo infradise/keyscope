@@ -4,13 +4,13 @@
     <img src="https://download.keyscope.dev/logo.png" alt="Keyscope logo — Unified GUI for Your Entire Data Stack" width="128">
   </a>
 
-  <h1>Keyscope <br /><br /> Unified GUI for Your Entire Data Stack</h1>
+  <h1>Keyscope <br /><br /> All-in-One GUI for Your Data Stack</h1>
 
   <p>
     <a href="#"><img src="https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-blue?style=flat-square" alt="Supported Platforms"></a>
-    <a href="#"><img src="https://img.shields.io/badge/Supports-Redis%20%7C%20Cloudflare%20%7C%20K8s%20%7C%20Valkey-teal?style=flat-square" alt="Supported Integrations"></a>
+    <a href="#"><img src="https://img.shields.io/badge/Supports-Redis%20%7C%20Valkey%20%7C%20Upstash%20%7C%20Cloudflare%20%7C%20Kubernetes-teal?style=flat-square" alt="Supported Integrations"></a>
     <a href="#"><img src="https://img.shields.io/badge/Security-TLS%20%7C%20SSH-success?style=flat-square" alt="Security"></a>
-    <a href="#"><img src="https://img.shields.io/badge/Languages-16%20Supported-brown?style=flat-square" alt="Multilingual"></a>
+    <a href="#"><img src="https://img.shields.io/badge/Languages-15+%20Supported-brown?style=flat-square" alt="Multilingual"></a>
   </p>
 
   <br />
