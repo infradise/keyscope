@@ -43,7 +43,7 @@ Keyscope is designed to prioritize developer productivity and zero-configuration
 - **Dual Interface:** Offers both the `redis-cli` shell for command-line sessions and a Command Palette GUI for executing commands through a searchable grid.
 - **Blazing-Fast Native Core:** Built on a proprietary, high-performance client engine, Keyscope delivers compact native builds for macOS (Universal), Windows, and Linux with fast response times.
 - **Real-time Watch:** Enables monitoring of key changes in real time while maintaining visibility across clusters.
-- **Multilingual UI:** Supports more than 9 languages.
+- **Multilingual UI:** Supports 9 key languages.
 
 ## Unmatched Compatibility & Keyscope Engine
 
