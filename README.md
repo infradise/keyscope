@@ -10,7 +10,7 @@
     <a href="#"><img src="https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-blue?style=flat-square" alt="Supported Platforms"></a>
     <a href="#"><img src="https://img.shields.io/badge/Supports-Redis%20%7C%20Valkey%20%7C%20Upstash%20%7C%20Cloudflare%20%7C%20Kubernetes-teal?style=flat-square" alt="Supported Integrations"></a>
     <a href="#"><img src="https://img.shields.io/badge/Security-TLS%20%7C%20SSH-success?style=flat-square" alt="Security"></a>
-    <a href="#"><img src="https://img.shields.io/badge/Languages-15+%20Supported-brown?style=flat-square" alt="Multilingual"></a>
+    <a href="#"><img src="https://img.shields.io/badge/Languages-9%20Supported-brown?style=flat-square" alt="Multilingual"></a>
   </p>
 
   <br />
@@ -43,7 +43,7 @@ Keyscope is designed to prioritize developer productivity and zero-configuration
 - **Dual Interface:** Offers both the `redis-cli` shell for command-line sessions and a Command Palette GUI for executing commands through a searchable grid.
 - **Blazing-Fast Native Core:** Built on a proprietary, high-performance client engine, Keyscope delivers compact native builds for macOS (Universal), Windows, and Linux with fast response times.
 - **Real-time Watch:** Enables monitoring of key changes in real time while maintaining visibility across clusters.
-- **Multilingual UI:** Supports more than 15 languages.
+- **Multilingual UI:** Supports more than 9 languages.
 
 ## Unmatched Compatibility & Keyscope Engine
 
@@ -77,13 +77,13 @@ Keyscope simplifies SSH tunneling and TLS setup with a **Template-Driven Connect
 
 ## Translations
 
-Keyscope supports more than 15 languages.
+Keyscope supports 9 key languages across major regions:
 
 | Region | Languages |
 | :--- | :--- |
-| **Asia** | 한국어 (KR), 日本語 (JP), 繁體中文 (TW), Tiếng Việt (VN), ภาษาไทย (TH), Bahasa Indonesia (ID) |
-| **Europe** | Français (FR), Deutsch (DE), Schweizerdeutsch (CH), Italiano (IT), Español (ES), Português (PT), Русский (RU) |
-| **Americas** | English (US), Português (BR) |
+| **Asia** | 한국어 (KR), 日本語 (JP), Tiếng Việt (VN) |
+| **Europe** | Deutsch (DE), Français (FR), Русский (RU) |
+| **Americas** | English (US), Português (BR), Español (ES) |
 
 ## Installation
 
