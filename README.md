@@ -89,11 +89,11 @@ Keyscope supports 9 key languages across major regions:
 
 Keyscope provides a full-featured experience in around 20MB.
 
-- **macOS Universal** (Intel & Apple Silicon dual-arch) — 20.4 MB (.dmg installer)
-- **Windows** (64-bit, zipped installer) — 12.4 MB
+- **macOS Universal** (Intel & Apple Silicon dual-arch) — 22.0 MB (.dmg installer)
+- **Windows** (64-bit, zipped installer) — 11.6 MB
 - **Linux** (.AppImage)
-  - **x86_64** — 12.4 MB
-  - **ARM64** (aarch64) — 11.9 MB
+  - **x86_64** — 12.0 MB
+  - **ARM64** (aarch64) — 11.5 MB
 
 Download the latest native builds for your operating system from the official website or from GitHub releases.
 
