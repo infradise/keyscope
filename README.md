@@ -92,8 +92,8 @@ Keyscope provides a full-featured experience at under 15MB per single-architectu
 - **macOS Universal** (Intel & Apple Silicon dual-arch) — 25.8 MB (.dmg installer)
 - **Windows** (64-bit, zipped installer) — 12.1 MB
 - **Linux** (.AppImage)
-  - **x86_64** — 12.0 MB
-  - **ARM64** (aarch64) — 11.5 MB
+  - **x86_64** — 12.1 MB
+  - **ARM64** (aarch64) — 11.6 MB
 
 Download the latest native builds for your operating system from the official website or from GitHub releases.
 
