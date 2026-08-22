@@ -4,7 +4,7 @@
     <img src="https://download.keyscope.dev/logo.png" alt="Keyscope logo — Unified GUI for Your Entire Data Stack" width="128">
   </a>
 
-  <h1>Keyscope <br /><br /> All-in-One GUI for Your Data Stack</h1>
+  <h1>Keyscope <br /><br /> All-in-One GUI for Your Dev Stack</h1>
 
   <p>
     <a href="#"><img src="https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-blue?style=flat-square" alt="Supported Platforms"></a>
@@ -17,7 +17,7 @@
 
   <p>
     <strong>A lightweight native app to manage Redis, Valkey, Upstash,<br />
-    Cloudflare, Kubernetes, and modern databases in one place.</strong>
+    Cloudflare, Kubernetes, Resend, HTTP Client, and modern databases in one place.</strong>
   </p>
 </div>
 
