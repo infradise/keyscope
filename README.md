@@ -1,23 +1,31 @@
 <br />
 <div align="center">
   <a href="https://keyscope.dev">
-    <img src="https://download.keyscope.dev/logo.png" alt="Keyscope logo — Unified GUI for Your Entire Data Stack" width="128">
+    <img src="https://download.keyscope.dev/logo.png" alt="Keyscope — All-in-One Developer GUI for Your Dev Stack" width="128">
   </a>
 
-  <h1>Keyscope <br /><br /> All-in-One GUI for Your Dev Stack</h1>
+  <h1>Keyscope <br /><br /> All-in-One Developer GUI for Your Dev Stack</h1>
 
   <p>
-    <a href="#"><img src="https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-blue?style=flat-square" alt="Supported Platforms"></a>
-    <a href="#"><img src="https://img.shields.io/badge/Supports-Redis%20%7C%20Valkey%20%7C%20Upstash%20%7C%20Cloudflare%20%7C%20Kubernetes-teal?style=flat-square" alt="Supported Integrations"></a>
-    <a href="#"><img src="https://img.shields.io/badge/Security-TLS%20%7C%20SSH-success?style=flat-square" alt="Security"></a>
-    <a href="#"><img src="https://img.shields.io/badge/Languages-9%20Supported-brown?style=flat-square" alt="Multilingual"></a>
+    <a href="#">
+      <img src="https://img.shields.io/badge/Dev%20Stack-Redis%20%7C%20Valkey%20%7C%20Upstash%20%7C%20Cloudflare%20%7C%20Kubernetes%20%7C%20modern%20databases-teal?style=flat-square" alt="Dev Stack (Infra & Data Stack)">
+    </a>
+    <br />
+    <a href="#">
+      <img src="https://img.shields.io/badge/Developer%20Toolkit-Mail%20Sender%20%7C%20HTTP%20Client%20%7C%20Visual%20Diff%20%7C%20Local%20Terminal%20%7C%20SSH%20Client-success?style=flat-square" alt="Toolkit">
+    </a>
+    <br />
+    <a href="#">
+      <img src="https://img.shields.io/badge/Languages-English%20%7C%20Korean%20%7C%20Portuguese%20%7C%20Vietnamese%20%7C%20German%20%7C%20Japanese%20%7C%20Russian%20%7C%20French%20%7C%20Spanish-black?style=flat-square" alt="Multilingual">
+    </a>
+    <br />
+    <a href="#">
+      <img src="https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-blue?style=flat-square" alt="Supported Platforms">
+    </a>
   </p>
-
   <br />
-
   <p>
-    <strong>A lightweight native app to manage Redis, Valkey, Upstash,<br />
-    Cloudflare, Kubernetes, Resend, HTTP Client, and modern databases in one place.</strong>
+    <strong>A lightweight desktop app to manage Redis, Valkey, Upstash, Cloudflare, Kubernetes, modern databases, and essential Toolkit (Mail Sender, HTTP Client, Visual Diff, Local Terminal, and SSH Client) all in one place.</strong>
   </p>
 </div>
 
@@ -26,6 +34,12 @@
 <br />
 
 ## What is Keyscope?
+
+All-in-One Developer GUI for Your Dev Stack.
+
+A lightweight desktop app to manage Redis, Valkey, Upstash, Cloudflare, Kubernetes, modern databases, and essential Toolkit (Mail Sender, HTTP Client, Visual Diff, Local Terminal, and SSH Client) all in one place.
+
+## Redis & Valkey features
 
 Keyscope provides both a `redis-cli` style shell for direct server interaction and a Command Palette for searchable command execution with minimal typing.
 
@@ -87,21 +101,35 @@ Keyscope supports 9 key languages across major regions:
 
 ## Installation
 
-Keyscope provides a full-featured experience at under 15MB per single-architecture build.
+Keyscope is available for macOS, Windows, and Linux across arm64 and x86_64 architectures.
 
-- **macOS Universal** (Intel & Apple Silicon dual-arch) — 25.8 MB (.dmg installer)
-- **Windows** (64-bit, zipped installer) — 12.1 MB
-- **Linux** (.AppImage)
-  - **x86_64** — 12.1 MB
-  - **ARM64** (aarch64) — 11.6 MB
+- **macOS Universal** (.dmg / Installer)
+  - **Apple Silicon & Intel** — 24.5 MB
+- **Windows** (.msi / Installer)
+  - **64-bit** (amd64/x64) — 16.35 MB
+  - **ARM64** — 15.32 MB
+- **Linux** (.AppImage / Portable)
+  - **x86_64** — 68.7 MB
+  - **aarch64** (arm64) — 64.7 MB
 
 Download the latest native builds for your operating system from the official website or from GitHub releases.
 
 > [!NOTE]
 > **Recent Build & Package Updates:**
+> - **v0.30.2**: Added official support for Linux WebKit with full compatibility.
+> - **v0.30.0**: Added official support for Windows ARM64.
 > - **v0.20.1**: Added official support for Linux ARM64 (`aarch64`).
 > - **v0.16.0**: Updated installer formats and reduced package sizes.
-> 
+
+> [!NOTE]
+> **Recent Version & Roadmap Updates:**
+> - **v0.40.0**: Kubernetes features will be introduced.
+> - **v0.33.0**: Redis and Valkey features will be unlocked.
+> - **v0.32.0**: [Toolkits] SSH Client feature will be unlocked.
+> - **v0.31.0**: [Toolkits] Local Terminal feature will be unlocked soon (currently in packaging and testing).
+> - **v0.30.0**: [Toolkits] Mail Sender, HTTP Client, and Visual Diff features have been unlocked.
+> - **v0.20.1**: Cloudflare R2 and D1 features have been unlocked.
+ 
 > For feature requests, bug reports, or more information, open a GitHub issue, start a discussion, or visit the official website.
 
 <br />
