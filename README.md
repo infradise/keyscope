@@ -8,7 +8,7 @@
 
   <p>
     <a href="#">
-      <img src="https://img.shields.io/badge/Dev%20Stack-Redis%20%7C%20Valkey%20%7C%20Upstash%20%7C%20Cloudflare%20%7C%20Kubernetes%20%7C%20modern%20databases-teal?style=flat-square" alt="Dev Stack (Infra & Data Stack)">
+      <img src="https://img.shields.io/badge/Dev%20Stack-Kubernetes%20%7C%20Redis%20%7C%20Valkey%20%7C%20Upstash%20%7C%20Cloudflare%20%7C%20modern%20databases-teal?style=flat-square" alt="Dev Stack (Infra & Data Stack)">
     </a>
     <br />
     <a href="#">
@@ -25,7 +25,7 @@
   </p>
   <br />
   <p>
-    <strong>A lightweight native app to manage Redis, Valkey, Upstash, Cloudflare, Kubernetes, modern databases, and essential Toolkit (Mail Sender, HTTP Client, Visual Diff, Local Terminal, SSH Client, and Text Editor) all in one place.</strong>
+    <strong>A lightweight native app to manage Kubernetes, Redis, Valkey, Upstash, Cloudflare, modern databases, and essential Toolkit (Mail Sender, HTTP Client, Visual Diff, Local Terminal, SSH Client, and Text Editor) all in one place.</strong>
   </p>
 </div>
 
@@ -37,7 +37,31 @@
 
 Dev Stack GUI.
 
-A lightweight native app to manage Redis, Valkey, Upstash, Cloudflare, Kubernetes, modern databases, and essential Toolkit (Mail Sender, HTTP Client, Visual Diff, Local Terminal, SSH Client, and Text Editor) all in one place.
+A lightweight native app to manage Kubernetes, Redis, Valkey, Upstash, Cloudflare, modern databases, and essential Toolkit (Mail Sender, HTTP Client, Visual Diff, Local Terminal, SSH Client, and Text Editor) all in one place.
+
+## Kubernetes features
+
+### Kubernetes Resources (Rolling out from v0.40.0)
+> **Note:** Support for the following resources will be introduced progressively, starting with core features in v0.40.0.
+
+- Cluster: 
+  - Nodes, Namespaces, Events, API Services, Component Statuses, Cluster CIDR
+- Workloads:  
+  - Pods, Deployments, Daemon Sets, Stateful Sets, Replica Sets, Replication Controllers, Jobs, Cron Jobs, Controller Revisions, Pod Templates
+- Network:  
+  - Services, Ingresses, Endpoint Slices, Endpoints, Ingress Classes, Network Policies, Port Forwarding
+- Config:  
+  - Secrets, ConfigMaps, Horizontal Pod Autoscalers, Vertical Pod Autoscalers, Limit Ranges, Resource Quotas, Pod Disruption Budgets, Leases, Flow Schemas, Priority Level Configurations
+- Admin:
+  - Custom Resource Definitions, Priority Classes, Runtime Classes, Mutating Webhook Configurations, Validating Webhook Configurations
+- Storage:
+  - Persistent Volumes, Persistent Volume Claims, Volume Attachments, Storage Classes, CSI Drivers, CSI Nodes, CSI Storage Capacities
+- Access Control:
+  - Service Accounts, Cluster Roles, Cluster Role Bindings, Roles, Role Bindings, Pod Security Admissions, Certificate Signing Requests
+- Metric: 
+  - Node Metrics, Pod Metrics
+- Helm: 
+  - Charts, Releases
 
 ## Redis & Valkey features
 
