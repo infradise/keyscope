@@ -122,13 +122,12 @@ Download the latest native builds for your operating system from the official we
 
 > [!NOTE]
 > **Recent Version & Roadmap Updates:**
-> - **v0.50.0**: Kubernetes features will be introduced.
-> - **v0.40.0**: Redis and Valkey features will be unlocked.
-> - **v0.34.0**: [Toolkits] Text Editor feature will be introduced.
-> - **v0.32.0**: [Toolkits] SSH Client feature has been released.
-> - **v0.31.0**: [Toolkits] Local Terminal feature has been released.
-> - **v0.30.0**: [Toolkits] Mail Sender, HTTP Client, and Visual Diff features have been released.
-> - **v0.20.1**: Cloudflare R2 and D1 features have been released.
+> - **v0.40.0**: Introducing Kubernetes support.
+> - **v0.33.0**: Added Linux Pre-Launch System Setup.
+> - **v0.32.0**: Added SSH Client.
+> - **v0.31.0**: Added Local Terminal.
+> - **v0.30.0**: Added Mail Sender, HTTP Client, and Visual Diff.
+> - **v0.20.1**: Added support for Cloudflare R2 and D1.
  
 > For feature requests, bug reports, or more information, open a GitHub issue, start a discussion, or visit the official website.
 
