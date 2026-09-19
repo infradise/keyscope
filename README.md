@@ -114,7 +114,7 @@ Download the latest native builds for your operating system from the official we
 
 > [!NOTE]
 > **Recent Build & Package Updates:**
-> - **v0.30.2**: Separated macOS release packages into distinct Apple Silicon (arm64) and Intel (x86_64) binaries. 
+> - **v0.33.0**: Separated macOS release packages into distinct Apple Silicon (arm64) and Intel (x86_64) binaries. 
 > - **v0.30.2**: Added official support for Linux WebKit with full compatibility.
 > - **v0.30.0**: Added official support for Windows ARM64.
 > - **v0.20.1**: Added official support for Linux ARM64 (`aarch64`).
