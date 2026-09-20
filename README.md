@@ -12,7 +12,7 @@
     </a>
     <br />
     <a href="#">
-      <img src="https://img.shields.io/badge/Developer%20Toolkit-Mail%20Sender%20%7C%20HTTP%20Client%20%7C%20Visual%20Diff%20%7C%20Local%20Terminal%20%7C%20SSH%20Client%20%7C%20TextH%20Editor-success?style=flat-square" alt="Toolkit">
+      <img src="https://img.shields.io/badge/Developer%20Toolkit-Mail%20Sender%20%7C%20HTTP%20Client%20%7C%20Visual%20Diff%20%7C%20Local%20Terminal%20%7C%20SSH%20Client%20%7C%20Text%20Editor-success?style=flat-square" alt="Toolkit">
     </a>
     <br />
     <a href="#">
@@ -62,6 +62,53 @@ A lightweight native app to manage Kubernetes, Redis, Valkey, Upstash, Cloudflar
   - Node Metrics, Pod Metrics
 - Helm: 
   - Charts, Releases
+
+
+## Cloudflare features
+
+### Cloudflare R2
+A dedicated desktop workflow to browse buckets, edit configs, and manage Cloudflare R2 storage effortlessly.
+- **Complete Bucket Lifecycle Controls**
+- **Precision Object Explorer**
+- **Drag & Drop File Transfers**
+
+### Cloudflare D1
+Connect directly to Cloudflare D1 serverless SQLite databases, run queries, and inspect schemas.
+- **Native SQL Query Editor**
+- **Instant Table & Schema Browser**
+- **Query Execution & Result Grid**
+
+## Toolkit features
+A versatile suite of developer utilities to boost your daily productivity.
+
+### Mail Sender
+- **Live Preview Editor**: Compose HTML or plain text emails with an instant side-by-side live preview.
+- **Direct Mail Dispatch**: Send test and transactional emails directly using email provider APIs (starting with Resend).
+- **API Key Security**: Securely store and manage email API keys and sender credentials locally.
+
+### HTTP Client
+- **Postman Collection Interop**: Import and export Postman v2.1 collections natively with hierarchical tree navigation.
+- **Rich Response Previews**: Native inline preview for TIFF, HEIC/HEIF, AVIF, SVG, embedded PDFs, and raster images.
+- **Dynamic Environment Manager**: Manage Dev/Staging/Prod environments with {{variable}} substitution and masked secrets.
+
+### Visual Diff
+- **Synchronized 2D Workspace**: Dual-pane 2D scrolling with fluid Bezier curved ribbons and token-level change highlighting.
+- **Data Stack Semantic Diffing**: Direct diffing for Redis values, K8s Manifests, and D1 records with auto JSON key sorting.
+- **Interactive Merge & Write-Back**: 1-click inline merges (→, ←), patch file generation, and non-blocking 10k+ line async engine.
+
+### Local Terminal
+- **Native PTY Integration**: Native PTY process I/O with automatic OS shell detection (Zsh, Bash, PowerShell) and dynamic viewport resizing.
+- **Multi-Session Tab System**: Seamless multi-session tab management with fast switching, session control, and custom tab renaming.
+- **Action Bar & Shortcuts**: Built-in utility bar for real-time search, log exporting, buffer clearing, and native terminal control signals.
+
+### SSH Client
+- **Multi-Auth & OS Security**: Password & Key (PEM/RSA) auth with OS-native Keychain credential storage.
+- **Multi-Session Tab System**: Manage concurrent SSH sessions across tabs with real-time status indicators.
+- **Connection Manager Sidebar**: Split-pane layout with a dedicated sidebar to save, edit, and quickly launch remote server connections.
+
+### Text Editor (Upcoming)
+- Planned for a future release.
+
 
 ## Redis & Valkey features
 
