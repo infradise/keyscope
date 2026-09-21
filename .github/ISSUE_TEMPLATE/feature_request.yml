@@ -1,0 +1,57 @@
+name: Feature Request
+description: Suggest an idea or new feature for Keyscope
+labels: ['type: feature']
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Feature Summary
+      description: Provide a clear and concise summary of the feature you are requesting.
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement / Motivation
+      description: Is your feature request related to a problem or inconvenience? (e.g., "I'm always frustrated when...")
+      placeholder: Describe the current limitation or pain point.
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Component / Category
+      description: Select the module or feature area this request applies to.
+      options:
+        - "--- Select Category ---"
+        - "Kubernetes"
+        - "Redis / Valkey / In-Memory DB"
+        - "Cloudflare Integrations (R2, D1, Postgres, SQLite)"
+        - "Databases (PostgreSQL, MySQL, MariaDB, MongoDB)"
+        - "Developer Toolkit (HTTP Client, Mail, Visual Diff, etc.)"
+        - "Terminal / SSH Client"
+        - "GUI / Theme / User Experience"
+        - "OS / System & Platform Support"
+        - "Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe how you envision this feature working or what behavior you expect.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Describe any alternative solutions or workarounds you have considered (optional).
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context / Mockups
+      description: Add any other context, screenshots, or design mockups about the feature request.

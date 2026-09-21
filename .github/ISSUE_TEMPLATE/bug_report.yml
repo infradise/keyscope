@@ -1,0 +1,134 @@
+name: Bug Report
+description: Create a report to help us improve Keyscope
+labels: ['type: bug']
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Provide a clear and concise description of what the issue is.
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Keyscope Version
+      placeholder: e.g., 0.40.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      description: Select your operating system and CPU architecture.
+      options:
+        - "--- Select Platform ---"
+        - "Windows - x64"
+        - "Windows - arm64"
+        - "macOS - Apple Silicon (arm64)"
+        - "macOS - Intel (x86_64)"
+        - "Linux - x86_64"
+        - "Linux - aarch64"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: linux_distro
+    attributes:
+      label: Linux Distribution (Optional)
+      description: Select your Linux distribution if applicable.
+      options:
+        - "N/A (macOS / Windows)"
+        - "Red Hat Enterprise Linux (RHEL) 9+"
+        - "Ubuntu 18.04+"
+        - "Debian 11+"
+        - "Fedora Linux 39+"
+        - "Arch Linux 7.2+"
+        - "Manjaro 23.2+"
+        - "CentOS 9+"
+        - "Rocky Linux 9+"
+        - "AlmaLinux OS 9+"
+        - "Oracle Linux 9+"
+        - "openSUSE 15.4+"
+        - "SLE 15 SP6+"
+        - "Kali Linux 2021.1+"
+        - "Other"
+    validations:
+      required: false
+
+  - type: input
+    id: linux_version
+    attributes:
+      label: Linux Version (Optional)
+      description: Specify the version of your Linux distribution.
+      placeholder: e.g., 26.04 LTS, 9.0, 9.6, 10.0
+    validations:
+      required: false
+
+  - type: dropdown
+    id: dev_stack
+    attributes:
+      label: Dev Stack
+      description: Select associated stack (multiple selections allowed).
+      multiple: true
+      options:
+        - "Kubernetes"
+        - "Redis"
+        - "Valkey"
+        - "Upstash"
+        - "GCP Memorystore"
+        - "AWS ElastiCache"
+        - "Cloudflare R2"
+        - "Cloudflare D1"
+        - "Cloudflare Postgres"
+        - "Cloudflare SQLite"
+        - "PostgreSQL"
+        - "MySQL"
+        - "MariaDB"
+        - "MongoDB"
+        - "Mail Sender"
+        - "HTTP Client"
+        - "Visual Diff"
+        - "Local Terminal"
+        - "SSH Client"
+        - "Text Editor"
+        - "Other (WebView, OS Keychain, etc.)"
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Explain step-by-step how to reproduce the issue.
+      placeholder: |
+        1. Launch Keyscope...
+        2. Click on '...'
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: A clear and concise description of what you expected to happen.
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: A clear and concise description of what actually happened.
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Paste any relevant error logs or tracebacks here.
+      render: text
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Add any other context about the problem here.
