@@ -1,14 +1,14 @@
 <br />
 <div align="center">
   <a href="https://keyscope.dev">
-    <img src="https://download.keyscope.dev/logo.png" alt="Keyscope — Dev Stack GUI" width="128">
+    <img src="https://download.keyscope.dev/logo.png" alt="Keyscope — Kubernetes IDE" width="128">
   </a>
 
-  <h1>Keyscope <br /><br /> Dev Stack GUI</h1>
+  <h1>Keyscope <br /><br /> Kubernetes IDE</h1>
 
   <p>
     <a href="#">
-      <img src="https://img.shields.io/badge/Dev%20Stack-Kubernetes%20%7C%20Redis%20%7C%20Valkey%20%7C%20Upstash%20%7C%20Cloudflare%20%7C%20modern%20databases-teal?style=flat-square" alt="Dev Stack (Infra & Data Stack)">
+      <img src="https://img.shields.io/badge/Data%20Stack-Redis%20%7C%20Valkey%20%7C%20Upstash%20%7C%20Cloudflare%20%7C%20modern%20databases-teal?style=flat-square" alt="Data Stack">
     </a>
     <br />
     <a href="#">
@@ -25,7 +25,7 @@
   </p>
   <br />
   <p>
-    <strong>A lightweight native app to manage Kubernetes, Redis, Valkey, Upstash, Cloudflare, modern databases, and essential Toolkit (Mail Sender, HTTP Client, Visual Diff, Local Terminal, SSH Client, and Text Editor) all in one place.</strong>
+    <strong>The native Kubernetes IDE for the data stack (Redis, Valkey, Upstash, Cloudflare, modern databases) with a built-in toolkit (HTTP Client, SSH Client, Visual Diff, Local Terminal, Text Editor, Mail Sender)—all inside Keyscope.</strong>
   </p>
 </div>
 
@@ -35,14 +35,18 @@
 
 ## What is Keyscope?
 
-Dev Stack GUI.
-
-A lightweight native app to manage Kubernetes, Redis, Valkey, Upstash, Cloudflare, modern databases, and essential Toolkit (Mail Sender, HTTP Client, Visual Diff, Local Terminal, SSH Client, and Text Editor) all in one place.
+The native Kubernetes IDE for the data stack (Redis, Valkey, Upstash, Cloudflare, modern databases) with a built-in toolkit (HTTP Client, SSH Client, Visual Diff, Local Terminal, Text Editor, Mail Sender)—all inside Keyscope.
 
 ## Kubernetes features
 
-### Kubernetes Resources (Rolling out from v0.40.0)
-> **Note:** Support for the following resources will be introduced progressively, starting with core features in v0.40.0.
+### Core features
+- Multi-cluster management
+- Real-time resource watching
+- 50+ K8s resources
+- Built-in YAML editor
+- Interactive terminal & pod logs
+
+### Kubernetes resources
 
 - Cluster: 
   - Nodes, Namespaces, Events, API Services, Component Statuses, Cluster CIDR
@@ -174,12 +178,14 @@ Keyscope supports 9 key languages across major regions:
 
 Keyscope is available for macOS, Windows, and Linux across arm64 and x86_64 architectures.
 
-- macOS arm64 (.dmg): 13.9 MB
-- macOS x86_64 (.dmg): 14.8 MB
-- Windows Arm64 (.msi): 16.7 MB
-- Windows 64-bit (.msi): 17.6 MB
-- Linux aarch64 (.AppImage): 66.2 MB
-- Linux x86_64 (.AppImage): 70.2 MB
+| Platform | Architecture | Package | Size |
+| :--- | :--- | :--- | :--- |
+| **macOS** | Apple Silicon (`arm64`) | `.dmg` | 14.2 MB |
+| **macOS** | Intel (`x86_64`) | `.dmg` | 15.1 MB |
+| **Windows** | ARM64 (`arm64`) | `.msi` | 17.1 MB |
+| **Windows** | x64 (`x86_64`) | `.msi` | 17.9 MB |
+| **Linux** | ARM64 (`aarch64`) | `.AppImage` | 66.5 MB |
+| **Linux** | x64 (`x86_64`) | `.AppImage` | 70.5 MB |
 
 Download the latest native builds for your operating system from the official website or from GitHub releases.
 
@@ -193,7 +199,8 @@ Download the latest native builds for your operating system from the official we
 
 > [!NOTE]
 > **Recent Version & Roadmap Updates:**
-> - **v0.40.0**: Introducing Kubernetes support.
+> - **v0.41.0**: Added Auto-updater support for macOS, Windows, and Linux with AppImage delta update.
+> - **v0.40.0**: Added Kubernetes support.
 > - **v0.33.0**: Added Linux Pre-Launch System Setup.
 > - **v0.32.0**: Added SSH Client.
 > - **v0.31.0**: Added Local Terminal.
