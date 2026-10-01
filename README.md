@@ -29,7 +29,9 @@
   </p>
 </div>
 
-![Keyscope Native Workspace Integration](https://download.keyscope.dev/screenshots/main/keyscope-native-workspace-integration.png)
+<img width="1300" height="800" alt="Keyscope - Kubernetes IDE" src="https://github.com/user-attachments/assets/df7bd810-e879-4438-9161-966e05359489" />
+
+<!-- ![Keyscope Native Workspace Integration](https://download.keyscope.dev/screenshots/main/keyscope-native-workspace-integration.png) -->
 
 <br />
 
