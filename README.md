@@ -29,7 +29,15 @@
   </p>
 </div>
 
-<img width="1170" height="720" alt="Keyscope - Kubernetes IDE" src="https://github.com/user-attachments/assets/fa2a9c3c-cff7-42b2-8b5d-b052f05847b0" />
+<p>
+  <img width="1114" height="850" alt="Keyscope - Redesigned Welcome Screen" src="https://github.com/user-attachments/assets/fe181a2b-33fe-4337-8beb-74e56453d16e" />
+</p>
+
+<br />
+
+<p>
+  <img width="1170" height="720" alt="Keyscope - Kubernetes IDE" src="https://github.com/user-attachments/assets/fa2a9c3c-cff7-42b2-8b5d-b052f05847b0" />
+</p>
 
 <!-- ![Keyscope Native Workspace Integration](https://download.keyscope.dev/screenshots/main/keyscope-native-workspace-integration.png) -->
 
