@@ -30,7 +30,7 @@
 </div>
 
 <p>
-  <img width="1114" height="850" alt="Keyscope - Redesigned Welcome Screen" src="https://github.com/user-attachments/assets/fe181a2b-33fe-4337-8beb-74e56453d16e" />
+  <img width="1080" height="850" alt="Keyscope - Redesigned Welcome Screen" src="https://github.com/user-attachments/assets/e23e79a3-e794-4ca6-8c9a-da4429455234" />
 </p>
 
 <br />
