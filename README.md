@@ -4,7 +4,7 @@
     <img src="https://download.keyscope.dev/logo.png" alt="Keyscope — Kubernetes IDE" width="128">
   </a>
 
-  <h1>Keyscope <br /><br /> Kubernetes IDE</h1>
+  <h1>Keyscope <br /><br /> The Data-Aware Kubernetes IDE</h1>
 
   <p>
     <a href="#">
@@ -25,7 +25,7 @@
   </p>
   <br />
   <p>
-    <strong>The native Kubernetes IDE for the data stack (Redis, Valkey, Upstash, Cloudflare, modern databases) with a built-in toolkit (HTTP Client, SSH Client, Visual Diff, Local Terminal, Text Editor, Mail Sender)—all inside Keyscope.</strong>
+    <strong>The Data-Aware Kubernetes IDE for standalone and in-cluster data stacks (Redis, Valkey, Upstash, Cloudflare, modern databases) with a debugging toolkit (HTTP Client, SSH Client, Visual Diff, Local Terminal, Text Editor, Mail Sender)—inspect and manage in-cluster data stacks without manual port-forwarding.</strong>
   </p>
 </div>
 
@@ -45,16 +45,19 @@
 
 ## What is Keyscope?
 
-The native Kubernetes IDE for the data stack (Redis, Valkey, Upstash, Cloudflare, modern databases) with a built-in toolkit (HTTP Client, SSH Client, Visual Diff, Local Terminal, Text Editor, Mail Sender)—all inside Keyscope.
+The Data-Aware Kubernetes IDE for standalone and in-cluster data stacks (Redis, Valkey, Upstash, Cloudflare, modern databases) with a debugging toolkit (HTTP Client, SSH Client, Visual Diff, Local Terminal, Text Editor, Mail Sender)—inspect and manage in-cluster data stacks without manual port-forwarding.
 
 ## Kubernetes features
 
 ### Core features
-- Multi-cluster management
-- Real-time resource watching
-- 50+ K8s resources
-- Built-in YAML editor
-- Interactive terminal & pod logs
+
+- **Multi-Cluster Groups**: Group clusters and pin them to the Activity Bar for instant one-click access
+- **Multi-Cluster & Context Management**: Manage and favorite multiple Kubernetes clusters & contexts
+- **Automated `~/.kube` Discovery**: Scan and discover all kubeconfig files across `~/.kube`
+- **Real-Time Resource Watch**: Live status updates across pods, workloads, and cluster events
+- **50+ K8s Resource Views**: Comprehensive inspection for workloads, network, storage, and configs
+- **Manifest & YAML Editor**: Fast, in-place resource editing with syntax validation
+- **Interactive Terminal & Pod Logs**: Multi-container shell access and real-time log streaming
 
 ### Kubernetes resources
 
@@ -77,7 +80,6 @@ The native Kubernetes IDE for the data stack (Redis, Valkey, Upstash, Cloudflare
 - Helm: 
   - Charts, Releases
 
-
 ## Cloudflare features
 
 ### Cloudflare R2
@@ -92,7 +94,7 @@ Connect directly to Cloudflare D1 serverless SQLite databases, run queries, and 
 - **Instant Table & Schema Browser**
 - **Query Execution & Result Grid**
 
-## Toolkit features
+## Debugging Toolkit features
 A versatile suite of developer utilities to boost your daily productivity.
 
 ### Mail Sender
@@ -120,9 +122,15 @@ A versatile suite of developer utilities to boost your daily productivity.
 - **Multi-Session Tab System**: Manage concurrent SSH sessions across tabs with real-time status indicators.
 - **Connection Manager Sidebar**: Split-pane layout with a dedicated sidebar to save, edit, and quickly launch remote server connections.
 
-### Text Editor (Upcoming)
-- Planned for a future release.
+### Text Editor (Planned)
 
+- Multi-buffer text editor and scratchpad with instant tab creation—persists flat timestamped files directly to your workdir with a per-file auto-save toggle (enabled by default), featuring sidebar navigation and direct in-place renaming from tabs or the sidebar.
+
+## Modern Databases (Planned)
+
+Support for PostgreSQL, MySQL, MariaDB, and MongoDB across standalone and in-cluster environments:
+- **In-Cluster**: Inspect and query databases running inside your Kubernetes clusters directly without manual port-forwarding.
+- **Standalone**: Connect directly to local, remote, or managed database instances via dedicated database connections.
 
 ## Redis & Valkey features
 
@@ -190,12 +198,12 @@ Keyscope is available for macOS, Windows, and Linux across arm64 and x86_64 arch
 
 | Platform | Architecture | Package | Size |
 | :--- | :--- | :--- | :--- |
-| **macOS** | Apple Silicon (`arm64`) | `.dmg` | 14.2 MB |
-| **macOS** | Intel (`x86_64`) | `.dmg` | 15.1 MB |
-| **Windows** | ARM64 (`arm64`) | `.msi` | 17.1 MB |
-| **Windows** | x64 (`x86_64`) | `.msi` | 17.9 MB |
-| **Linux** | ARM64 (`aarch64`) | `.AppImage` | 66.5 MB |
-| **Linux** | x64 (`x86_64`) | `.AppImage` | 70.5 MB |
+| **macOS** | Apple Silicon (`arm64`) | `.dmg` | 14.1 MB |
+| **macOS** | Intel (`x86_64`) | `.dmg` | 15.0 MB |
+| **Windows** | ARM64 (`arm64`) | `.msi` | 16.6 MB |
+| **Windows** | x64 (`x86_64`) | `.msi` | 17.4 MB |
+| **Linux** | ARM64 (`aarch64`) | `.AppImage` | 64.9 MB |
+| **Linux** | x64 (`x86_64`) | `.AppImage` | 68.6 MB |
 
 Download the latest native builds for your operating system from the official website or from GitHub releases.
 
@@ -209,6 +217,11 @@ Download the latest native builds for your operating system from the official we
 
 > [!NOTE]
 > **Recent Version & Roadmap Updates:**
+> - **v0.60.0**: Upcoming Local Container Playground.
+> - **v0.5x.0**: Upcoming Real-Time Watch for Redis and Valkey.
+> - **v0.50.0**: Upcoming Standalone and In-Cluster Redis and Valkey support.
+> - **v0.44.0**: Added Multi-Cluster Grouping & Connection for Kubernetes and Multi-Kubeconfig Directory Scan.
+> - **v0.42.0**: Added Factory Reset.
 > - **v0.41.0**: Added Auto-updater support for macOS, Windows, and Linux with AppImage delta update.
 > - **v0.40.0**: Added Kubernetes support.
 > - **v0.33.0**: Added Linux Pre-Launch System Setup.
