@@ -43,13 +43,13 @@
 </div>
 
 <p>
-  <img width="1080" height="850" alt="Keyscope - Redesigned Welcome Screen" src="https://github.com/user-attachments/assets/e23e79a3-e794-4ca6-8c9a-da4429455234" />
+  <img width="1920" height="992" alt="Keyscope - Kubernetes IDE" src="https://github.com/user-attachments/assets/0b4fc2a1-2d3d-41dc-8326-ff0ce8809caf" />
 </p>
 
 <br />
 
 <p>
-  <img width="1170" height="720" alt="Keyscope - Kubernetes IDE" src="https://github.com/user-attachments/assets/fa2a9c3c-cff7-42b2-8b5d-b052f05847b0" />
+  <img width="1920" height="992" alt="Keyscope - Data Stack IDE (Redis)" src="https://github.com/user-attachments/assets/86dbc777-1748-406c-ac2f-31d34c349cc7" />
 </p>
 
 <!-- ![Keyscope Native Workspace Integration](https://download.keyscope.dev/screenshots/main/keyscope-native-workspace-integration.png) -->
@@ -81,6 +81,14 @@ Keyscope collapses that workflow into **one data-aware workspace**, built on thr
 **Multi-Cluster & Real-Time Workload Control**
 
 Navigate every cluster you own from a single Activity Bar — with live state, in-place edits, and shell access one click away.
+
+<p>
+  <img width="1920" height="992" alt="Keyscope - Kubernetes Cluster Manager" src="https://github.com/user-attachments/assets/3d6b264e-9333-47b0-8522-11efc52c136d" />
+</p>
+
+<p>
+  <img width="1126" height="705" alt="Keyscope - Kubernetes Multi-Cluster Group" src="https://github.com/user-attachments/assets/3d062f15-c60e-4c0f-a891-585e984401df" />
+</p>
 
 ### Core features
 
@@ -128,7 +136,9 @@ Keyscope provides both a `redis-cli` style shell for direct server interaction a
 
 It supports **TLS, SSH, and SSH tunneling** to securely manage instances such as **Upstash, Google Cloud Memorystore, AWS ElastiCache, and Azure Cache**.
 
-![Keyscope Redis/Valkey Connection Manager](https://download.keyscope.dev/screenshots/v0.20.0/keyscope-redis-valkey-connection-manager.png)
+<p>
+  <img width="1920" height="994" alt="Keyscope - Data Stack IDE (Redis Statistics)" src="https://github.com/user-attachments/assets/daf55b41-dcbe-4554-81bf-df63c2d8c306" />
+</p>
 
 #### Key features
 
