@@ -274,14 +274,13 @@ Keyscope supports 9 key languages across major regions:
 
 ## 🧭 Roadmap & Releases
 
-### Upcoming Roadmap (v0.50.0 ~ v1.0.0)
+### Upcoming Roadmap (v0.80.0 ~ v1.0.0)
 
 | Version | Milestone |
 | :--- | :--- |
-| **v1.0.0+** | Additional data stack (PostgreSQL, MariaDB, MySQL, MongoDB)
-| **v0.9x.0** | Key creators for Redis & Valkey |
+| **v1.0.0+** | Additional data stack (PostgreSQL, MariaDB, MySQL, MongoDB) |
+| **v0.9x.0** | Key creators for Redis & Valkey, Real-Time Watch for Redis and Valkey (2 modes for debug) |
 | **v0.8x.0** | K8s QoS editor, In-Cluster Redis and Valkey support |
-| **v0.Xx.0** | Real-Time Watch for Redis and Valkey |
 
 ### Recent Release Highlights (v0.16.0 ~ v0.70.0)
 
