@@ -66,7 +66,7 @@ Keyscope collapses that workflow into **one data-aware workspace**, built on thr
 | :--- | :--- | :--- |
 | **[1. Kubernetes IDE](#-1-kubernetes-ide)** | A standalone cluster dashboard | Multi-cluster groups, real-time resource watch, 50+ resource views, YAML editing, pod shells & logs |
 | **[2. Data-Aware Stack](#-2-data-aware-stack)** | A separate DB GUI + `kubectl port-forward` | Direct access to in-cluster data stacks and standalone cloud data services — no tunnels to babysit |
-| **[3. Zero-Switch Debugging Toolkit](#-3-zero-switch-debugging-toolkit)** | Separate API, SSH, diff, terminal & mail tools | HTTP Client, SSH Client, Visual Diff, Local Terminal, Mail Sender, and Text Editor (Planned) in the same window |
+| **[3. Zero-Switch Debugging Toolkit](#-3-zero-switch-debugging-toolkit)** | Separate API, SSH, diff, terminal & mail tools | HTTP Client, SSH Client, Visual Diff, Local Terminal, Mail Sender, and Text Editor in the same window |
 
 **Built into every pillar:**
 
@@ -204,7 +204,7 @@ The utilities you reach for between `kubectl` commands — built in, so you neve
 | **[Visual Diff](#visual-diff)** | Comparing configs & data | 2D scrolling with Bezier curved ribbons + data stack semantic diffing |
 | **[Local Terminal](#local-terminal)** | Local shell work | Native PTY with automatic Zsh / Bash / PowerShell detection |
 | **[Mail Sender](#mail-sender)** | Transactional email testing | Side-by-side live preview + direct dispatch via provider APIs (Resend) |
-| **[Text Editor (Planned)](#text-editor-planned)** | Notes & scratch buffers | Timestamped files persisted to your workdir with auto-save |
+| **[Text Editor](#text-editor)** | Notes & scratch buffers | Timestamped files persisted to your workdir with auto-save |
 
 ### HTTP Client
 
@@ -236,7 +236,7 @@ The utilities you reach for between `kubectl` commands — built in, so you neve
 - **Direct Mail Dispatch** — Send test and transactional emails directly using email provider APIs (starting with Resend).
 - **API Key Security** — Securely store and manage email API keys and sender credentials locally.
 
-### Text Editor (Planned)
+### Text Editor
 
 - Multi-buffer text editor and scratchpad with instant tab creation — persists flat timestamped files directly to your workdir with a per-file auto-save toggle (enabled by default), featuring sidebar navigation and direct in-place renaming from tabs or the sidebar.
 
@@ -278,14 +278,17 @@ Keyscope supports 9 key languages across major regions:
 
 | Version | Milestone |
 | :--- | :--- |
-| **v0.70.0** | In-Cluster Redis and Valkey support |
-| **v0.60.0** | Local Container Playground |
-| **v0.5x.0** | Real-Time Watch for Redis and Valkey |
+| **v1.0+** | Additional data stack (PostgreSQL, MariaDB, MySQL, MongoDB)
+| **v0.9x.0** | Key creators for Redis & Valkey |
+| **v0.8x.0** | K8s QoS editor, In-Cluster Redis and Valkey support |
+| **v0.Xx.0** | Real-Time Watch for Redis and Valkey |
 
 ### Recent Release Highlights (v0.16.0 ~ v0.50.0)
 
 | Version | Type | Highlights |
 | :--- | :--- | :--- |
+| **v0.70.0** | Feature | Added Workspace UI Themes (Classic, Modern, Artisan & Retro), Text Editor, Real-time Security Audit Email Alerts, License Activator & In-app Notifications |
+| **v0.60.0** | Feature | Added Local Container Playground, Container Engine, In-Container Redis and Valkey support, 1-click Open in Data GUI |
 | **v0.50.0** | Feature | Added Standalone Redis and Valkey support |
 | **v0.44.0** | Feature | Added Multi-Cluster Grouping & Connection for Kubernetes and Multi-Kubeconfig Directory Scan |
 | **v0.42.0** | Feature | Added Factory Reset |
