@@ -28,10 +28,10 @@
     <strong>Your clusters, your data, your debugging tools — in one native app.</strong>
   </p>
   <p>
-    Keyscope pairs a multi-cluster Kubernetes IDE with a GUI for in-cluster and standalone data stacks<br />
+    Keyscope pairs a multi-cluster Kubernetes IDE & Local Container Playground with a GUI for in-cluster, in-container, and standalone data stacks<br />
     (Redis, Valkey, Upstash, Cloudflare, modern databases) and a built-in debugging toolkit<br />
     (HTTP Client, SSH Client, Visual Diff, Local Terminal, Text Editor, Mail Sender).<br />
-    Inspect and manage in-cluster data stacks <strong>without manual port-forwarding</strong>.
+    Inspect and manage in-cluster and in-container data stacks <strong>without manual port-forwarding</strong>.
   </p>
   <p>
     <a href="https://keyscope.dev"><strong>Website</strong></a> •
@@ -65,12 +65,14 @@ Keyscope collapses that workflow into **one data-aware workspace**, built on thr
 | Pillar | Instead of… | Keyscope gives you |
 | :--- | :--- | :--- |
 | **[1. Kubernetes IDE](#-1-kubernetes-ide)** | A standalone cluster dashboard | Multi-cluster groups, real-time resource watch, 50+ resource views, YAML editing, pod shells & logs |
-| **[2. Data-Aware Stack](#-2-data-aware-stack)** | A separate DB GUI + `kubectl port-forward` | Direct access to in-cluster data stacks and standalone cloud data services — no tunnels to babysit |
-| **[3. Zero-Switch Debugging Toolkit](#-3-zero-switch-debugging-toolkit)** | Separate API, SSH, diff, terminal & mail tools | HTTP Client, SSH Client, Visual Diff, Local Terminal, Mail Sender, and Text Editor in the same window |
+| **[2. Data-Aware Stack](#-2-data-aware-stack)** | A separate DB GUI + manual container CLI / `kubectl port-forward` | Direct access to in-cluster, in-container (Docker socket or built-in BICE fallback), and standalone cloud data stacks — no tunnels to babysit |
+| **[3. Zero-Switch Debugging Toolkit](#-3-zero-switch-debugging-toolkit)** | Separate API, SSH, diff, terminal, editor & mail tools | HTTP Client, SSH Client, Visual Diff, Local Terminal, Mail Sender, and Text Editor in the same window |
 
 **Built into every pillar:**
 
 - ⚡ **Blazing-Fast Native Core** — Built on a proprietary, high-performance client engine. Compact native builds for macOS, Windows, and Linux with fast response times — **~14–15 MB on macOS**.
+- 🎨 **Workspace UI Themes** — Customize your environment with built-in **Classic, Modern, Artisan, and Retro** themes.
+- 🛡️ **Real-Time Security & Audit** — OS-native Keychain credential storage and real-time security audit email alerts.
 - 🌐 **Multilingual UI** — Supports [9 key languages](#-translations) out of the box.
 - 🖥️ **Cross-Platform** — macOS, Windows, and Linux across `arm64` and `x86_64`.
 
@@ -118,17 +120,25 @@ Navigate every cluster you own from a single Activity Bar — with live state, i
 
 ## 💾 2. Data-Aware Stack
 
-**In-Cluster & Standalone Data GUI**
+**In-Cluster, In-Container & Standalone Data GUI**
 
-Most Kubernetes tools stop at the pod boundary. Keyscope goes one layer deeper — into the data your workloads depend on. Manage the data stack running **inside your clusters** and **standalone cloud data services** from the same client, **without manual `kubectl port-forward`**.
+Most Kubernetes tools stop at the pod boundary. Keyscope goes one layer deeper — into the data your workloads depend on. Manage the data stack running **inside your clusters**, **in local containers**, and across **standalone cloud data services** from the same client, **without manual port-forwarding**.
 
 | Mode | How it connects | Targets |
 | :--- | :--- | :--- |
-| **In-Cluster** | Directly through your Kubernetes context — no manual port-forwarding | Redis, Valkey, and modern databases running in your clusters |
+| **In-Cluster** *(v0.8x.0)* | Directly through your Kubernetes context — no manual port-forwarding | Redis, Valkey, and modern databases running in your clusters |
+| **In-Container** | Hybrid runtime — connects to your existing Docker socket first, or falls back to the built-in **BICE 1.0** engine with **1-click Open in Data GUI** | Local Redis and Valkey containers in the Local Container Playground |
 | **Standalone** | TLS, SSH, and SSH tunneling handled natively by the Connection Manager | Upstash, AWS ElastiCache, Google Cloud Memorystore, Azure Cache, Cloudflare R2 & D1, local / remote / managed database instances |
 
 > [!NOTE]
-> Standalone Redis and Valkey support was added in **v0.50.0**. In-Cluster Redis and Valkey support is scheduled for **v0.70.0**, and Modern Databases are planned. See the [Upcoming Roadmap](#upcoming-roadmap-v0500--v0700).
+> **Standalone** Redis & Valkey support was added in **v0.50.0**, and **In-Container** support (with Local Container Playground & Container Engine) arrived in **v0.60.0**. **In-Cluster** Redis & Valkey support is scheduled for **v0.8x.0**, and Modern Databases for **v1.0.0+**. See the [Upcoming Roadmap](#upcoming-roadmap-v0800--v100).
+
+### Local Container Playground & Built-in Container Engine
+
+Click the **Local Container Playground** icon on the Activity Bar to pull, run, and inspect local data containers right from the sidebar — without leaving the IDE or manually configuring port mappings:
+
+- **Hybrid Engine Architecture** — Automatically connects to your existing **Docker socket** (Docker Desktop, OrbStack, Rancher Desktop, etc.) first. If no local runtime is installed, Keyscope seamlessly falls back to its on-demand **[Built-in Isolated Container Engine (BICE 1.0)](https://keyscope.dev/container-engine)** while keeping the core app ultra-lightweight.
+- **1-Click Open in Data GUI** — Spin up a local Redis or Valkey container and bridge it straight into Keyscope's Data GUI in a fraction of a second.
 
 ### Redis & Valkey
 
@@ -148,7 +158,7 @@ Designed around developer productivity and zero-configuration setups:
   - **Pre-built Provider Templates** — Choose your server type from a dropdown list to start quickly.
   - **Unrivaled Connectivity** — Secure connections out of the box. TLS, SSH, and SSH tunneling are supported natively, with no manual terminal configuration.
 - **Dual Interface** — The `redis-cli` shell for command-line sessions, plus a Command Palette GUI for executing commands through a searchable grid.
-- **Real-time Watch** — Monitor key changes in real time while maintaining visibility across clusters.
+- **Real-Time Watch** *(Planned for v0.9x.0)* — Monitor key changes in real time (with 2 debug modes) while maintaining visibility across clusters.
 
 #### Keyscope Engine & compatibility
 
@@ -182,7 +192,7 @@ The **Template-Driven Connection Manager** takes care of SSH tunneling and TLS s
 | **What it is** | A dedicated desktop workflow to browse buckets, edit configs, and manage R2 storage | A direct connection to D1 serverless SQLite databases to run queries and inspect schemas |
 | **Highlights** | • Complete Bucket Lifecycle Controls<br />• Precision Object Explorer<br />• Drag & Drop File Transfers | • Native SQL Query Editor<br />• Instant Table & Schema Browser<br />• Query Execution & Result Grid |
 
-### Modern Databases (Planned)
+### Modern Databases (Planned — v1.0.0+)
 
 Support for **PostgreSQL, MySQL, MariaDB, and MongoDB** across standalone and in-cluster environments:
 
@@ -233,7 +243,7 @@ The utilities you reach for between `kubectl` commands — built in, so you neve
 ### Mail Sender
 
 - **Live Preview Editor** — Compose HTML or plain text emails with an instant side-by-side live preview.
-- **Direct Mail Dispatch** — Send test and transactional emails directly using email provider APIs (starting with Resend).
+- **Direct Mail Dispatch** — Send test and transactional emails directly using email provider APIs (starting with Resend), plus power real-time security audit email alerts.
 - **API Key Security** — Securely store and manage email API keys and sender credentials locally.
 
 ### Text Editor
